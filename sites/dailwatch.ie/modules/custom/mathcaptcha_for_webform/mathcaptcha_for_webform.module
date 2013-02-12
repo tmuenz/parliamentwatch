@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Mathcaptcha_for_webform feature.
+ */
+
+include_once 'mathcaptcha_for_webform.features.inc';
