@@ -1,0 +1,7 @@
+name = Stay On Page
+description = Stay on same page when question webform is submitted instead of redirecting to another page.
+core = 7.x
+package = Custom
+version = 7.x-1.0-dev
+project = stayonpage
+dependencies[] = webform

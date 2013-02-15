@@ -1,0 +1,26 @@
+<?php
+
+/*
+ * @file
+ * Code for the stay on the same page when question is submitted
+ */
+
+
+/*
+ * hook_form_alter() 
+ */
+
+function stayonpage_form_alter(&$form, &$form_state, $form_id) {
+    if ($form_id == 'webform_client_form_17') {
+        $form["#submit"][0] = "stay_on_page";
+    }
+}
+
+/*
+ * Show a message and redirect user to the same page.
+ */
+
+function stay_on_page() {
+    drupal_set_message(t("Thank you! Your question has been submitted!"));
+    drupal_goto("node/17");
+}
