@@ -10,9 +10,9 @@
  * hook_form_alter() 
  */
 
-function stayonpage_form_alter(&$form, &$form_state, $form_id) {
+function questionform_redirect_form_alter(&$form, &$form_state, $form_id) {
     if ($form_id == 'webform_client_form_17') {
-        $form["#submit"][0] = "stay_on_page";
+        $form["#submit"][0] = "questionform_redirect";
     }
 }
 
@@ -20,7 +20,7 @@ function stayonpage_form_alter(&$form, &$form_state, $form_id) {
  * Show a message and redirect user to the same page.
  */
 
-function stay_on_page() {
+function questionform_redirect() {
     drupal_set_message(t("Thank you! Your question has been submitted!"));
     drupal_goto("node/17");
 }
