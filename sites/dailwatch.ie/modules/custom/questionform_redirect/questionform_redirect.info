@@ -1,5 +1,5 @@
 name = Question form Redirect
-description = Stay on same page when question webform is submitted instead of redirecting to another page.
+description = Stay on same page when Question webform is submitted instead of redirecting to another page.
 core = 7.x
 package = Custom
 version = 7.x-1.0-dev
