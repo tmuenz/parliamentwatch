@@ -1456,6 +1456,10 @@ return FALSE; // default: output the result
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: User (historical data): Profile picture (field_user_picture:fid) */
+  $handler->display->display_options['relationships']['field_user_picture_fid']['id'] = 'field_user_picture_fid';
+  $handler->display->display_options['relationships']['field_user_picture_fid']['table'] = 'field_revision_field_user_picture';
+  $handler->display->display_options['relationships']['field_user_picture_fid']['field'] = 'field_user_picture_fid';
   /* Field: User revision: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'user_revision';
@@ -1548,6 +1552,14 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_job_skills-revision_id']['field'] = 'field_user_job_skills-revision_id';
   $handler->display->display_options['fields']['field_user_job_skills-revision_id']['label'] = 'professional_qualification';
   $handler->display->display_options['fields']['field_user_job_skills-revision_id']['element_label_colon'] = FALSE;
+  /* Field: File: copyright */
+  $handler->display->display_options['fields']['field_image_copyright']['id'] = 'field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['table'] = 'field_data_field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['field'] = 'field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['relationship'] = 'field_user_picture_fid';
+  $handler->display->display_options['fields']['field_image_copyright']['label'] = 'profile_picture_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_copyright']['type'] = 'text_plain';
   /* Field: User (historical data): Profile picture */
   $handler->display->display_options['fields']['field_user_picture-revision_id']['id'] = 'field_user_picture-revision_id';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['table'] = 'field_revision_field_user_picture';
@@ -1895,6 +1907,7 @@ return FALSE; // default: output the result
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('file from field_user_picture'),
     t('name'),
     t('uuid'),
     t('first_name'),
@@ -1907,6 +1920,7 @@ return FALSE; // default: output the result
     t('constituency'),
     t('political_roles'),
     t('professional_qualification'),
+    t('profile_picture_copyright'),
     t('profile_picture'),
     t('questions_get'),
     t('http://dailwatch.ie/en-gb/user/[uid]/revisions/[vid]/view'),
