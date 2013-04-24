@@ -4,3 +4,4 @@
  */
 
 // Drupal needs this blank file.
+include_once('pw_api.features.inc');
