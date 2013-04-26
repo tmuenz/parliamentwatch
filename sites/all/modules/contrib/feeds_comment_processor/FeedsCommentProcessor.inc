@@ -47,6 +47,7 @@ class FeedsCommentProcessor extends FeedsProcessor {
     $comment->name = $account->name;
     $comment->hostname = '127.0.0.1';
     $comment->created = FEEDS_REQUEST_TIME;
+    $comment->date = FEEDS_REQUEST_TIME;
     $comment->is_anonymous = 0;
     $comment->status = 0;
     $comment->language = LANGUAGE_NONE;
@@ -79,12 +80,8 @@ class FeedsCommentProcessor extends FeedsProcessor {
    * Save a comment.
    */
   public function entitySave($comment) {
-    // comment_submit() overrides the created and changed properties.
-    $created = $comment->created;
+    $comment->date = date('r', $comment->created);
     comment_submit($comment);
-    $comment->created = $created;
-    $comment->changed = $created;
-
     comment_save($comment);
   }
 
@@ -126,17 +123,13 @@ class FeedsCommentProcessor extends FeedsProcessor {
    * Override parent::configDefaults().
    */
   public function configDefaults() {
-    $node_types = node_type_get_names();
-    $node_type = isset($node_types['article']) ? 'article' : key($node_types);
-
     return array(
-      'node_type' => $node_type,
       'input_format' => filter_default_format(),
       'update_existing' => FEEDS_SKIP_EXISTING,
       'expire' => FEEDS_EXPIRE_NEVER,
       'mappings' => array(),
       'author' => 0,
-    ) + parent::configDefaults();
+    );
   }
 
   /**
@@ -144,16 +137,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
    */
   public function configForm(&$form_state) {
     $form = array();
-
-    $node_types = node_type_get_names();
-    array_walk($node_types, 'check_plain');
-    $form['node_type'] = array(
-      '#type' => 'select',
-      '#title' => t('Content type'),
-      '#options' => $node_types,
-      '#default_value' => $this->config['node_type'],
-    );
-
     $format_options = array(filter_default_format() => t('Default format'));
     $formats = filter_formats();
     foreach ($formats as $format) {
@@ -166,7 +149,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
       '#options' => $format_options,
       '#default_value' => $this->config['input_format'],
     );
-
     $author = user_load($this->config['author']);
     $form['author'] = array(
       '#type' => 'textfield',
@@ -175,7 +157,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
       '#autocomplete_path' => 'user/autocomplete',
       '#default_value' => empty($author->name) ?  'anonymous' : check_plain($author->name),
     );
-
     $period = drupal_map_assoc(array(FEEDS_EXPIRE_NEVER, 3600, 10800, 21600, 43200, 86400, 259200, 604800, 604800 * 4, 604800 * 12, 604800 * 24, 31536000), 'feeds_format_expire');
     $form['expire'] = array(
       '#type' => 'select',
@@ -184,7 +165,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
       '#description' => t('Select after how much time comments should be deleted. The comment\'s published date will be used for determining the comment\'s age, see Mapping settings.'),
       '#default_value' => $this->config['expire'],
     );
-
     $form['update_existing'] = array(
       '#type' => 'radios',
       '#title' => t('Update existing comments'),
@@ -216,19 +196,11 @@ class FeedsCommentProcessor extends FeedsProcessor {
    */
   public function setTargetElement(FeedsSource $source, $target_comment, $target_element, $value) {
     switch ($target_element) {
-      case 'nid_by_guid':
-        $target_comment->nid = db_select('feeds_item', 'f')
-          ->fields('f', array('entity_id'))
-          ->condition('entity_type', 'node')
-          ->condition('guid', $value)
-          ->execute()
-          ->fetchField();
+      case 'comment':
+        $target_comment->comment_body[$target_comment->language][0]['value'] = $value;
         break;
       case 'guid':
         $target_comment->feeds_comment_item->guid = $value;
-        break;
-      case 'created':
-        $target_comment->created = feeds_to_unixtime($value, REQUEST_TIME);
         break;
       default:
         parent::setTargetElement($source, $target_comment, $target_element, $value);
@@ -249,10 +221,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
         'name' => t('Node ID'),
         'description' => t('The nid to which this comment is a reply.'),
       ),
-      'nid_by_guid' => array(
-        'name' => t('Node ID by GUID'),
-        'description' => t('The node to which this comment is a reply, looked up by the GUID of a previous import.'),
-      ),
       'uid' => array(
         'name' => t('User ID'),
         'description' => t('The Drupal user ID of the comment author.'),
@@ -260,6 +228,10 @@ class FeedsCommentProcessor extends FeedsProcessor {
       'subject' => array(
         'name' => t('Title'),
         'description' => t('The title of the comment.'),
+      ),
+      'comment' => array(
+        'name' => t('Comment'),
+        'description' => t('The comment body.'),
       ),
       'hostname' => array(
         'name' => t('Hostname'),
@@ -294,7 +266,6 @@ class FeedsCommentProcessor extends FeedsProcessor {
 
     // Let other modules expose mapping targets.
     self::loadMappers();
-    feeds_alter('feeds_processor_targets', $targets, 'comment', 'comment_node_' . $this->config['node_type']);
     feeds_alter('feeds_comment_processor_targets', $targets);
 
     return $targets;
