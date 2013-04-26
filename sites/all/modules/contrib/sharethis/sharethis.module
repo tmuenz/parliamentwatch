@@ -348,7 +348,7 @@ function sharethis_node_view($node, $view_mode, $langcode) {
           $node->content['sharethis'] = array(
             '#tag' => 'div', // Wrap it in a div.
             '#type' => 'html_tag',
-            '#attributes' => array('class' => 'sharethis-buttons'),
+            '#attributes' => array('class' => array('sharethis-buttons')),
             '#value' => sharethis_get_button_HTML($data_options, $mPath, $mTitle),
             '#weight' => intval(variable_get('sharethis_weight', 10)),
           );
@@ -357,7 +357,7 @@ function sharethis_node_view($node, $view_mode, $langcode) {
           $links['sharethis'] = array(
             'html' => TRUE,
             'title' => sharethis_get_button_HTML($data_options, $mPath, $mTitle),
-            'attributes' => array('class' => 'sharethis-buttons'),
+            'attributes' => array('class' => array('sharethis-buttons')),
           );
           $node->content['links']['sharethis'] = array(
             '#theme' => 'links',
@@ -493,7 +493,7 @@ function sharethis_get_button_HTML($data_options, $mPath, $mTitle) {
   $stlight = drupal_json_encode($options);
 
   // Output the embedded JavaScript.
-  $st_js .= "<script type='text/javascript'>stLight.options($stlight);</script>";
+  $st_js .= "<script type='text/javascript'>if (stLight !== undefined) { stLight.options($stlight); }</script>";
   return '<div class="sharethis-wrapper">' . $st_spans . $st_js . '</div>';
 }
 
