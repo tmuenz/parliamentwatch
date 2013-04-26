@@ -31,6 +31,9 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 		case 'dailwatch.ie':
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
+		case 'politikercheck.lu':
+		    $query->condition('p.project_cmd', array(20565, 20545));
+			break;	
 		default:
 		    $query->condition('p.project_cmd', 0);
 			break;		

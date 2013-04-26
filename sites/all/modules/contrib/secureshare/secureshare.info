@@ -1,0 +1,17 @@
+name = Secure Sharebuttons - Core
+description = provides the Socialshare core functionality used by other modules.
+core = 7.x
+configure = admin/config/content/secureshare
+package = "Secureshare"
+dependencies[] = libraries
+dependencies[] = ctools
+
+files[] = secureshare.module
+files[] = secureshare.admin.inc
+files[] = secureshare.theme.inc
+; Information added by drupal.org packaging script on 2011-12-14
+version = "7.x-2.0-alpha2"
+core = "7.x"
+project = "secureshare"
+datestamp = "1323881143"
+

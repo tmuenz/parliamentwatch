@@ -30,6 +30,9 @@ class ParliamentTermMigration extends BasicMigrateParliament {
 		case 'piratenpartei-bayern.de':
 		    $query->condition('p.project_cmd', array(1036, 1010, 1475));
 			break;	
+		case 'politikercheck.lu':
+		    $query->condition('p.project_cmd', array(20565, 20545));
+			break;	
 		default:
 		    $query->condition('p.project_cmd', 0);
 			break;		
