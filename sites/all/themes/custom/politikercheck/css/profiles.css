@@ -1,0 +1,291 @@
+/* user page */
+
+div.horizontal-tabs .field-item.even,
+div.horizontal-tabs tr.odd {
+    background: none repeat scroll 0 0 #DBDBDB;
+}
+div.horizontal-tabs .view-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+#user_user_full_group_user_polls_last .fieldset-wrapper {
+    padding: 0 10px;
+}
+.field-group-htab h4,
+.field-group-htab h4 a {
+    font-family: 'Times New Roman',Georgia,serif;
+    font-size: 16px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+.view-id-polls_profile .view-header {
+    padding: 0 10px 0.8em;
+}
+.view-id-polls_profile table {
+    width: 100%;
+}
+.view-id-polls_profile td {
+    padding: 5px 10px;
+}
+#block-views-polls-profile-last .description {
+    font-size: 12px;
+}
+
+
+
+
+
+table.views-view-grid {
+    width: 100%;
+    margin-bottom: 30px;
+}
+table.views-view-grid td {
+    padding: 16px 22px;
+    border: 1px solid #eee;
+    width: 33%;
+}
+table.views-view-grid td.col-first {
+    border-left: 0;
+}
+table.views-view-grid td.col-last {
+    border-right: 0;
+}
+table.views-view-grid .row-first td {
+    border-top: 0;
+}
+table.views-view-grid .row-last td {
+    border-bottom: 0;
+}
+
+.block-views-profile-questions-answers-block .link-report {
+    width: 100%;
+    margin-left: -24px;
+    padding: 20px 24px 0;
+    border-top: 1px solid #fff;
+}
+.block-views-profile-questions-answers-block .link-report a,
+.block-views-profile-questions-answers-block a.link-report {
+    background-position: -440px -2220px;
+    font-weight: normal;
+    color: #999;
+}
+
+.user-profile .field-name-field-user-fname,
+.user-profile .field-name-field-user-lname,
+.user-profile .field-name-field-user-party {
+    display: inline;
+}
+.user-profile .field-name-field-user-fname {
+    margin-right: 0.8ex;
+}
+.user-profile .field-name-field-user-party:before {
+    content: ",\0000a0";
+}
+.page-user #page-title {
+    display: none;
+}
+
+.profiles-list-compact .file-image {
+    margin-bottom: 4px;
+}
+.profiles-list-compact-wrapper {
+    position: relative;    
+}
+.profiles-list-compact-wrapper .row {
+    margin-right: -12px;
+    padding: 0 12px;  
+}
+.col-last .profiles-list-compact-wrapper h3 {
+    text-align: right;   
+}
+.col-last .profiles-list-compact-wrapper .row {
+    margin-left: -12px;
+    margin-right: 0;
+    text-align: right;
+}
+.profiles-list-compact-wrapper:hover .element-hidden {
+    display: block;
+    position: absolute;
+    z-index: 123;
+    background: url(../images/bg_eee95.png);
+    top: -43px;
+    left: -13px;
+    width: 379px;
+    padding: 12px;
+    -webkit-box-shadow: 0 0 2px 2px #DEDEDE;
+    -moz-box-shadow: 0 0 2px 2px #DEDEDE;
+    box-shadow: 0 0 2px 2px #DEDEDE;
+    border: 1px solid #dedede;
+    
+}
+.col-last .profiles-list-compact-wrapper:hover .element-hidden {
+    left: auto;
+    right: 17px;
+}
+.profiles-list-compact-wrapper:hover .element-hidden .profile-image {
+    float: left;
+    margin: 0 14px 0 0;
+}
+.col-last .profiles-list-compact-wrapper:hover .element-hidden .profile-image {
+    float: right;
+    margin: 0 0 0 14px;
+}
+
+
+/* list */
+ 
+.pw-list-item .pw-list-item {
+    position: relative;
+} 
+.pw-list-item .float-left .file-image {
+    margin-bottom: 0;
+}
+.pw-list-item .link-profile a,
+.pw-list-item a.link-profile {
+    position: absolute;
+    right: 0; /* LTR */
+    bottom: 1em;
+}
+
+
+/* search */
+
+#region-content #views-exposed-form-profile-list-solr-constituency {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    border-radius: none;
+    padding: 0;
+    margin-top: 20px;
+}
+#region-content #views-exposed-form-profile-list-solr-constituency .views-exposed-form .views-exposed-widget {
+    float: left;
+    padding: 0;
+}
+#views-exposed-form-profile-list-solr-constituency  .views-exposed-widget {
+    margin-bottom: 0;
+    clear: none;
+}
+#views-exposed-form-profile-list-solr-constituency {
+    float: left;
+    padding: 0;
+}
+#views-exposed-form-profile-list-solr-constituency .form-submit {
+    margin-top: 0;
+    width: 40px;
+    height: 40px;
+    text-indent: -5000em;
+}
+
+
+/* search deprecated */
+
+#region-content .consticuency-search-frontpage form.compact-form {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    border-radius: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.consticuency-search-frontpage .views-exposed-form .views-exposed-widget {
+    margin-bottom: 0;
+    clear: none;
+}
+#region-content .consticuency-search-frontpage .views-exposed-form .views-exposed-widget {
+    float: left;
+    padding: 0;
+}
+#views-exposed-form-profile-list-solr-constituency input.form-text,
+#region-content #views-exposed-form-profile-list-solr-constituency label,
+#views-exposed-form-profile-list-solr-block-2 #edit-field-user-constituency-field-constituency-area-codes-name,
+#views-exposed-form-profile-list-solr-block-2 #edit-field-user-constituency-field-constituency-area-codes-name-wrapper label {
+    height: 35px;
+    font-size: 13px;
+    line-height: 35px;
+    margin-right: 10px;
+    width: 300px;
+}
+.consticuency-search-frontpage .views-exposed-form .views-exposed-widget .form-submit {
+    margin-top: 0;
+    width: 35px;
+    height: 35px;
+    text-indent: -5000em;
+}
+
+/* search */
+
+form#views-exposed-form-profile-list-solr-constituency.compact-form {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    border-radius: none;
+    padding: 0;
+    margin-top: 20px;
+}
+#views-exposed-form-profile-list-solr-block-2 {
+    position: relative;
+    padding-top: 4em !important;
+    margin-top: 0.5em;
+    margin-bottom: 2em !important;
+}
+#views-exposed-form-profile-list-solr-block-2 .description {
+    color: inherit;
+    font-size: 12px;
+    position: absolute;
+    top: -2em;
+    width: 588px;
+}
+.view-id-profile_list_solr .views-exposed-form .views-exposed-widget {
+    margin-bottom: 0;
+    clear: none;
+}
+#region-content .view-id-profile_list_solr .views-exposed-form .views-exposed-widget {
+    float: left;
+    padding: 0;
+}
+.view-id-profile_list_solr .views-exposed-form .views-exposed-widget .form-submit,
+#views-exposed-form-profile-list-solr-constituency .form-submit {
+    margin-top: 0;
+    text-indent: -5000em;
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+    line-height: 35px;
+    margin-right: 10px;
+}
+
+
+/* filters */
+
+.views-exposed-form .form-item-field-user-lname-value {
+    display: block;
+    float: left; /* LTR */
+    margin: 0 5px 5px 0; /* LTR */
+}
+.views-exposed-form .form-item-field-user-lname-value label {
+    background: #c3c3c3;
+    display: block;
+    float: left; /* LTR */
+    color: #fff;
+    font-weight: bold;
+    min-width: 20px;
+    min-height: 20px;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.views-exposed-form #edit-field-user-lname-value-all + .option {
+    min-width: 45px;
+}
+.views-exposed-form .form-item-field-user-lname-value label:hover,
+.form-radio:checked + .option {
+    background: #f4f4f4 !important;
+    color: #666 !important;
+}
+.views-exposed-form #edit-field-user-lname-value .form-radio {
+    display: none;
+}
+.views-exposed-form .views-exposed-widget {
+   clear: both;
+}
