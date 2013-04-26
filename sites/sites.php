@@ -73,7 +73,7 @@ $sites['ie.pw.silversurfer'] = 'dailwatch.ie'; // ruth's local machine
 $sites['tn.pw.silversurfer'] = 'marsad.tn';
 
 $sites['afri.qdoe'] = 'politikercheck.lu'; // alex' local machine
-$sites['alex.parliamentwatch.org'] = 'politikercheck.lu'; // alex web-dev
+$sites['alex.parliamentwatch.org'] = 'dailwatch.ie'; // alex web-dev
 
 $sites['20121008.de.web1.parliamentwatch.org'] = 'abgeordnetenwatch.de';
 $sites['20121008.ie.web1.parliamentwatch.org'] = 'dailwatch.ie';
