@@ -53,7 +53,10 @@ $sites['de.pw.silversurfer'] = 'abgeordnetenwatch.de';    // ruth's local maschi
 
 $sites['dailwatch.ie'] = 'dailwatch.ie';
 $sites['ie.parliamentwatch.silversurfer'] = 'dailwatch.ie';
-$sites['alex.parliamentwatch.org'] = 'politikercheck.lu';         // alex web-dev
+
+$sites['politikercheck.lu'] = 'politikercheck.lu';
+$sites['afri.qdoe'] = 'politikercheck.lu';                // alex' local machine
+$sites['alex.parliamentwatch.org'] = 'politikercheck.lu';        // alex web-dev
 
 $sites['parl.marsad.tn'] = 'marsad.tn';
 $sites['tn.parliamentwatch.org'] = 'marsad.tn';
