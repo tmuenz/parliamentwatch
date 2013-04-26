@@ -46,41 +46,36 @@
 # $sites['piraten.parlawatch.com'] = 'piratenpartei';
 # $sites['piratenwatch.silversurfer'] = 'piratenpartei';
 
+### Official Domains
+
 $sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
 $sites['de.parliamentwatch.org'] = 'abgeordnetenwatch.de';
-$sites['parlawatch.com'] = 'abgeordnetenwatch.de';          // for all test*.parlawatch.com servers
-$sites['de.pw.silversurfer'] = 'abgeordnetenwatch.de';    // ruth's local maschine
 
 $sites['dailwatch.ie'] = 'dailwatch.ie';
-$sites['ie.parliamentwatch.silversurfer'] = 'dailwatch.ie';
 
 $sites['politikercheck.lu'] = 'politikercheck.lu';
-$sites['afri.qdoe'] = 'politikercheck.lu';                // alex' local machine
-$sites['alex.parliamentwatch.org'] = 'politikercheck.lu';        // alex web-dev
 
+$sites['marsad.tn'] = 'marsad.tn';
 $sites['parl.marsad.tn'] = 'marsad.tn';
 $sites['tn.parliamentwatch.org'] = 'marsad.tn';
 
+$sites['piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
 $sites['watch.piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
 $sites['pp.parliamentwatch.org'] = 'piratenpartei-bayern.de';
-$sites['abgeordnetenwatch.de'] = 'abgeordnetenwatch.de';
-			
-$sites['dailwatch.ie'] = 'dailwatch.ie';
-$sites['ie.pw.silversurfer'] = 'dailwatch.ie';    // ruth's local maschine
 
-			
-$sites['marsad.tn'] = 'marsad.tn';
+### Development & local machines
+
+$sites['parlawatch.com'] = 'abgeordnetenwatch.de'; // for all test*.parlawatch.com servers
+
+$sites['de.pw.silversurfer'] = 'abgeordnetenwatch.de'; // ruth's local maschine
+$sites['ie.parliamentwatch.silversurfer'] = 'dailwatch.ie';
+$sites['ie.pw.silversurfer'] = 'dailwatch.ie'; // ruth's local machine
 $sites['tn.pw.silversurfer'] = 'marsad.tn';
-			
-$sites['piratenpartei-bayern.de'] = 'piratenpartei-bayern.de';
-			
-$sites['dailwatch.ie'] = 'dailwatch.ie';
-			
+
+$sites['afri.qdoe'] = 'politikercheck.lu'; // alex' local machine
+$sites['alex.parliamentwatch.org'] = 'politikercheck.lu'; // alex web-dev
+
 $sites['20121008.de.web1.parliamentwatch.org'] = 'abgeordnetenwatch.de';
-			
 $sites['20121008.ie.web1.parliamentwatch.org'] = 'dailwatch.ie';
-			
 $sites['20121008.tn.web1.parliamentwatch.org'] = 'marsad.tn';
-			
 $sites['20121008.pp.web1.parliamentwatch.org'] = 'piratenpartei-bayern.de';
-			
