@@ -11,8 +11,8 @@
  * @ingroup forms
  * @see system_settings_form().
  */
-function pw_profiles_admin_settings() {
-  $existing_assignment = variable_get('pw_profiles_assignment', array());
+function pw_profileswitch_admin_settings() {
+  $existing_assignment = variable_get('pw_profileswitch_assignment', array());
   $existing_assignment[""] = ""; // this is a new empty line for a new assignment
   
   // obtain available view modes:
@@ -36,7 +36,7 @@ function pw_profiles_admin_settings() {
       '#collapsed' => FALSE,
     );
 
-    $form['group'.$count]['pw_profiles_role'.$count] = array(
+    $form['group'.$count]['pw_profileswitch_role'.$count] = array(
         '#type' => 'select',
         '#title' => t('Role'),
         '#options' => user_roles(),
@@ -44,7 +44,7 @@ function pw_profiles_admin_settings() {
         "#empty_option"=>t('- Select -'),
     );
 
-    $form['group'.$count]['pw_profiles_display_mode'.$count] = array(
+    $form['group'.$count]['pw_profileswitch_display_mode'.$count] = array(
         '#type' => 'select',
         '#title' => t('Display Mode'),
         '#options' => $display_mode_choice,
@@ -58,22 +58,22 @@ function pw_profiles_admin_settings() {
       "#markup" => t("In order to delete an assignment, please select the first \"-Select-\" entries for both, the role and the display mode."),
   );
   
-  $form['#submit'][] = 'pw_profiles_admin_settings_submit';
+  $form['#submit'][] = 'pw_profileswitch_admin_settings_submit';
   return system_settings_form($form);
 }
 
 /**
  * Process PW Profile settings submission.
  */
-function pw_profiles_admin_settings_submit($form, $form_state) {
+function pw_profileswitch_admin_settings_submit($form, $form_state) {
   $newAssignment = array();
   foreach ($form_state['groups'] as $group => $notUsed) {
     $groupId = str_replace("group", "", $group);
-    $rid = $form_state["values"]["pw_profiles_role".$groupId];
-    $did = $form_state["values"]["pw_profiles_display_mode".$groupId];
+    $rid = $form_state["values"]["pw_profileswitch_role".$groupId];
+    $did = $form_state["values"]["pw_profileswitch_display_mode".$groupId];
     if ($did != "" && $rid != "") {
       $newAssignment[$rid] = $did;
     }
   }
-  variable_set('pw_profiles_assignment', $newAssignment);
+  variable_set('pw_profileswitch_assignment', $newAssignment);
 }
