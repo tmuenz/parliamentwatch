@@ -5,3 +5,115 @@
 
 // Drupal needs this blank file.
 include_once('pw_api.features.inc');
+
+// <<<<<<< DAS MUSS ZENTRAL VERWALTBAR SEIN:
+variable_set('pw_api_replacement', array("user_revisions" => "profiles", "user_revision" => "profile"));
+
+/**
+ * Helper function used by hooks below
+ * @param type $input
+ * @return type 
+ */
+function tag_replace($input) {
+  // IMPORTANT: The order is crucial. Longer names have to be inserted before shorter ones.
+  $replace_arr = variable_get('pw_api_replacement', array());
+  if (array_key_exists($input, $replace_arr)) {
+    return $replace_arr[$input];
+  }
+  return $input;
+}
+
+function pw_api_preprocess_views_data_export_xml_header(&$vars) {
+  $vars['root_node'] = tag_replace($vars['root_node']);
+}
+
+function pw_api_preprocess_views_data_export_xml_footer(&$vars) {
+  $vars['root_node'] = tag_replace($vars['root_node']);
+}
+
+/**
+ * Preprocess xml output template.
+ */
+function pw_api_preprocess_views_data_export_xml_body(&$vars) {
+  _views_data_export_header_shared_preprocess($vars);
+  _views_data_export_body_shared_preprocess($vars);
+
+  // Compute the tag name based on the views base table, minus any trailing 's'.
+  $vars['item_node'] = _views_data_export_xml_tag_clean(rtrim($vars['view']->base_table, 's'));
+  $vars['item_node'] = tag_replace($vars['item_node']);
+
+  foreach ($vars['themed_rows'] as $num => $row) {
+    foreach ($row as $field => $content) {
+      // Prevent double encoding of the ampersand. Look for the entities produced by check_plain().
+      $content = preg_replace('/&(?!(amp|quot|#039|lt|gt);)/', '&amp;', $content);
+      // Convert < and > to HTML entities.
+      $content = str_replace(
+        array('<', '>'),
+        array('&lt;', '&gt;'),
+        $content);
+
+      $vars['themed_rows'][$num][$field] = array(); // reset the array, otherwise strange things will happen
+      if (substr_count($content, "||") > 0) { // Multiple-Feld
+        $tmp_arr = explode("||", $content);
+        if (substr_count($tmp_arr[0], "##") > 0) { // Multiple-Feld mit Attributen
+          $collection_arr = array();
+          foreach ($tmp_arr as $tmp) {
+            $inner_tmp_arr = explode("##", $tmp);
+            $collection_arr[] = array(
+                "attribute_name" => $inner_tmp_arr[0],
+                "attribute_value" => $inner_tmp_arr[1],
+                "value" => $inner_tmp_arr[2]);
+          }
+          $vars['themed_rows'][$num][$field]["type"] = "multiplefield_with_attributes";
+          $vars['themed_rows'][$num][$field]["content"] = $collection_arr;
+        } else { // Multiple-Feld ohne Attribute
+          $vars['themed_rows'][$num][$field]["type"] = "multiplefield_without_attributes";
+          $vars['themed_rows'][$num][$field]["content"] = $tmp_arr;
+        }
+      } else if (substr_count($content, "##") > 0) { // Single field with attributes
+        $inner_tmp_arr = explode("##", $content);
+        $vars['themed_rows'][$num][$field]["type"] = "singlefield_with_attributes";
+        $vars['themed_rows'][$num][$field]["content"] = array(
+                "attribute_name" => $inner_tmp_arr[0],
+                "attribute_value" => $inner_tmp_arr[1],
+                "value" => $inner_tmp_arr[2]);
+      } else {
+        $vars['themed_rows'][$num][$field]["type"] = "singlefield_without_attributes";
+        $vars['themed_rows'][$num][$field]["content"] = $content;
+      }
+      // Zwei Fälle: || bedeutet: Multiple Field
+      // # bedeutet: weiteres Attribut vorhanden (z. B. uuid)
+      // Beispiel: a##b##c||d##e##f =>
+      // <bsps>
+      //   <bsp a="b">c</bsp>
+      //   <bsp d="e">f</bsp>
+      // </bsps>
+    }
+  }
+
+  foreach ($vars['header'] as $field => $header) {
+    // If there is no field label, use 'no name'.
+    $vars['xml_tag'][$field] = !empty($header) ? $header : 'no name';
+    if ($vars['options']['transform']) {
+      switch ($vars['options']['transform_type']) {
+        case 'dash':
+          $vars['xml_tag'][$field] = str_replace(' ', '-', $header);
+          break;
+        case 'underline':
+          $vars['xml_tag'][$field] = str_replace(' ', '_', $header);
+          break;
+        case 'camel':
+          $vars['xml_tag'][$field] = str_replace(' ', '', ucwords(strtolower($header)));
+          // Convert the very first character of the string to lowercase.
+          $vars['xml_tag'][$field][0] = strtolower($vars['xml_tag'][$field][0]);
+          break;
+        case 'pascal':
+          $vars['xml_tag'][$field] = str_replace(' ', '', ucwords(strtolower($header)));
+          break;
+      }
+    }
+    // We should always try to output valid XML.
+    $vars['xml_tag'][$field] = _views_data_export_xml_tag_clean($vars['xml_tag'][$field]);
+    $vars['xml_tag'][$field] = tag_replace($vars['xml_tag'][$field]);
+  }
+}

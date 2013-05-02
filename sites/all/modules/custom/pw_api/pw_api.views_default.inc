@@ -883,6 +883,8 @@ function pw_api_views_default_views() {
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'user_revision';
   $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'name';
+  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   $handler->display->display_options['fields']['name']['link_to_user_revision'] = 0;
   /* Field: User: User UUID */
@@ -907,8 +909,19 @@ function pw_api_views_default_views() {
   $handler->display->display_options['fields']['field_user_party-revision_id']['id'] = 'field_user_party-revision_id';
   $handler->display->display_options['fields']['field_user_party-revision_id']['table'] = 'field_revision_field_user_party';
   $handler->display->display_options['fields']['field_user_party-revision_id']['field'] = 'field_user_party-revision_id';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['label'] = 'party';
+  $handler->display->display_options['fields']['field_user_party-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_party-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_party-revision_id']['delta_offset'] = '0';
+  /* Field: User (historical data): Constituency */
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['id'] = 'field_user_constituency-revision_id';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['field'] = 'field_user_constituency-revision_id';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['label'] = 'constituency';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['separator'] = '||';
   /* Sort criterion: User: User UUID */
   $handler->display->display_options['sorts']['uuid']['id'] = 'uuid';
   $handler->display->display_options['sorts']['uuid']['table'] = 'users';
@@ -978,6 +991,7 @@ return FALSE; // default: output the result
   $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['name']['limit'] = '0';
   $handler->display->display_options['path'] = 'api/parliament/%/profiles.xml';
+  $handler->display->display_options['sitename_title'] = 0;
 
   /* Display: XML-by-uuid */
   $handler = $view->new_display('views_data_export', 'XML-by-uuid', 'views_data_export_2');
@@ -1301,11 +1315,12 @@ return FALSE; // default: output the result
     t('Desc'),
     t('Get all revisions from an user.'),
     t('term from field_user_parliament'),
-    t('Name'),
+    t('name'),
     t('uuid'),
     t('first_name'),
     t('last_name'),
-    t('Party'),
+    t('party'),
+    t('constituency'),
     t('All'),
     t('XML-by-name'),
     t('XML-by-uuid'),
@@ -1460,6 +1475,10 @@ return FALSE; // default: output the result
   $handler->display->display_options['relationships']['field_user_picture_fid']['id'] = 'field_user_picture_fid';
   $handler->display->display_options['relationships']['field_user_picture_fid']['table'] = 'field_revision_field_user_picture';
   $handler->display->display_options['relationships']['field_user_picture_fid']['field'] = 'field_user_picture_fid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   /* Field: User revision: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'user_revision';
@@ -1502,15 +1521,7 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_parliament-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_parliament-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_parliament-revision_id']['delta_offset'] = '0';
-  /* Field: User (historical data): Additional information */
-  $handler->display->display_options['fields']['field_user_more-revision_id']['id'] = 'field_user_more-revision_id';
-  $handler->display->display_options['fields']['field_user_more-revision_id']['table'] = 'field_revision_field_user_more';
-  $handler->display->display_options['fields']['field_user_more-revision_id']['field'] = 'field_user_more-revision_id';
-  $handler->display->display_options['fields']['field_user_more-revision_id']['label'] = 'additional_information';
-  $handler->display->display_options['fields']['field_user_more-revision_id']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_more-revision_id']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_user_more-revision_id']['type'] = 'link_plain';
-  $handler->display->display_options['fields']['field_user_more-revision_id']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_user_parliament-revision_id']['separator'] = '||';
   /* Field: User (historical data): Answers Give */
   $handler->display->display_options['fields']['field_user_answers_give-revision_id']['id'] = 'field_user_answers_give-revision_id';
   $handler->display->display_options['fields']['field_user_answers_give-revision_id']['table'] = 'field_revision_field_user_answers_give';
@@ -1529,14 +1540,32 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_commitee-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_commitee-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_commitee-revision_id']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_user_commitee-revision_id']['separator'] = '||';
+  /* Field: User (historical data): user_education */
+  $handler->display->display_options['fields']['field_user_education-revision_id']['id'] = 'field_user_education-revision_id';
+  $handler->display->display_options['fields']['field_user_education-revision_id']['table'] = 'field_revision_field_user_education';
+  $handler->display->display_options['fields']['field_user_education-revision_id']['field'] = 'field_user_education-revision_id';
+  $handler->display->display_options['fields']['field_user_education-revision_id']['label'] = 'education';
+  $handler->display->display_options['fields']['field_user_education-revision_id']['element_label_colon'] = FALSE;
+  /* Field: excluded | constituency_uuid */
+  $handler->display->display_options['fields']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['fields']['uuid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid_1']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['fields']['uuid_1']['ui_name'] = 'excluded | constituency_uuid';
+  $handler->display->display_options['fields']['uuid_1']['label'] = 'constituency_uuid';
+  $handler->display->display_options['fields']['uuid_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uuid_1']['element_label_colon'] = FALSE;
   /* Field: User (historical data): Constituency */
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['id'] = 'field_user_constituency-revision_id';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['table'] = 'field_revision_field_user_constituency';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['field'] = 'field_user_constituency-revision_id';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['label'] = 'constituency';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['alter']['text'] = 'uuid|[uuid_1]|[field_user_constituency-revision_id]';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['separator'] = '||';
   /* Field: User (historical data): Political Roles */
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['id'] = 'field_user_political_roles-revision_id';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['table'] = 'field_revision_field_user_political_roles';
@@ -1546,18 +1575,14 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['separator'] = '; ';
-  /* Field: User (historical data): Professional qualification */
-  $handler->display->display_options['fields']['field_user_job_skills-revision_id']['id'] = 'field_user_job_skills-revision_id';
-  $handler->display->display_options['fields']['field_user_job_skills-revision_id']['table'] = 'field_revision_field_user_job_skills';
-  $handler->display->display_options['fields']['field_user_job_skills-revision_id']['field'] = 'field_user_job_skills-revision_id';
-  $handler->display->display_options['fields']['field_user_job_skills-revision_id']['label'] = 'professional_qualification';
-  $handler->display->display_options['fields']['field_user_job_skills-revision_id']['element_label_colon'] = FALSE;
-  /* Field: File: copyright */
+  /* Field: excluded | file copyright */
   $handler->display->display_options['fields']['field_image_copyright']['id'] = 'field_image_copyright';
   $handler->display->display_options['fields']['field_image_copyright']['table'] = 'field_data_field_image_copyright';
   $handler->display->display_options['fields']['field_image_copyright']['field'] = 'field_image_copyright';
   $handler->display->display_options['fields']['field_image_copyright']['relationship'] = 'field_user_picture_fid';
+  $handler->display->display_options['fields']['field_image_copyright']['ui_name'] = 'excluded | file copyright';
   $handler->display->display_options['fields']['field_image_copyright']['label'] = 'profile_picture_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_image_copyright']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_copyright']['type'] = 'text_plain';
   /* Field: User (historical data): Profile picture */
@@ -1565,6 +1590,8 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_picture-revision_id']['table'] = 'field_revision_field_user_picture';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['field'] = 'field_user_picture-revision_id';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['label'] = 'profile_picture';
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_user_picture-revision_id']['alter']['text'] = 'copyright##[field_image_copyright]##[field_user_picture-revision_id]';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_picture-revision_id']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['type'] = 'file_url_plain';
@@ -1596,12 +1623,27 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: excluded | base_url */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['ui_name'] = 'excluded | base_url';
+  $handler->display->display_options['fields']['php']['label'] = 'base_url';
+  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<?php
+global $base_url;
+echo $base_url; 
+?>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'link_to_profile';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'http://dailwatch.ie/en-gb/user/[uid]/revisions/[vid]/view';
+  $handler->display->display_options['fields']['nothing']['label'] = 'url_profile';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[php]/user/[uid]/revisions/[vid]/view';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: User revision: Vid */
   $handler->display->display_options['sorts']['vid']['id'] = 'vid';
@@ -1908,23 +1950,28 @@ return FALSE; // default: output the result
     t('Asc'),
     t('Desc'),
     t('file from field_user_picture'),
+    t('term from field_user_constituency'),
     t('name'),
     t('uuid'),
     t('first_name'),
     t('last_name'),
     t('party'),
     t('parliament'),
-    t('additional_information'),
     t('answers_given'),
     t('committee'),
+    t('education'),
+    t('constituency_uuid'),
     t('constituency'),
+    t('uuid|[uuid_1]|[field_user_constituency-revision_id]'),
     t('political_roles'),
-    t('professional_qualification'),
     t('profile_picture_copyright'),
     t('profile_picture'),
+    t('copyright##[field_image_copyright]##[field_user_picture-revision_id]'),
     t('questions_get'),
     t('http://dailwatch.ie/en-gb/user/[uid]/revisions/[vid]/view'),
-    t('link_to_profile'),
+    t('base_url'),
+    t('url_profile'),
+    t('[php]/user/[uid]/revisions/[vid]/view'),
     t('All'),
     t('XML-by-name'),
     t('CSV-by-name'),
