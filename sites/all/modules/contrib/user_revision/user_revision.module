@@ -332,22 +332,20 @@ function user_revision_show($user, $vid) {
 
 /**
  * Load a revision.
- */
-function user_revision_load($uid, $vid) {
-  return user_revision_user_load($uid, $vid);
-}
-
-/**
- * Implements hook_user_load().
+ *
  * Loads a user object with revision support
  */
-function user_revision_user_load($uid, $vid = NULL, $reset = FALSE) {
+function user_revision_load($uid, $vid = NULL, $reset = FALSE) {
   if (isset($vid)) {
     $conditions = (isset($vid) ? array('vid' => $vid) : array());
     $users = user_load_multiple(array($uid), $conditions, $reset);
     foreach($users as $key => $user){
-      $file->fid = db_query("SELECT picture FROM {user_revision} WHERE vid = :vid", array(':vid' => $vid))->fetchField();
-      $users[$key]->picture = file_load($file->fid);
+      $fid = db_query("SELECT picture FROM {user_revision} WHERE vid = :vid", array(':vid' => $vid))->fetchField();
+      if ($fid) {
+        $file = new stdClass();
+        $file->fid = $fid;
+        $users[$key]->picture = file_load($file->fid);
+      }
     }
     return reset($users);
   }
