@@ -32,7 +32,7 @@ class CommitteeTermMigration extends BasicMigrateCommittee {
 		    $query->condition('p.project_cmd', array(233, 486, 30073, 30988));
 			break;
 		case 'politikercheck.lu':
-		    $query->condition('p.project_cmd', array(20565, 20545));
+		    $query->condition('p.project_cmd', array(20000, 30000), 'BETWEEN');
 			break;	
 		default:
 		    $query->condition('p.project_cmd', 0);

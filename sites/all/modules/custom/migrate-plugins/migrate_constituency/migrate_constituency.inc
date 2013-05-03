@@ -34,7 +34,7 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
 		    $query->condition('p.project_cmd', array(1036, 1010, 1475));
 			break;	
 		case 'politikercheck.lu':
-		    $query->condition('p.project_cmd', array(20565, 20545));
+		    $query->condition('p.project_cmd', array(20000, 30000), 'BETWEEN');
 			break;	
 		default:
 		    $query->condition('p.project_cmd', 0);
