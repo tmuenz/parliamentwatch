@@ -164,3 +164,4 @@
 "willie-o-dea";"WillieODea"
 "willie-penrose";"WilliamPenrose"
 "roisin-shortall";"RoisinShortall"
+"helen-mcentee";"HelenMcEntee"

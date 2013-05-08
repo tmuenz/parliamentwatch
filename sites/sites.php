@@ -74,6 +74,10 @@ $sites['tn.pw.silversurfer'] = 'marsad.tn';
 
 $sites['afri.qdoe'] = 'politikercheck.lu'; // alex' local machine
 $sites['alex.parliamentwatch.org'] = 'politikercheck.lu'; // alex web-dev
+$sites['lu.alex.parliamentwatch.org'] = 'politikercheck.lu'; // alex web-dev
+$sites['ie.alex.parliamentwatch.org'] = 'dailwatch.ie'; // alex web-dev
+$sites['de.alex.parliamentwatch.org'] = 'abgeordnetenwatch.de'; // alex web-dev
+$sites['tn.alex.parliamentwatch.org'] = 'marsad.tn'; // alex web-dev
 
 $sites['20121008.de.web1.parliamentwatch.org'] = 'abgeordnetenwatch.de';
 $sites['20121008.ie.web1.parliamentwatch.org'] = 'dailwatch.ie';
