@@ -45,13 +45,13 @@ function pw_api_views_default_views() {
   $handler->display->display_options['fields']['uuid']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['fields']['uuid']['field'] = 'uuid';
   $handler->display->display_options['fields']['uuid']['relationship'] = 'field_constituency_area_codes_tid';
-  $handler->display->display_options['fields']['uuid']['label'] = 'taxonomy_term_uuid';
+  $handler->display->display_options['fields']['uuid']['label'] = 'uuid';
   $handler->display->display_options['fields']['uuid']['element_label_colon'] = FALSE;
   /* Field: Taxonomy term: Area Codes */
   $handler->display->display_options['fields']['field_constituency_area_codes']['id'] = 'field_constituency_area_codes';
   $handler->display->display_options['fields']['field_constituency_area_codes']['table'] = 'field_data_field_constituency_area_codes';
   $handler->display->display_options['fields']['field_constituency_area_codes']['field'] = 'field_constituency_area_codes';
-  $handler->display->display_options['fields']['field_constituency_area_codes']['label'] = 'area_codes';
+  $handler->display->display_options['fields']['field_constituency_area_codes']['label'] = 'name';
   $handler->display->display_options['fields']['field_constituency_area_codes']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_constituency_area_codes']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_constituency_area_codes']['group_rows'] = FALSE;
@@ -163,8 +163,8 @@ function pw_api_views_default_views() {
     t('Desc'),
     t('term from field_parliament'),
     t('term from field_constituency_area_codes'),
-    t('taxonomy_term_uuid'),
-    t('area_codes'),
+    t('uuid'),
+    t('name'),
     t('All'),
     t('CSV-by-name'),
     t('XML-by-name'),
@@ -879,6 +879,10 @@ function pw_api_views_default_views() {
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   /* Field: User revision: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'user_revision';
@@ -913,6 +917,13 @@ function pw_api_views_default_views() {
   $handler->display->display_options['fields']['field_user_party-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_party-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_party-revision_id']['delta_offset'] = '0';
+  /* Field: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['fields']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['fields']['uuid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid_1']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['fields']['uuid_1']['label'] = 'constituency_uuid';
+  $handler->display->display_options['fields']['uuid_1']['element_label_colon'] = FALSE;
   /* Field: User (historical data): Constituency */
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['id'] = 'field_user_constituency-revision_id';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['table'] = 'field_revision_field_user_constituency';
@@ -977,6 +988,10 @@ return FALSE; // default: output the result
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Taxonomy term: Name */
   $handler->display->display_options['arguments']['name']['id'] = 'name';
@@ -1039,6 +1054,10 @@ return FALSE; // default: output the result
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Taxonomy term: Name */
   $handler->display->display_options['arguments']['name']['id'] = 'name';
@@ -1315,11 +1334,13 @@ return FALSE; // default: output the result
     t('Desc'),
     t('Get all revisions from an user.'),
     t('term from field_user_parliament'),
+    t('term from field_user_constituency'),
     t('name'),
     t('uuid'),
     t('first_name'),
     t('last_name'),
     t('party'),
+    t('constituency_uuid'),
     t('constituency'),
     t('All'),
     t('XML-by-name'),
@@ -1327,7 +1348,6 @@ return FALSE; // default: output the result
     t('CSV-by-name'),
     t('CSV-by-uuid'),
     t('CSV-Areacode-by-name'),
-    t('term from field_user_constituency'),
     t('term from field_constituency_area_codes'),
     t('XML-Areacode-by-name'),
     t('CSV-Areacode-by-uuid'),
@@ -1556,6 +1576,13 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['uuid_1']['label'] = 'constituency_uuid';
   $handler->display->display_options['fields']['uuid_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uuid_1']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['fields']['uuid_2']['id'] = 'uuid_2';
+  $handler->display->display_options['fields']['uuid_2']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['uuid_2']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid_2']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['fields']['uuid_2']['label'] = 'constituency_uuid';
+  $handler->display->display_options['fields']['uuid_2']['element_label_colon'] = FALSE;
   /* Field: User (historical data): Constituency */
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['id'] = 'field_user_constituency-revision_id';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['table'] = 'field_revision_field_user_constituency';
@@ -1575,16 +1602,6 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['separator'] = '; ';
-  /* Field: excluded | file copyright */
-  $handler->display->display_options['fields']['field_image_copyright']['id'] = 'field_image_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['table'] = 'field_data_field_image_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['field'] = 'field_image_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['relationship'] = 'field_user_picture_fid';
-  $handler->display->display_options['fields']['field_image_copyright']['ui_name'] = 'excluded | file copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['label'] = 'profile_picture_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_image_copyright']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image_copyright']['type'] = 'text_plain';
   /* Field: User (historical data): Profile picture */
   $handler->display->display_options['fields']['field_user_picture-revision_id']['id'] = 'field_user_picture-revision_id';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['table'] = 'field_revision_field_user_picture';
@@ -1871,6 +1888,10 @@ echo $base_url;
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Taxonomy term: Taxonomy term UUID */
   $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
@@ -1916,6 +1937,10 @@ echo $base_url;
   $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
   $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Taxonomy term: Taxonomy term UUID */
   $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
@@ -1964,7 +1989,6 @@ echo $base_url;
     t('constituency'),
     t('uuid|[uuid_1]|[field_user_constituency-revision_id]'),
     t('political_roles'),
-    t('profile_picture_copyright'),
     t('profile_picture'),
     t('copyright##[field_image_copyright]##[field_user_picture-revision_id]'),
     t('questions_get'),
@@ -2062,22 +2086,15 @@ echo $base_url;
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'question';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['type'] = 'text_plain';
-  /* Field: Field: Annotation */
-  $handler->display->display_options['fields']['field_dialogue_annotation']['id'] = 'field_dialogue_annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['table'] = 'field_data_field_dialogue_annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['field'] = 'field_dialogue_annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['label'] = 'annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_dialogue_annotation']['type'] = 'text_plain';
   /* Field: Comment: Post date */
   $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
   $handler->display->display_options['fields']['created_1']['table'] = 'comment';
   $handler->display->display_options['fields']['created_1']['field'] = 'created';
   $handler->display->display_options['fields']['created_1']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['created_1']['label'] = 'comment_post_date';
+  $handler->display->display_options['fields']['created_1']['label'] = 'answer_post_date';
   $handler->display->display_options['fields']['created_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created_1']['date_format'] = 'long';
   /* Field: Comment: Comment */
@@ -2085,7 +2102,7 @@ echo $base_url;
   $handler->display->display_options['fields']['comment_body']['table'] = 'field_data_comment_body';
   $handler->display->display_options['fields']['comment_body']['field'] = 'comment_body';
   $handler->display->display_options['fields']['comment_body']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['comment_body']['label'] = 'comment';
+  $handler->display->display_options['fields']['comment_body']['label'] = 'answer';
   $handler->display->display_options['fields']['comment_body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['comment_body']['type'] = 'text_plain';
   /* Field: Field: Annotation */
@@ -2093,7 +2110,7 @@ echo $base_url;
   $handler->display->display_options['fields']['field_dialogue_annotation_1']['table'] = 'field_data_field_dialogue_annotation';
   $handler->display->display_options['fields']['field_dialogue_annotation_1']['field'] = 'field_dialogue_annotation';
   $handler->display->display_options['fields']['field_dialogue_annotation_1']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['field_dialogue_annotation_1']['label'] = 'comment_annotation';
+  $handler->display->display_options['fields']['field_dialogue_annotation_1']['label'] = 'answer_annotation';
   $handler->display->display_options['fields']['field_dialogue_annotation_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_dialogue_annotation_1']['type'] = 'text_plain';
   /* Sort criterion: Content: Post date */
@@ -2630,11 +2647,10 @@ echo $base_url;
     t('tags'),
     t('post_date'),
     t('topic'),
-    t('body'),
-    t('annotation'),
-    t('comment_post_date'),
-    t('comment'),
-    t('comment_annotation'),
+    t('question'),
+    t('answer_post_date'),
+    t('answer'),
+    t('answer_annotation'),
     t('All'),
     t('XML-by-name'),
     t('XML-by-uuid'),
