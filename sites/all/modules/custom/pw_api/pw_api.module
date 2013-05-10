@@ -84,11 +84,7 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
     foreach ($row as $field => $content) {
       // Prevent double encoding of the ampersand. Look for the entities produced by check_plain().
       $content = preg_replace('/&(?!(amp|quot|#039|lt|gt);)/', '&amp;', $content);
-      // Convert < and > to HTML entities.
-      $content = str_replace(
-        array('<', '>'),
-        array('&lt;', '&gt;'),
-        $content);
+
       
       // insert CDATA into dialogue fields:
       if ($field == "body" || $field == "comment_body" || $field == "field_dialogue_annotation_1") {
@@ -124,13 +120,13 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
         $vars['themed_rows'][$num][$field]["type"] = "singlefield_without_attributes";
         $vars['themed_rows'][$num][$field]["content"] = $content;
       }
-      // Zwei Fälle: || bedeutet: Multiple Field
-      // # bedeutet: weiteres Attribut vorhanden (z. B. uuid)
-      // Beispiel: a##b##c||d##e##f =>
-      // <bsps>
-      //   <bsp a="b">c</bsp>
-      //   <bsp d="e">f</bsp>
-      // </bsps>
+      // Two cases: || means: Multiple Field
+      // # means: there is an additional attribute (i.e., uuid)
+      // example: a##b##c||d##e##f =>
+      // <examples>
+      //   <example a="b">c</bsp>
+      //   <example d="e">f</bsp>
+      // </examples>
     }
   }
 
