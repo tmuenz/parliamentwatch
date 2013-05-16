@@ -67,6 +67,7 @@ function migrate_memberships_form_submit($form, &$form_state) {
   $query->fields('u', array('uid'));
   $query->condition('r.name', 'Politician', '=');
   //$query->range(0,10);
+
   $result = $query->execute();
   $result_count = $query->countQuery()->execute()->fetchField();
 
@@ -74,10 +75,12 @@ function migrate_memberships_form_submit($form, &$form_state) {
 
   // Loop through politicians
   $count_memberships_created = array('committee' => 0, 'constituency' => 0, 'parliament' => 0);
+
   while ($row = $result->fetchObject()) {
     
     // Load userdata
     $user = user_load($row->uid);
+
     // Get mapping to legacy user
     $migration_mapping = $migration_user->getMap()->lookupSourceID(array($user->uid));
     $legacy_uid = $migration_mapping['sourceid1'];
@@ -96,15 +99,15 @@ function migrate_memberships_form_submit($form, &$form_state) {
       switch ($legacy_membership->type) {
         case 'committee':
           $migration_mapping = $migration_committee->getMap()->lookupDestinationID(array($legacy_membership->gid));
-		  $dest_field = &$user->field_user_commitee['und'];
+		      $dest_field = &$user->field_user_commitee['und'];
           break;
         case 'constituency':
           $migration_mapping = $migration_constituency->getMap()->lookupDestinationID(array($legacy_membership->gid));
-		  $dest_field = &$user->field_user_constituency['und'];
+		      $dest_field = &$user->field_user_constituency['und'];
           break;
         case 'parliament':
           $migration_mapping = $migration_parliament->getMap()->lookupDestinationID(array($legacy_membership->gid));
-		  $dest_field = &$user->field_user_parliament['und'];
+		      $dest_field = &$user->field_user_parliament['und'];
           break;
       }
 
@@ -112,32 +115,39 @@ function migrate_memberships_form_submit($form, &$form_state) {
       $dest_tid = $migration_mapping['destid1'];
       if ($dest_tid) {
 
-		// Field value must be an array
-		if(!is_array($dest_field)){
-			$dest_field = array();
-		}
+    		// Field value must be an array
+		    if(!is_array($dest_field)){
+		    	$dest_field = array();
+    		}
 
-		// Check if term is already in field
-		$term_exists = false;
-		foreach($dest_field as $a_term){
-			if($a_term['tid'] == $dest_tid){
-				$term_exists = true;
-			}
-		}
-		if(!$term_exists){
+		    // Check if term is already in field
+		    $term_exists = false;
+		    foreach($dest_field as $a_term){
+		    	if($a_term['tid'] == $dest_tid){
+		    		$term_exists = true;
+		    	}
+		    }
+		    if(!$term_exists){
 
-			// Add term to field
-			array_push($dest_field, array('tid' => $dest_tid));
-
-			// For output
-		    $count_memberships_created[$legacy_membership->type]++;
-		}
+		    	// Add term to field
+		    	array_push($dest_field, array('tid' => $dest_tid));
+    
+		    	// For output
+		      $count_memberships_created[$legacy_membership->type]++;
+		    }
       }
     }
 
-	// Finally save the user
+  	// Finally save the user
     $user->revision = 0;
-    $user = user_save($user);
+    
+    // TODO remove
+    if (count($user->field_user_parliament['und']) > 1) { // TODO remove
+      dpm($uid); // TODO remove
+      dpm($user); // TODO remove
+    } // TODO remove
+    
+    //$user = user_save($user); // TODO enable
   }
 
   // Output
