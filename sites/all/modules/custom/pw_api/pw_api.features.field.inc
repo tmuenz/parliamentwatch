@@ -10,7 +10,7 @@
 function pw_api_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'user-user-field_user_education'
+  // Exported field: 'user-user-field_user_education'.
   $fields['user-user-field_user_education'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function pw_api_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '60',
@@ -47,9 +48,18 @@ function pw_api_field_default_fields() {
         'default' => array(
           'label' => 'above',
           'module' => 'text',
-          'settings' => array(),
+          'settings' => array(
+            'field_multiple_limit' => -1,
+            'field_multiple_limit_offset' => 0,
+          ),
           'type' => 'text_default',
           'weight' => 34,
+        ),
+        'premium_user' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'user',

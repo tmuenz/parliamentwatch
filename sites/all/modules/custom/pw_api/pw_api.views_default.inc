@@ -212,6 +212,12 @@ function pw_api_views_default_views() {
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Number */
+  $handler->display->display_options['fields']['field_constituency_nr']['id'] = 'field_constituency_nr';
+  $handler->display->display_options['fields']['field_constituency_nr']['table'] = 'field_data_field_constituency_nr';
+  $handler->display->display_options['fields']['field_constituency_nr']['field'] = 'field_constituency_nr';
+  $handler->display->display_options['fields']['field_constituency_nr']['label'] = 'number';
+  $handler->display->display_options['fields']['field_constituency_nr']['element_label_colon'] = FALSE;
   /* Contextual filter: Taxonomy term: Taxonomy term UUID */
   $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
   $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
@@ -540,6 +546,7 @@ function pw_api_views_default_views() {
     t('term from field_parliament'),
     t('uuid'),
     t('name'),
+    t('number'),
     t('All'),
     t('CSV-by-name'),
     t('XML-by-name'),
