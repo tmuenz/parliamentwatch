@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * @file
+ * Code for the PW Profiles feature. Implements the switch of the user profile view
+ * depending on the role of the users whose profile is shown.
+ */
+
+/**
+ * Implements the switch between standard and premium profile display modes
+ * dependant on user role. The assignment can be configured in the admin part of
+ * this module.
+ * 
+ * @param type $account
+ * @param type $view_mode
+ * @param type $langcode
+ * @return type 
+ */
+function pw_profiles_user_custom_view($account, $view_mode = 'full', $langcode = NULL) {
+  $assignment = variable_get('pw_profiles_assignment', array()); // array(roleId => displayModeId)
+  foreach ($assignment as $rid => $did) {
+    if (array_key_exists($rid, $account->roles)) {
+      $view_mode = $did;
+      break; // "First role wins": We assume role assignments to users to be DISTINCT!
+    }
+  }
+  return user_view($account, $view_mode, $langcode);
+}
+
+/**
+ * Modify the default page callback from user.module to a custom one. This is needed for
+ * the display mode switch between standard profiles and premium profiles.
+ * 
+ * @param array $items 
+ */
+function pw_profiles_menu_alter(&$items) {
+  $items['user/%user']['page callback'] = 'pw_profiles_user_view_page';
+}
+
+/**
+ * Function overtaken from user.module and customized to call pw_profiles_user_custom_view()
+ * 
+ * @param type $account
+ * @return type 
+ */
+function pw_profiles_user_view_page($account) {
+  // An administrator may try to view a non-existent account,
+  // so we give them a 404 (versus a 403 for non-admins).
+  return is_object($account) ? pw_profiles_user_custom_view($account) : MENU_NOT_FOUND;
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function pw_profiles_menu() {
+  $items['admin/config/pw_profiles/settings'] = array(
+      'title' => 'PW Profiles settings',
+      'description' => 'Connect User Roles with Display Modes.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pw_profiles_admin_settings'),
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'pw_profiles.admin.inc',
+  );
+  return $items;
+}
