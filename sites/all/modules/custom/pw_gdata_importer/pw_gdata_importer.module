@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PW GData Importer feature.
+ */
+
+include_once 'pw_gdata_importer.features.inc';

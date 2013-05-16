@@ -10,7 +10,7 @@
 function pw_basics_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-page-body'
+  // Exported field: 'node-page-body'.
   $fields['node-page-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function pw_basics_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -91,7 +92,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-webform-body'
+  // Exported field: 'node-webform-body'.
   $fields['node-webform-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -114,6 +115,7 @@ function pw_basics_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -171,7 +173,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-committee-field_committee_chairman'
+  // Exported field: 'taxonomy_term-committee-field_committee_chairman'.
   $fields['taxonomy_term-committee-field_committee_chairman'] = array(
     'field_config' => array(
       'active' => '1',
@@ -192,6 +194,7 @@ function pw_basics_field_default_fields() {
           0 => 'target_id',
         ),
       ),
+      'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
         'handler' => 'base',
@@ -257,7 +260,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-committee-field_committee_picture'
+  // Exported field: 'taxonomy_term-committee-field_committee_picture'.
   $fields['taxonomy_term-committee-field_committee_picture'] = array(
     'field_config' => array(
       'active' => '1',
@@ -278,6 +281,7 @@ function pw_basics_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -352,7 +356,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-committee-field_committee_spokesman'
+  // Exported field: 'taxonomy_term-committee-field_committee_spokesman'.
   $fields['taxonomy_term-committee-field_committee_spokesman'] = array(
     'field_config' => array(
       'active' => '1',
@@ -373,6 +377,7 @@ function pw_basics_field_default_fields() {
           0 => 'target_id',
         ),
       ),
+      'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
         'handler' => 'base',
@@ -430,7 +435,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-committee-field_committee_type'
+  // Exported field: 'taxonomy_term-committee-field_committee_type'.
   $fields['taxonomy_term-committee-field_committee_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -451,6 +456,7 @@ function pw_basics_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -502,7 +508,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-committee-field_committee_vice_chairman'
+  // Exported field: 'taxonomy_term-committee-field_committee_vice_chairman'.
   $fields['taxonomy_term-committee-field_committee_vice_chairman'] = array(
     'field_config' => array(
       'active' => '1',
@@ -523,6 +529,7 @@ function pw_basics_field_default_fields() {
           0 => 'target_id',
         ),
       ),
+      'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
         'handler' => 'base',
@@ -588,7 +595,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-committee-field_parliament'
+  // Exported field: 'taxonomy_term-committee-field_parliament'.
   $fields['taxonomy_term-committee-field_parliament'] = array(
     'field_config' => array(
       'active' => '1',
@@ -609,6 +616,7 @@ function pw_basics_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -659,7 +667,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-constituency-field_constituency_area_codes'
+  // Exported field: 'taxonomy_term-constituency-field_constituency_area_codes'.
   $fields['taxonomy_term-constituency-field_constituency_area_codes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -680,6 +688,7 @@ function pw_basics_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -728,7 +737,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-constituency-field_constituency_nr'
+  // Exported field: 'taxonomy_term-constituency-field_constituency_nr'.
   $fields['taxonomy_term-constituency-field_constituency_nr'] = array(
     'field_config' => array(
       'active' => '1',
@@ -749,6 +758,7 @@ function pw_basics_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '10',
@@ -829,7 +839,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-constituency-field_parliament'
+  // Exported field: 'taxonomy_term-constituency-field_parliament'.
   $fields['taxonomy_term-constituency-field_parliament'] = array(
     'field_config' => array(
       'active' => '1',
@@ -850,6 +860,7 @@ function pw_basics_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -895,76 +906,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-constituency-field_voc_constituency_zip'
-  $fields['taxonomy_term-constituency-field_voc_constituency_zip'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_voc_constituency_zip',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'zipcodes',
-            'parent' => '0',
-          ),
-        ),
-        'options_list_callback' => 'i18n_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'constituency',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'i18n_taxonomy',
-          'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
-          'weight' => 4,
-        ),
-      ),
-      'ds_extras_field_template' => '',
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_voc_constituency_zip',
-      'label' => 'Zipcodes',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'taxonomy',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'taxonomy_autocomplete',
-        'weight' => '36',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-parliaments-field_parliament_valid'
+  // Exported field: 'taxonomy_term-parliaments-field_parliament_valid'.
   $fields['taxonomy_term-parliaments-field_parliament_valid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -974,6 +916,7 @@ function pw_basics_field_default_fields() {
       'field_name' => 'field_parliament_valid',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -1057,7 +1000,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-pw_widget_values-field_pw_widget_color'
+  // Exported field: 'taxonomy_term-pw_widget_values-field_pw_widget_color'.
   $fields['taxonomy_term-pw_widget_values-field_pw_widget_color'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1078,6 +1021,7 @@ function pw_basics_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1158,7 +1102,7 @@ function pw_basics_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-pw_widget_values-field_pw_widget_value'
+  // Exported field: 'taxonomy_term-pw_widget_values-field_pw_widget_value'.
   $fields['taxonomy_term-pw_widget_values-field_pw_widget_value'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1179,6 +1123,7 @@ function pw_basics_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',

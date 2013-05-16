@@ -1,0 +1,12 @@
+name = PW GData Importer
+description = Feeds Importer for Google Spreadsheets
+core = 7.x
+package = Features
+version = 7.x-1.0-02052013
+project = pw_gdata_importer
+dependencies[] = ctools
+dependencies[] = feeds
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:1
+features[feeds_importer][] = gdata_constituency_importer_
+features[feeds_importer][] = gdata_profiles_importer

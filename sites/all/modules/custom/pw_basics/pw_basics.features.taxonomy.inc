@@ -113,7 +113,7 @@ function pw_basics_taxonomy_default_vocabularies() {
       'name' => 'Parliaments',
       'machine_name' => 'parliaments',
       'description' => '',
-      'hierarchy' => '0',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
       'language' => 'und',
@@ -218,31 +218,6 @@ function pw_basics_taxonomy_default_vocabularies() {
       'weight' => '0',
       'language' => 'und',
       'i18n_mode' => '0',
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'zipcodes' => array(
-      'name' => 'Zipcodes',
-      'machine_name' => 'zipcodes',
-      'description' => '',
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '0',
-      'language' => 'und',
-      'i18n_mode' => '1',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
