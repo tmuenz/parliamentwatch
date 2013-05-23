@@ -1,0 +1,163 @@
+@charset "utf-8";
+@import url("profiles-rtl.css");
+
+.float-right {
+    float: left;
+}
+.float-left {
+    float: right;
+}
+.float-left .file-image {
+    margin-right: 0;
+    margin-left: 14px;
+}
+.file-image.float-left {
+    margin: 4px 0 12px 14px;
+}
+.arrow-item {
+    background: transparent;
+}
+
+
+/* header */
+
+#zone-branding .logo-img {
+    float: right;
+    margin: 1px 0 11px 7px;
+}
+#region-user-second {
+    right: auto;
+    left: 14px;
+}
+
+
+/* metanavigation */
+
+#region-user-second .block {
+    float: left;
+}
+#region-user-second #block-print-print-links .content,
+#region-user-second #block-text-resize-0 .content,
+#region-user-second #block-locale-language .content,
+#region-user-second .block.addthis .content {
+    right: auto;
+    left: 0;
+}
+#region-user-second #block-user-login .content,
+#region-user-second #block-system-user-menu .content {
+    left: auto;
+    right: 0;
+}
+
+/* addthis */
+
+.addthis_default_style .addthis_separator,
+.addthis_default_style .at300b,
+.addthis_default_style .at300bo,
+.addthis_default_style .at300m,
+.addthis_default_style .at300bs {
+    float: right;
+    margin-left: 4px;
+}
+
+/* content */
+
+#region-content .region-content-inner {
+    padding: 0 0 0 10px;
+}
+
+
+/* slider */
+
+.views-slideshow-controls-bottom {
+    right: auto;
+    left: 0;
+}
+#views_slideshow_cycle_main_slider-block {
+    left: auto;
+    right: 0;
+}
+
+/* search */
+
+#search-api-page-search-form .form-submit,
+#search-api-page-search-form-content-search .form-submit {
+    right: auto;
+    left: 20px;
+}
+.form-item-pw-search-type {
+    float: right;
+    padding-right: 0;
+    padding-left: 15px;
+}
+
+
+/* newsletter subscribe */
+
+#section-content .block.newsletter-subscribe { /* newsletter box with same block as teh slider in content */
+    padding: 14px 0 20px 76px;
+}
+#section-content .block.newsletter-subscribe .content-wrapper {
+    padding: 15px 60px 15px 20px;
+}
+
+/* pager */
+
+#region-content .item-list ul.pager li.pager-next a,
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-last a {
+    float: left;
+    padding-left: 36px;
+}
+#region-content .item-list ul.pager li.pager-next a,
+#region-content .item-list ul.pager li.pager-last a {
+    background-position: -920px -3655px;
+}
+#region-content .item-list ul.pager li.pager-last span,
+#region-content .item-list ul.pager li.pager-last a:hover {
+    background-position: -960px -3615px;
+}
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-previousn a {
+    float: right;
+    padding-right: 33px;
+}
+#region-content .item-list ul.pager li.pager-first a,
+#region-content .item-list ul.pager li.pager-previousn a {
+    background-position: right -3815px;
+}
+#region-content .item-list ul.pager li.pager-first span,
+#region-content .item-list ul.pager li.pager-first a:hover {
+    background-position: right -3775px;
+}
+
+/* polls */
+
+.legend .poll-behavior {
+    margin-right: 0;
+    margin-left: 57px;
+}
+html.js fieldset.collapsed .fieldset-legend {
+	background: transparent;
+}
+
+html.js fieldset.collapsed .fieldset-legend {
+    background: transparent;
+}
+
+/* forward */
+
+#forward-form #edit-instructions p:first-child {
+    margin: 0 -10px 10px 0;
+}
+
+/* /////////////////////////// content /////////////////// */
+
+/* reset the alpha-reset.css for lists in the content and display them how they appear in the wysiwig */
+
+#region-content ol,
+#region-content ul {
+    margin-left: 0;
+    margin-right: 40px;
+}

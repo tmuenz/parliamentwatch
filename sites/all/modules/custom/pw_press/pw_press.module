@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PW Press feature.
+ */
+
+include_once 'pw_press.features.inc';
