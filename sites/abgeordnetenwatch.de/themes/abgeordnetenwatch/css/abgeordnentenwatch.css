@@ -1,0 +1,100 @@
+#region-user-second {
+    right: 0;
+}
+#region-user-second .block .content {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    display: block;
+    margin-top: 0;
+    position: relative;
+}
+#region-user-second .block .content li {
+    display: inline-block;
+}
+#region-user-second .block .content a {
+    display: inline-block;
+    padding: 0 13px 0 13px;
+    color: #858585 !important;
+    font: 9px/21px Lucida Grande,Helvetica,Arial,sans-serif;
+}
+
+/* blog wordpress */
+
+.alignright {
+    float: right;
+    margin: 0 0 7px 14px;
+    outline: 1px solid #ccc;
+}
+.alignleft {
+    float: left;
+    margin: 0 14px 7px 0;
+    outline: 1px solid #ccc;
+}
+
+
+/* old search */
+
+.search-old form#search-old {
+    margin-bottom: 0 !important;
+}
+#section-content .search-old .compact-form .form-actions {
+    position: absolute;
+    top: 13px;
+    bottom: 0;
+    right: 7px;
+}
+form#search-old .form-text {
+    width: 100%;
+    font-size: 14px;
+}
+form#search-old #edit-submit {
+    background: transparent;
+    height: auto;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+/* slider */
+
+.view-id-slider .views_slideshow_slide {
+    background-image: url(../images/slider.jpg);
+}
+#views_slideshow_cycle_div_slider-block_0 {
+    background-position: 0 0;
+}
+#views_slideshow_cycle_div_slider-block_1 {
+    background-position: 0 -168px;
+}
+#views_slideshow_cycle_div_slider-block_2 {
+    background-position: 0 -336px;
+}
+#views_slideshow_cycle_div_slider-block_3 {
+    background-position: 0 -504px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_0 .item {
+    background-position: -965px -760px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_0.active .item {
+    background-position: -925px -800px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_1 .item {
+    background-position: -885px -840px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_1.active .item {
+    background-position: -845px -880px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_2 .item {
+    background-position: -805px -920px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_2.active .item {
+    background-position: -765px -960px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_3 .item {
+    background-position: -725px -1000px;
+}
+#views_slideshow_pager_field_item_bottom_slider-block_3.active .item {
+    background-position: -685px -1040px;
+}

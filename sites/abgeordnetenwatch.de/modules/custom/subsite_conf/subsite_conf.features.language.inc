@@ -10,7 +10,7 @@
 function subsite_conf_locale_default_languages() {
   $languages = array();
 
-  // Exported language: de
+  // Exported language: de.
   $languages['de'] = array(
     'language' => 'de',
     'name' => 'German',

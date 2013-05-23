@@ -1,0 +1,4 @@
+Newsletter {"url":"http:\/\/www.abgeordnetenwatch.de\/tools\/newsletter.php"}
+FAQ {"url":"http:\/\/www.abgeordnetenwatch.de\/layer-471-0.html#c_faq_20100722"}
+English {"url":"http:\/\/www.abgeordnetenwatch.de\/layer-248-0.html#c_english_20110615"}
+Login-Bereich {"url":"http:\/\/www.abgeordnetenwatch.de\/login_bereich-846-0.html"}

@@ -1,0 +1,11 @@
+Bundestag {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestag-360-0.html"}
+Baden-Württemberg {"url":"http:\/\/www.abgeordnetenwatch.de\/baden_wuerttemberg-913-0.html"}
+Bayern {"url":"http:\/\/www.abgeordnetenwatch.de\/bayern-542-0.html"}
+Berlin {"url":"http:\/\/www.abgeordnetenwatch.de\/berlin-319-0.html"}
+Hamburg {"url":"http:\/\/www.abgeordnetenwatch.de\/hamburg-320-0.html"}
+Hessen {"url":"http:\/\/www.abgeordnetenwatch.de\/hessen-539-0.html"}
+Niedersachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/niedersachsen-1157-0.html"}
+NRW {"url":"http:\/\/www.abgeordnetenwatch.de\/nrw-967-0.html"}
+Sachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/sachsen-146-0.html"}
+Schleswig-Holstein {"url":"http:\/\/www.abgeordnetenwatch.de\/schleswig_holstein-852-0.html"}
+EU {"url":"http:\/\/www.abgeordnetenwatch.de\/eu-336-0.html"}
