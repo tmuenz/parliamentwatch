@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Dialogues feature.
- */
-
-include_once 'dialogues.features.inc';

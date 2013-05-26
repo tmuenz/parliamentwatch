@@ -1,7 +1,0 @@
-name = PW Image Gallery
-description = Adds features to the default image gallery field for users
-core = 7.x
-package = Features
-php = 5.2.4
-version = 7.x-1.0-alpha
-project = profiles

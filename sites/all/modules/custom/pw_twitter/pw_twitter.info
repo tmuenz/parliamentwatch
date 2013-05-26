@@ -1,7 +1,0 @@
-name = PW Twitter
-description = Tweaks the Twitter Module to be more user friendly
-core = 7.x
-package = Features
-php = 5.2.4
-version = 7.x-1.0-alpha
-dependencies[] = twitter

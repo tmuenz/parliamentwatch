@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Latest Tweets feature.
- */
-
-include_once 'latest_tweets.features.inc';

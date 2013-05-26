@@ -1,7 +1,0 @@
-name = Field group translation
-description = Translation field groups.
-dependencies[] = field_group
-dependencies[] = i18n_string
-package = Multilingual - Internationalization
-core = 7.x
-files[] = i18n_field_group.i18n.inc

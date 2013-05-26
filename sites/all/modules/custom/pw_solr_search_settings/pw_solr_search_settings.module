@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the PW Solr Search Settings feature.
- */
-
-include_once 'pw_solr_search_settings.features.inc';

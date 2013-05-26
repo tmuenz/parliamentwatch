@@ -1,6 +1,0 @@
-name = Dialogue importer
-core = 7.x
-dependencies[] = dialogues
-dependencies[] = uuid
-package = Parliamentwatch
-configure = admin/config/services/pw-dialogues
