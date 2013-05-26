@@ -116,17 +116,41 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
                 "attribute_name" => $inner_tmp_arr[0],
                 "attribute_value" => $inner_tmp_arr[1],
                 "value" => $inner_tmp_arr[2]);
+      } else if (substr_count($content, "}{") > 0) { // Single field with single subfields
+        $tmp_arr = explode("}{", $content);
+        $collection_arr = array();
+        foreach ($tmp_arr as $tmp) {
+          $inner_tmp_arr = explode("**", $tmp);
+          $collection_arr[] = array(
+                "name" => $inner_tmp_arr[0],
+                "value" => $inner_tmp_arr[1]);
+        }
+        $vars['themed_rows'][$num][$field]["type"] = "singlefield_with_single_subfields";
+        $vars['themed_rows'][$num][$field]["content"] = $collection_arr;
       } else {
         $vars['themed_rows'][$num][$field]["type"] = "singlefield_without_attributes";
         $vars['themed_rows'][$num][$field]["content"] = $content;
       }
-      // Two cases: || means: Multiple Field
-      // # means: there is an additional attribute (i.e., uuid)
+      // Case 1: Multiple Field with additional attributes
       // example: a##b##c||d##e##f =>
       // <examples>
       //   <example a="b">c</bsp>
       //   <example d="e">f</bsp>
       // </examples>
+      // 
+      // Case 2: Multiple field without additional attributes
+      // example: a||b =>
+      // <examples>
+      //   <example>a</bsp>
+      //   <example>b</bsp>
+      // </examples>
+      // 
+      // Case 3: Single field with single subfields
+      // example: name1**val1}{name2**val2 =>
+      // <example>
+      //   <name1>val1</name1>
+      //   <name2>val2</name1>
+      // </example>
     }
   }
 

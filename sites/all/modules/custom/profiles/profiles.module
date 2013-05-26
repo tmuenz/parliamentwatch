@@ -3,5 +3,21 @@
  * @file
  * Code for the Profiles feature.
  */
+//function profiles_locale_language_selector_form_alter(&$form, &$form_state, $form_id) {
+//  unlink($form["locale"]);
+//}
+//
+//function profiles_form_alter(&$form, &$form_state, $form_id) {
+//  var_dump($form["#id"]); die("jjj");
+//}
 
 include_once 'profiles.features.inc';
+
+
+
+//function pw_profileswitch_form_alter(&$form, &$form_state, $form_id) {
+//  global $user;
+//  if ($form["#id"] == 'field-ui-field-edit-form') {
+//    $form['field']['cardinality']["#options"] = array(FIELD_CARDINALITY_UNLIMITED => t('Unlimited')) + drupal_map_assoc(range(1, 50));
+//  }
+//}

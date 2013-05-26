@@ -37,6 +37,13 @@ function correct_plural($input) {
       case "singlefield_with_attributes":
         echo '<'.$xml_tag[$field].' '.$content["content"]["attribute_name"].'="'.$content["content"]["attribute_value"].'">'.$content["content"]["value"].'</'.$xml_tag[$field].'>';
         break;
+      case "singlefield_with_single_subfields":
+        echo '<'.$xml_tag[$field].'>';
+        foreach ($content["content"] as $content_entry) {
+          echo '<'.$content_entry["name"].'>'.$content_entry["value"].'</'.$content_entry["name"].'>';
+        }
+        echo '</'.$xml_tag[$field].'>';
+        break;
       case "singlefield_without_attributes":
       default:
         print '<'.$xml_tag[$field].'>'.$content["content"].'</'.$xml_tag[$field].'>';
