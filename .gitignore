@@ -4,3 +4,56 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+
+# Ignore everything except for PW API.
+includes
+misc
+modules
+profiles
+scripts
+themes
+sites/abgeordnetenwatch.de
+sites/dailwatch.ie
+sites/default
+sites/marsad.tn
+sites/piratenpartei-bayern.de
+sites/all/libraries
+sites/all/modules/contrib
+sites/all/modules/entity
+sites/all/modules/custom/all_strong_arms
+sites/all/modules/custom/fields         
+sites/all/modules/custom/migrate-plugins  
+sites/all/modules/custom/pw_basics      
+sites/all/modules/custom/pw_committees                
+sites/all/modules/custom/pw_dialogues      
+sites/all/modules/custom/pw_poll           
+sites/all/modules/custom/pw_solr_search_settings  
+sites/all/modules/custom/rules content-types    
+sites/all/modules/custom/floatbox       
+sites/all/modules/custom/profiles         
+sites/all/modules/custom/pw_blog        
+sites/all/modules/custom/pw_content_authoring_layout  
+sites/all/modules/custom/pw_image_gallery  pw_profiles       
+sites/all/modules/custom/pw_twitter crons            
+sites/all/modules/custom/latest_tweets  
+sites/all/modules/custom/pw_breadcrumb  
+sites/all/modules/custom/pw_custom                    
+sites/all/modules/custom/pw_permissions    
+sites/all/modules/custom/pw_profileswitch  
+sites/all/modules/custom/roles
+sites/all/modules/custom/rules
+sites/all/themes/contrib
+sites/all/themes/custom/abgeordnetenwatch/css
+sites/all/themes/custom/abgeordnetenwatch/images
+sites/all/themes/custom/abgeordnetenwatch/js
+sites/all/themes/custom/abgeordnetenwatch/preprocess
+sites/all/themes/custom/abgeordnetenwatch/process
+sites/all/themes/custom/abgeordnetenwatch/templates
+sites/all/themes/custom/abgeordnetenwatch/abgeordnetenwatch.info
+sites/all/themes/custom/abgeordnetenwatch/logo.png
+sites/all/themes/custom/abgeordnetenwatch/screenshot.png
+sites/all/themes/custom/abgeordnetenwatch/template.php
+sites/all/README.txt
+sites/example.sites.php
+sites/sites.php
+
