@@ -2060,6 +2060,28 @@ return FALSE; // default: output the result
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'api/parliaments.csv';
+
+  /* Display: JSON */
+  $handler = $view->new_display('page', 'JSON', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'parliaments';
+  $handler->display->display_options['style_options']['top_child_object'] = 'parliament';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 1;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'api/parliaments.json';
   $translatables['pw_api_parliaments'] = array(
     t('Master'),
     t('more'),
@@ -2074,6 +2096,7 @@ return FALSE; // default: output the result
     t('valid_date_end'),
     t('XML'),
     t('CSV'),
+    t('JSON'),
   );
   $export['pw_api_parliaments'] = $view;
 
