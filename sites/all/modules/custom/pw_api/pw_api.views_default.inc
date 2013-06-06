@@ -153,6 +153,63 @@ function pw_api_views_default_views() {
   $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uuid']['limit'] = '0';
   $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/areacodes.xml';
+
+  /* Display: JSON-by-name */
+  $handler = $view->new_display('page', 'JSON-by-name', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'areacodes';
+  $handler->display->display_options['style_options']['top_child_object'] = 'areacode';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'api/parliament/%/areacodes.json';
+
+  /* Display: JSON-by-uuid */
+  $handler = $view->new_display('page', 'JSON-by-uuid', 'page_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'areacodes';
+  $handler->display->display_options['style_options']['top_child_object'] = 'areacode';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/areacodes.json';
   $translatables['pw_api_parliament_areacodes'] = array(
     t('Master'),
     t('more'),
@@ -170,6 +227,8 @@ function pw_api_views_default_views() {
     t('XML-by-name'),
     t('CSV-by-uuid'),
     t('XML-by-uuid'),
+    t('JSON-by-name'),
+    t('JSON-by-uuid'),
   );
   $export['pw_api_parliament_areacodes'] = $view;
 
@@ -535,6 +594,188 @@ function pw_api_views_default_views() {
   $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
   $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/areacode-by-uuid/%/constituencies.xml';
+
+  /* Display: JSON-by-name */
+  $handler = $view->new_display('page', 'JSON-by-name', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'constituencies';
+  $handler->display->display_options['style_options']['top_child_object'] = 'constituency';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/constituencies.json';
+
+  /* Display: JSON-by-uuid */
+  $handler = $view->new_display('page', 'JSON-by-uuid', 'page_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'constituencies';
+  $handler->display->display_options['style_options']['top_child_object'] = 'constituency';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/constituencies.json';
+
+  /* Display: JSON-Areacode-by-name */
+  $handler = $view->new_display('page', 'JSON-Areacode-by-name', 'page_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'constituencies';
+  $handler->display->display_options['style_options']['top_child_object'] = 'constituency';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Taxonomy term: Parliament (field_parliament) */
+  $handler->display->display_options['relationships']['field_parliament_tid']['id'] = 'field_parliament_tid';
+  $handler->display->display_options['relationships']['field_parliament_tid']['table'] = 'field_data_field_parliament';
+  $handler->display->display_options['relationships']['field_parliament_tid']['field'] = 'field_parliament_tid';
+  /* Relationship: Taxonomy term: Area Codes (field_constituency_area_codes) */
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['id'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['table'] = 'field_data_field_constituency_area_codes';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['field'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name_1']['field'] = 'name';
+  $handler->display->display_options['arguments']['name_1']['relationship'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['arguments']['name_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/areacode/%/constituencies.json';
+
+  /* Display: JSON-Areacode-by-uuid */
+  $handler = $view->new_display('page', 'JSON-Areacode-by-uuid', 'page_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'constituencies';
+  $handler->display->display_options['style_options']['top_child_object'] = 'constituency';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Taxonomy term: Parliament (field_parliament) */
+  $handler->display->display_options['relationships']['field_parliament_tid']['id'] = 'field_parliament_tid';
+  $handler->display->display_options['relationships']['field_parliament_tid']['table'] = 'field_data_field_parliament';
+  $handler->display->display_options['relationships']['field_parliament_tid']['field'] = 'field_parliament_tid';
+  /* Relationship: Taxonomy term: Area Codes (field_constituency_area_codes) */
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['id'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['table'] = 'field_data_field_constituency_area_codes';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['field'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['arguments']['uuid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid_1']['relationship'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['arguments']['uuid_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/areacode-by-uuid/%/constituencies.json';
   $translatables['pw_api_parliament_constituencies'] = array(
     t('Master'),
     t('more'),
@@ -558,247 +799,12 @@ function pw_api_views_default_views() {
     t('XML-Areacode-by-name'),
     t('CSV-Areacode-by-uuid'),
     t('XML-Areacode-by-uuid'),
+    t('JSON-by-name'),
+    t('JSON-by-uuid'),
+    t('JSON-Areacode-by-name'),
+    t('JSON-Areacode-by-uuid'),
   );
   $export['pw_api_parliament_constituencies'] = $view;
-
-  $view = new view();
-  $view->name = 'pw_api_parliament_profile_dialogues';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'PW API Parliament Profile Dialogues';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Comment: Comments of the node */
-  $handler->display->display_options['relationships']['cid']['id'] = 'cid';
-  $handler->display->display_options['relationships']['cid']['table'] = 'node';
-  $handler->display->display_options['relationships']['cid']['field'] = 'cid';
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_dialogue_recipient_target_id']['id'] = 'field_dialogue_recipient_target_id';
-  $handler->display->display_options['relationships']['field_dialogue_recipient_target_id']['table'] = 'field_data_field_dialogue_recipient';
-  $handler->display->display_options['relationships']['field_dialogue_recipient_target_id']['field'] = 'field_dialogue_recipient_target_id';
-  /* Relationship: User: Parliament (field_user_parliament) */
-  $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
-  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_data_field_user_parliament';
-  $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
-  $handler->display->display_options['relationships']['field_user_parliament_tid']['relationship'] = 'field_dialogue_recipient_target_id';
-  /* Field: Content: Node UUID */
-  $handler->display->display_options['fields']['uuid']['id'] = 'uuid';
-  $handler->display->display_options['fields']['uuid']['table'] = 'node';
-  $handler->display->display_options['fields']['uuid']['field'] = 'uuid';
-  $handler->display->display_options['fields']['uuid']['label'] = 'uuid';
-  $handler->display->display_options['fields']['uuid']['element_label_colon'] = FALSE;
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'body';
-  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['body']['type'] = 'text_plain';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = 'post_date';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'long';
-  /* Field: Field: Annotation */
-  $handler->display->display_options['fields']['field_dialogue_annotation']['id'] = 'field_dialogue_annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['table'] = 'field_data_field_dialogue_annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['field'] = 'field_dialogue_annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['label'] = 'annotation';
-  $handler->display->display_options['fields']['field_dialogue_annotation']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_dialogue_annotation']['type'] = 'text_plain';
-  /* Field: Field: Tags */
-  $handler->display->display_options['fields']['field_dialogue_tags']['id'] = 'field_dialogue_tags';
-  $handler->display->display_options['fields']['field_dialogue_tags']['table'] = 'field_data_field_dialogue_tags';
-  $handler->display->display_options['fields']['field_dialogue_tags']['field'] = 'field_dialogue_tags';
-  $handler->display->display_options['fields']['field_dialogue_tags']['label'] = 'tags';
-  $handler->display->display_options['fields']['field_dialogue_tags']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_dialogue_tags']['delta_offset'] = '0';
-  /* Field: Field: Topic */
-  $handler->display->display_options['fields']['field_dialogue_topic']['id'] = 'field_dialogue_topic';
-  $handler->display->display_options['fields']['field_dialogue_topic']['table'] = 'field_data_field_dialogue_topic';
-  $handler->display->display_options['fields']['field_dialogue_topic']['field'] = 'field_dialogue_topic';
-  $handler->display->display_options['fields']['field_dialogue_topic']['label'] = 'topic';
-  $handler->display->display_options['fields']['field_dialogue_topic']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_dialogue_topic']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Comment: Comment */
-  $handler->display->display_options['fields']['comment_body']['id'] = 'comment_body';
-  $handler->display->display_options['fields']['comment_body']['table'] = 'field_data_comment_body';
-  $handler->display->display_options['fields']['comment_body']['field'] = 'comment_body';
-  $handler->display->display_options['fields']['comment_body']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['comment_body']['label'] = 'comment';
-  $handler->display->display_options['fields']['comment_body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['comment_body']['type'] = 'text_plain';
-  /* Field: Comment: Post date */
-  $handler->display->display_options['fields']['created_1']['id'] = 'created_1';
-  $handler->display->display_options['fields']['created_1']['table'] = 'comment';
-  $handler->display->display_options['fields']['created_1']['field'] = 'created';
-  $handler->display->display_options['fields']['created_1']['relationship'] = 'cid';
-  $handler->display->display_options['fields']['created_1']['label'] = 'comment_post_date';
-  $handler->display->display_options['fields']['created_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created_1']['date_format'] = 'long';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: User: User UUID */
-  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
-  $handler->display->display_options['arguments']['uuid']['table'] = 'users';
-  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
-  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_dialogue_recipient_target_id';
-  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
-  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
-  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'dialogue' => 'dialogue',
-  );
-
-  /* Display: XML-by-name */
-  $handler = $view->new_display('views_data_export', 'XML-by-name', 'views_data_export_1');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xml';
-  $handler->display->display_options['style_options']['provide_file'] = 0;
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['transform'] = 1;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Taxonomy term: Name */
-  $handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
-  $handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['arguments']['name_1']['field'] = 'name';
-  $handler->display->display_options['arguments']['name_1']['relationship'] = 'field_user_parliament_tid';
-  $handler->display->display_options['arguments']['name_1']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'raw';
-  $handler->display->display_options['arguments']['name_1']['default_argument_options']['index'] = '2';
-  $handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['name_1']['limit'] = '0';
-  /* Contextual filter: User: Name */
-  $handler->display->display_options['arguments']['name']['id'] = 'name';
-  $handler->display->display_options['arguments']['name']['table'] = 'users';
-  $handler->display->display_options['arguments']['name']['field'] = 'name';
-  $handler->display->display_options['arguments']['name']['relationship'] = 'field_dialogue_recipient_target_id';
-  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
-  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '4';
-  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['name']['limit'] = '0';
-  $handler->display->display_options['path'] = 'api/parliament/%/profile/%/dialogues.xml';
-
-  /* Display: XML-by-uuid */
-  $handler = $view->new_display('views_data_export', 'XML-by-uuid', 'views_data_export_2');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_xml';
-  $handler->display->display_options['style_options']['provide_file'] = 0;
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['transform'] = 1;
-  $handler->display->display_options['path'] = 'api/profile-by-uuid/%/dialogues.xml';
-
-  /* Display: CSV-by-uuid */
-  $handler = $view->new_display('views_data_export', 'CSV-by-uuid', 'views_data_export_3');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = 'dialogues%timestamp-full.csv';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['quote'] = 1;
-  $handler->display->display_options['style_options']['trim'] = 0;
-  $handler->display->display_options['style_options']['replace_newlines'] = 0;
-  $handler->display->display_options['style_options']['header'] = 1;
-  $handler->display->display_options['path'] = 'api/profile-by-uuid/%/dialogues.csv';
-
-  /* Display: CSV-by-name */
-  $handler = $view->new_display('views_data_export', 'CSV-by-name', 'views_data_export_4');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = 'dialogues%timestamp-full.csv';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['quote'] = 1;
-  $handler->display->display_options['style_options']['trim'] = 0;
-  $handler->display->display_options['style_options']['replace_newlines'] = 0;
-  $handler->display->display_options['style_options']['header'] = 1;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: User: Name */
-  $handler->display->display_options['arguments']['name']['id'] = 'name';
-  $handler->display->display_options['arguments']['name']['table'] = 'users';
-  $handler->display->display_options['arguments']['name']['field'] = 'name';
-  $handler->display->display_options['arguments']['name']['relationship'] = 'field_dialogue_recipient_target_id';
-  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
-  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
-  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['name']['limit'] = '0';
-  $handler->display->display_options['path'] = 'api/profile/%/dialogues.csv';
-  $translatables['pw_api_parliament_profile_dialogues'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Comments'),
-    t('User entity referenced from field_dialogue_recipient'),
-    t('term from field_user_parliament'),
-    t('uuid'),
-    t('body'),
-    t('post_date'),
-    t('annotation'),
-    t('tags'),
-    t('topic'),
-    t('comment'),
-    t('comment_post_date'),
-    t('All'),
-    t('XML-by-name'),
-    t('XML-by-uuid'),
-    t('CSV-by-uuid'),
-    t('CSV-by-name'),
-  );
-  $export['pw_api_parliament_profile_dialogues'] = $view;
 
   $view = new view();
   $view->name = 'pw_api_parliament_profiles_revision';
@@ -1926,6 +1932,336 @@ return FALSE; // default: output the result
   $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
   $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/constituency-by-uuid/%/profiles.xml';
+
+  /* Display: JSON-by-name */
+  $handler = $view->new_display('page', 'JSON-by-name', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/profiles.json';
+
+  /* Display: JSON-by-uuid */
+  $handler = $view->new_display('page', 'JSON-by-uuid', 'page_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/profiles.json';
+
+  /* Display: JSON-Areacode-by-uuid */
+  $handler = $view->new_display('page', 'JSON-Areacode-by-uuid', 'page_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User revision: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'user_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: User (historical data): Parliament (field_user_parliament) */
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  /* Relationship: Taxonomy term: Area Codes (field_constituency_area_codes) */
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['id'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['table'] = 'field_data_field_constituency_area_codes';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['field'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['arguments']['uuid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid_1']['relationship'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['arguments']['uuid_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/areacode-by-uuid/%/profiles.json';
+
+  /* Display: JSON-Areacode-by-name */
+  $handler = $view->new_display('page', 'JSON-Areacode-by-name', 'page_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User revision: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'user_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: User (historical data): Parliament (field_user_parliament) */
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  /* Relationship: Taxonomy term: Area Codes (field_constituency_area_codes) */
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['id'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['table'] = 'field_data_field_constituency_area_codes';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['field'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name_1']['field'] = 'name';
+  $handler->display->display_options['arguments']['name_1']['relationship'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['arguments']['name_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/areacode/%/profiles.json';
+
+  /* Display: JSON-Constituency-by-name */
+  $handler = $view->new_display('page', 'JSON-Constituency-by-name', 'page_5');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User revision: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'user_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: User (historical data): Parliament (field_user_parliament) */
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  /* Relationship: Taxonomy term: Area Codes (field_constituency_area_codes) */
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['id'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['table'] = 'field_data_field_constituency_area_codes';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['field'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name_1']['field'] = 'name';
+  $handler->display->display_options['arguments']['name_1']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['arguments']['name_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/constituency/%/profiles.json';
+
+  /* Display: JSON-Constituency-by-uuid */
+  $handler = $view->new_display('page', 'JSON-Constituency-by-uuid', 'page_6');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User revision: User */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'user_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: User (historical data): Parliament (field_user_parliament) */
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
+  /* Relationship: User (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  /* Relationship: Taxonomy term: Area Codes (field_constituency_area_codes) */
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['id'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['table'] = 'field_data_field_constituency_area_codes';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['field'] = 'field_constituency_area_codes_tid';
+  $handler->display->display_options['relationships']['field_constituency_area_codes_tid']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['arguments']['uuid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid_1']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['arguments']['uuid_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/constituency-by-uuid/%/profiles.json';
   $translatables['pw_api_parliament_profiles_revision'] = array(
     t('Master'),
     t('more'),
@@ -1960,6 +2296,12 @@ return FALSE; // default: output the result
     t('XML-Constituency-by-name'),
     t('CSV-Constituency-by-uuid'),
     t('XML-Constituency-by-uuid'),
+    t('JSON-by-name'),
+    t('JSON-by-uuid'),
+    t('JSON-Areacode-by-uuid'),
+    t('JSON-Areacode-by-name'),
+    t('JSON-Constituency-by-name'),
+    t('JSON-Constituency-by-uuid'),
   );
   $export['pw_api_parliament_profiles_revision'] = $view;
 
@@ -2130,6 +2472,10 @@ return FALSE; // default: output the result
   $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
   $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
   $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  /* Relationship: User (historical data): Parliament (field_user_parliament) */
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['id'] = 'field_user_parliament_tid';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['table'] = 'field_revision_field_user_parliament';
+  $handler->display->display_options['relationships']['field_user_parliament_tid']['field'] = 'field_user_parliament_tid';
   /* Field: User revision: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'user_revision';
@@ -2246,15 +2592,6 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['separator'] = '; ';
-  /* Field: excluded | copyright */
-  $handler->display->display_options['fields']['field_image_copyright']['id'] = 'field_image_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['table'] = 'field_data_field_image_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['field'] = 'field_image_copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['relationship'] = 'field_user_picture_fid';
-  $handler->display->display_options['fields']['field_image_copyright']['ui_name'] = 'excluded | copyright';
-  $handler->display->display_options['fields']['field_image_copyright']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_image_copyright']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image_copyright']['type'] = 'text_plain';
   /* Field: User (historical data): Profile picture */
   $handler->display->display_options['fields']['field_user_picture-revision_id']['id'] = 'field_user_picture-revision_id';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['table'] = 'field_revision_field_user_picture';
@@ -2619,6 +2956,166 @@ echo $base_url;
   $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
   $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/profile-by-uuid/%/profile.csv';
+
+  /* Display: JSON-by-name */
+  $handler = $view->new_display('page', 'JSON-by-name', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User revision: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'user_revision';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/profile/%/profile.json';
+
+  /* Display: JSON-by-uuid */
+  $handler = $view->new_display('page', 'JSON-by-uuid', 'page_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: User UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/profile-by-uuid/%/profile.json';
+
+  /* Display: JSON-Parliament-by-name */
+  $handler = $view->new_display('page', 'JSON-Parliament-by-name', 'page_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name_1']['field'] = 'name';
+  $handler->display->display_options['arguments']['name_1']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['name_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name_1']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name_1']['limit'] = '0';
+  /* Contextual filter: User revision: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'user_revision';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/profile/%/profile.json';
+
+  /* Display: JSON-Parliament-by-uuid */
+  $handler = $view->new_display('page', 'JSON-Parliament-by-uuid', 'page_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'profiles';
+  $handler->display->display_options['style_options']['top_child_object'] = 'profile';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  /* Contextual filter: User: User UUID */
+  $handler->display->display_options['arguments']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['arguments']['uuid_1']['table'] = 'users';
+  $handler->display->display_options['arguments']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/profile-by-uuid/%/profile.json';
   $translatables['pw_api_profile'] = array(
     t('Master'),
     t('more'),
@@ -2629,6 +3126,7 @@ echo $base_url;
     t('Desc'),
     t('file from field_user_picture'),
     t('term from field_user_constituency'),
+    t('term from field_user_parliament'),
     t('name'),
     t('uuid'),
     t('gender'),
@@ -2644,7 +3142,6 @@ echo $base_url;
     t('constituency'),
     t('uuid|[uuid_1]|[field_user_constituency-revision_id]'),
     t('political_roles'),
-    t('copyright'),
     t('profile_picture'),
     t('copyright##[field_image_copyright]##[field_user_picture-revision_id]'),
     t('questions_get'),
@@ -2660,8 +3157,11 @@ echo $base_url;
     t('XML-Parliament-by-name'),
     t('CSV-Parliament-by-name'),
     t('XML-Parliament-by-uuid'),
-    t('term from field_user_parliament'),
     t('CSV-Parliament-by-uuid'),
+    t('JSON-by-name'),
+    t('JSON-by-uuid'),
+    t('JSON-Parliament-by-name'),
+    t('JSON-Parliament-by-uuid'),
   );
   $export['pw_api_profile'] = $view;
 
@@ -3286,6 +3786,227 @@ echo $base_url;
   $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['uuid']['limit'] = '0';
   $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/dialogues.csv';
+
+  /* Display: JSON-by-uuid */
+  $handler = $view->new_display('page', 'JSON-by-uuid', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'dialogues';
+  $handler->display->display_options['style_options']['top_child_object'] = 'dialogue';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['path'] = 'api/profile-by-uuid/%/dialogues.json';
+
+  /* Display: JSON-by-name */
+  $handler = $view->new_display('page', 'JSON-by-name', 'page_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'dialogues';
+  $handler->display->display_options['style_options']['top_child_object'] = 'dialogue';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: User: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'users';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_dialogue_recipient_target_id';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/profile/%/dialogues.json';
+
+  /* Display: JSON-Constituency-by-name */
+  $handler = $view->new_display('page', 'JSON-Constituency-by-name', 'page_3');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'dialogues';
+  $handler->display->display_options['style_options']['top_child_object'] = 'dialogue';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['arguments']['name_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name_1']['field'] = 'name';
+  $handler->display->display_options['arguments']['name_1']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['arguments']['name_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['name_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/constituency/%/dialogues.json';
+
+  /* Display: JSON-Constituency-by-uuid */
+  $handler = $view->new_display('page', 'JSON-Constituency-by-uuid', 'page_4');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'dialogues';
+  $handler->display->display_options['style_options']['top_child_object'] = 'dialogue';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['arguments']['uuid_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid_1']['relationship'] = 'field_user_constituency_tid';
+  $handler->display->display_options['arguments']['uuid_1']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid_1']['default_argument_options']['index'] = '4';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid_1']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid_1']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/constituency-by-uuid/%/dialogues.json';
+
+  /* Display: JSON-Parliament-by-name */
+  $handler = $view->new_display('page', 'JSON-Parliament-by-name', 'page_5');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'dialogues';
+  $handler->display->display_options['style_options']['top_child_object'] = 'dialogue';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Name */
+  $handler->display->display_options['arguments']['name']['id'] = 'name';
+  $handler->display->display_options['arguments']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['name']['field'] = 'name';
+  $handler->display->display_options['arguments']['name']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['name']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['name']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['name']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['name']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament/%/dialogues.json';
+
+  /* Display: JSON-Parliament-by-uuid */
+  $handler = $view->new_display('page', 'JSON-Parliament-by-uuid', 'page_6');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'dialogues';
+  $handler->display->display_options['style_options']['top_child_object'] = 'dialogue';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 0;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Taxonomy term UUID */
+  $handler->display->display_options['arguments']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['arguments']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['arguments']['uuid']['relationship'] = 'field_user_parliament_tid';
+  $handler->display->display_options['arguments']['uuid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uuid']['default_argument_type'] = 'raw';
+  $handler->display->display_options['arguments']['uuid']['default_argument_options']['index'] = '2';
+  $handler->display->display_options['arguments']['uuid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uuid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uuid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['uuid']['limit'] = '0';
+  $handler->display->display_options['path'] = 'api/parliament-by-uuid/%/dialogues.json';
   $translatables['pw_api_profile_dialogues'] = array(
     t('Master'),
     t('more'),
@@ -3320,6 +4041,12 @@ echo $base_url;
     t('CSV-Parliament-by-name'),
     t('XML-Parliament-by-uuid'),
     t('CSV-Parliament-by-uuid'),
+    t('JSON-by-uuid'),
+    t('JSON-by-name'),
+    t('JSON-Constituency-by-name'),
+    t('JSON-Constituency-by-uuid'),
+    t('JSON-Parliament-by-name'),
+    t('JSON-Parliament-by-uuid'),
   );
   $export['pw_api_profile_dialogues'] = $view;
 
