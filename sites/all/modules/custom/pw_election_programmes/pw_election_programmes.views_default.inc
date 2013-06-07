@@ -40,16 +40,26 @@ function pw_election_programmes_views_default_views() {
   $handler->display->display_options['relationships']['field_pdf_download_fid']['id'] = 'field_pdf_download_fid';
   $handler->display->display_options['relationships']['field_pdf_download_fid']['table'] = 'field_data_field_pdf_download';
   $handler->display->display_options['relationships']['field_pdf_download_fid']['field'] = 'field_pdf_download_fid';
-  /* Feld: (excluded) Link raw URL */
+  /* Feld: (excluded) pdf link raw URL */
   $handler->display->display_options['fields']['field_election_programme_open_1']['id'] = 'field_election_programme_open_1';
   $handler->display->display_options['fields']['field_election_programme_open_1']['table'] = 'field_data_field_election_programme_open';
   $handler->display->display_options['fields']['field_election_programme_open_1']['field'] = 'field_election_programme_open';
-  $handler->display->display_options['fields']['field_election_programme_open_1']['ui_name'] = '(excluded) Link raw URL';
+  $handler->display->display_options['fields']['field_election_programme_open_1']['ui_name'] = '(excluded) pdf link raw URL';
   $handler->display->display_options['fields']['field_election_programme_open_1']['label'] = '';
   $handler->display->display_options['fields']['field_election_programme_open_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_election_programme_open_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_election_programme_open_1']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_election_programme_open_1']['type'] = 'link_plain';
+  /* Feld: (excluded) programme link raw URL */
+  $handler->display->display_options['fields']['field_election_programme_open_2']['id'] = 'field_election_programme_open_2';
+  $handler->display->display_options['fields']['field_election_programme_open_2']['table'] = 'field_data_field_election_programme_open';
+  $handler->display->display_options['fields']['field_election_programme_open_2']['field'] = 'field_election_programme_open';
+  $handler->display->display_options['fields']['field_election_programme_open_2']['ui_name'] = '(excluded) programme link raw URL';
+  $handler->display->display_options['fields']['field_election_programme_open_2']['label'] = '';
+  $handler->display->display_options['fields']['field_election_programme_open_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_election_programme_open_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_election_programme_open_2']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_election_programme_open_2']['type'] = 'link_plain';
   /* Feld: Inhalt: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -68,7 +78,7 @@ function pw_election_programmes_views_default_views() {
   $handler->display->display_options['fields']['field_teaser_image']['field'] = 'field_teaser_image';
   $handler->display->display_options['fields']['field_teaser_image']['label'] = '';
   $handler->display->display_options['fields']['field_teaser_image']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_teaser_image']['alter']['path'] = '[field_election_programme_open_1]';
+  $handler->display->display_options['fields']['field_teaser_image']['alter']['path'] = '[field_election_programme_open_2]';
   $handler->display->display_options['fields']['field_teaser_image']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_teaser_image']['alter']['external'] = TRUE;
   $handler->display->display_options['fields']['field_teaser_image']['alter']['alt'] = 'open election programme';
