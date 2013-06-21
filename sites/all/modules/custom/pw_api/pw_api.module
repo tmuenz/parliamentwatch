@@ -46,6 +46,7 @@ function tag_replace($input) {
       $replace_arr = array("taxonomy_term_datas" => "parliaments", "taxonomy_term_data" => "parliament");
       break;
     case "profile":
+    case "profile-authorized":
     case "profiles":
       $replace_arr = array("user_revisions" => "profiles", "user_revision" => "profile");
       break;
@@ -178,5 +179,43 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
     // We should always try to output valid XML.
     $vars['xml_tag'][$field] = _views_data_export_xml_tag_clean($vars['xml_tag'][$field]);
     $vars['xml_tag'][$field] = tag_replace($vars['xml_tag'][$field]);
+  }
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function pw_api_menu() {
+  $items['admin/config/pw_api/settings'] = array(
+      'title' => 'PW API settings',
+      'description' => 'Allows to add allowed IP addresses for the internal API.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pw_api_admin_settings'),
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'pw_api.admin.inc',
+  );
+  return $items;
+}
+
+function pw_api_views_pre_view(&$view, &$display_id, &$args) {
+  if ($view->name == 'pw_api_internal_profile') {
+    $allowed_ips = variable_get('pw_api_allowed_ips', array());
+    $current_ip_is_allowed = false;
+    $current_ip = $_SERVER['REMOTE_ADDR'];
+    foreach ($allowed_ips as $allowed_ip) {
+      if ($allowed_ip == $current_ip) {
+        $current_ip_is_allowed = true;
+        break;
+      } else if (substr_count($allowed_ip, '.*') > 0) {
+        $allowed_ip = str_replace('.*', '', $allowed_ip);
+        if (strpos($current_ip, $allowed_ip) === 0) {
+          $current_ip_is_allowed = true;
+          break;
+        }
+      }
+    }
+    if (!$current_ip_is_allowed)
+      $view->destroy();
   }
 }
