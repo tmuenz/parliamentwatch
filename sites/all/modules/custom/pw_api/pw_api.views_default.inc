@@ -3342,7 +3342,7 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['table'] = 'field_revision_field_user_constituency';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['field'] = 'field_user_constituency-revision_id';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['label'] = 'constituency';
-  $handler->display->display_options['fields']['field_user_constituency-revision_id']['alter']['text'] = 'uuid|[uuid_1]|[field_user_constituency-revision_id]';
+  $handler->display->display_options['fields']['field_user_constituency-revision_id']['alter']['text'] = '[field_user_constituency-revision_id] [uuid_1] [field_user_constituency-revision_id]';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_constituency-revision_id']['delta_offset'] = '0';
@@ -3356,6 +3356,14 @@ return FALSE; // default: output the result
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_user_political_roles-revision_id']['separator'] = '; ';
+  /* Field: Excluded | Copyright */
+  $handler->display->display_options['fields']['field_image_copyright']['id'] = 'field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['table'] = 'field_data_field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['field'] = 'field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['relationship'] = 'field_user_picture_fid';
+  $handler->display->display_options['fields']['field_image_copyright']['ui_name'] = 'Excluded | Copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_image_copyright']['element_label_colon'] = FALSE;
   /* Field: User (historical data): Profile picture */
   $handler->display->display_options['fields']['field_user_picture-revision_id']['id'] = 'field_user_picture-revision_id';
   $handler->display->display_options['fields']['field_user_picture-revision_id']['table'] = 'field_revision_field_user_picture';
@@ -3904,8 +3912,9 @@ echo $base_url;
     t('constituency_uuid'),
     t('constituency_number'),
     t('constituency'),
-    t('uuid|[uuid_1]|[field_user_constituency-revision_id]'),
+    t('[field_user_constituency-revision_id] [uuid_1] [field_user_constituency-revision_id]'),
     t('political_roles'),
+    t('copyright'),
     t('profile_picture'),
     t('copyright##[field_image_copyright]##[field_user_picture-revision_id]'),
     t('questions_get'),

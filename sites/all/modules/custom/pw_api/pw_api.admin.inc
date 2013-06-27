@@ -21,7 +21,7 @@ function pw_api_admin_settings() {
   foreach ($existing_assignment as $key => $ip) {
     $assignment_title = "";
     if ($ip == "")
-      $assignment_title = "new";
+      $assignment_title = "Enter allowed IP here";
     $form['group'.$count] = array(
       '#type' => 'fieldset', 
       '#title' => t($assignment_title), 
