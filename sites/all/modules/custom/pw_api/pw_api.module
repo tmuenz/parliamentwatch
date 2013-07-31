@@ -7,20 +7,20 @@ include_once('pw_api.features.inc');
 
 /**
  * Helper function used by hooks below for translating XML root elements.
- * 
+ *
  * Translates the root elements of the following API parts:
  * areacodes.xml:               taxonomy_term_datas -> areacodes, taxonomy_term_data -> areacode
  * constituencies.xml:          taxonomy_term_datas -> constituencies, taxonomy_term_data -> constituency
  * dialogues.xml:               nodes -> dialogues, node -> dialogue
  * parliaments.xml:             taxonomy_term_datas -> parliaments, taxonomy_term_data -> parliament
  * profile.xml || profiles.xml: user_revisions -> profiles, user_revision -> profile
- * 
+ *
  * This is hard-coded in here, because it is announced, that the root element
  * is changeable in the next version of the views export module. After the update,
  * this code will become obsolete.
- * 
+ *
  * @param String $input
- * @return String 
+ * @return String
  */
 function tag_replace($input) {
   // Get the current request path:
@@ -30,7 +30,7 @@ function tag_replace($input) {
   if ($count != 0) {
     $requestname = str_replace(".xml", "", $tmparr[$count - 1]);
   }
-  
+
   $replace_arr = array(); // IMPORTANT: The order within this array is crucial. Longer names have to be inserted _before_ shorter ones.
   switch ($requestname) {
     case "areacodes":
@@ -54,7 +54,7 @@ function tag_replace($input) {
       // do nothing
       break;
   }
-  
+
 //  $replace_arr = variable_get('pw_api_replacement', array());
   if (array_key_exists($input, $replace_arr)) {
     return $replace_arr[$input];
@@ -86,7 +86,7 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
       // Prevent double encoding of the ampersand. Look for the entities produced by check_plain().
       $content = preg_replace('/&(?!(amp|quot|#039|lt|gt);)/', '&amp;', $content);
 
-      
+
       // insert CDATA into dialogue fields:
       if ($field == "body" || $field == "comment_body" || $field == "field_dialogue_annotation_1") {
         $content = '<![CDATA['.str_replace(']]>', ']]]]><![CDATA[>', $content).']]>';
@@ -138,14 +138,14 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
       //   <example a="b">c</bsp>
       //   <example d="e">f</bsp>
       // </examples>
-      // 
+      //
       // Case 2: Multiple field without additional attributes
       // example: a||b =>
       // <examples>
       //   <example>a</bsp>
       //   <example>b</bsp>
       // </examples>
-      // 
+      //
       // Case 3: Single field with single subfields
       // example: name1**val1}{name2**val2 =>
       // <example>
@@ -182,22 +182,6 @@ function pw_api_preprocess_views_data_export_xml_body(&$vars) {
   }
 }
 
-/**
- * Implementation of hook_menu().
- */
-function pw_api_menu() {
-  $items['admin/config/pw_api/settings'] = array(
-      'title' => 'PW API settings',
-      'description' => 'Allows to add allowed IP addresses for the internal API.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('pw_api_admin_settings'),
-      'access arguments' => array('administer site configuration'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'pw_api.admin.inc',
-  );
-  return $items;
-}
-
 function pw_api_views_pre_view(&$view, &$display_id, &$args) {
   if ($view->name == 'pw_api_internal_profile') {
     $allowed_ips = variable_get('pw_api_allowed_ips', array());
@@ -218,4 +202,243 @@ function pw_api_views_pre_view(&$view, &$display_id, &$args) {
     if (!$current_ip_is_allowed)
       $view->destroy();
   }
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * @return array
+ */
+function pw_api_menu() {
+  $items = array();
+  $items['admin/config/pw_api/settings'] = array(
+      'title' => 'PW API settings',
+      'description' => 'Allows to add allowed IP addresses for the internal API.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pw_api_admin_settings'),
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'pw_api.admin.inc',
+  );
+  $items['api/%/%/profiles.xml'] = array(
+    'page callback' => 'pw_api_profiles',
+    'page arguments' => array(1, 2),
+    'access callback' => TRUE,
+    'delivery callback' => 'pw_api_deliver_xml',
+    'type' => MENU_CALLBACK,
+  );
+  $items['api/%/%/%/%/profiles.xml'] = array(
+    'page callback' => 'pw_api_profiles',
+    'page arguments' => array(1, 2, 3, 4),
+    'access callback' => TRUE,
+    'delivery callback' => 'pw_api_deliver_xml',
+    'type' => MENU_CALLBACK,
+  );
+  $items['api/%/%/profiles.json'] = array(
+    'page callback' => 'pw_api_profiles',
+    'page arguments' => array(1, 2),
+    'access callback' => TRUE,
+    'delivery callback' => 'pw_api_deliver_json',
+    'type' => MENU_CALLBACK,
+  );
+  $items['api/%/%/%/%/profiles.json'] = array(
+    'page callback' => 'pw_api_profiles',
+    'page arguments' => array(1, 2, 3, 4),
+    'access callback' => TRUE,
+    'delivery callback' => 'pw_api_deliver_json',
+    'type' => MENU_CALLBACK,
+  );
+  $items['api/%/%/profiles.csv'] = array(
+    'page callback' => 'pw_api_profiles',
+    'page arguments' => array(1, 2),
+    'access callback' => TRUE,
+    'delivery callback' => 'pw_api_deliver_csv',
+    'type' => MENU_CALLBACK,
+  );
+  $items['api/%/%/%/%/profiles.csv'] = array(
+    'page callback' => 'pw_api_profiles',
+    'page arguments' => array(1, 2, 3, 4),
+    'access callback' => TRUE,
+    'delivery callback' => 'pw_api_deliver_csv',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Delivery callback; returns XML.
+ *
+ * @param array $page_result
+ */
+function pw_api_deliver_xml($page_result) {
+  drupal_add_http_header('Content-type', 'text/xml; charset=utf8');
+
+  if (is_int($page_result)) {
+    switch ($page_result) {
+      case MENU_NOT_FOUND:
+        drupal_add_http_header('Status', '404 Not Found');
+        break;
+    }
+  }
+  else {
+    $writer = new XmlWriter();
+    $writer->openUri('php://output');
+    $writer->setIndent(TRUE);
+    $writer->setIndentString('    ');
+    $writer->startDocument('1.0', 'UTF-8');
+    $writer->startElement('profiles');
+    foreach ($page_result as $item) {
+      $writer->startElement('profile');
+      $writer->writeElement('name', $item['name']);
+      $writer->writeElement('uuid', $item['uuid']);
+      $writer->writeElement('first_name', $item['first_name']);
+      $writer->writeElement('last_name', $item['last_name']);
+      $writer->writeElement('party', $item['party']);
+      $writer->startElement('constituency');
+      $writer->writeElement('uuid', $item['constituency']['uuid']);
+      $writer->writeElement('name', $item['constituency']['name']);
+      $writer->writeElement('number', $item['constituency']['number']);
+      $writer->endElement();
+      $writer->endElement();
+    }
+    $writer->endElement();
+    $writer->flush();
+  }
+}
+
+/**
+ * Delivery callback; returns JSON.
+ *
+ * @param array $page_result
+ */
+function pw_api_deliver_json($page_result) {
+  drupal_add_http_header('Content-Type', 'application/json');
+
+  if (is_int($page_result)) {
+    switch ($page_result) {
+      case MENU_NOT_FOUND:
+        drupal_add_http_header('Status', '404 Not Found');
+        break;
+    }
+  }
+  else {
+    print drupal_json_encode($page_result);
+  }
+}
+
+/**
+ * Delivery callback; returns CSV.
+ *
+ * @param array $page_result
+ */
+function pw_api_deliver_csv($page_result) {
+  drupal_add_http_header('Content-type', 'text/csv; charset=utf8');
+
+  if (is_int($page_result)) {
+    switch ($page_result) {
+      case MENU_NOT_FOUND:
+        drupal_add_http_header('Status', '404 Not Found');
+        break;
+    }
+  }
+  else {
+    $handle = fopen('php://output', 'w');
+    foreach ($page_result as $item) {
+      $fields = array(
+        $item['uuid'],
+        $item['name'],
+        $item['first_name'],
+        $item['last_name'],
+        $item['party'],
+        $item['constituency']['uuid'],
+        $item['constituency']['name'],
+        $item['constituency']['number'],
+      );
+      fputcsv($handle, $fields);
+    }
+  }
+}
+
+/**
+ * Page callback; returns selection of profiles based on given filters.
+ *
+ * Sets a custom cache ttl.
+ *
+ * @param string $parliament_filter
+ *
+ * @param string $parliament_argument
+ *
+ * @param string $filter
+ *
+ * @param string $argument
+ *
+ * @return array
+ *   The profiles as an associative array
+ */
+function pw_api_profiles($parliament_filter, $parliament_argument, $filter=NULL, $argument=NULL) {
+  $query = db_select('user_revision', 'ur');
+  $users_alias = $query->join('users', 'u', '%alias.vid = ur.vid');
+  $roles_alias = $query->join('users_roles', 'uro', '%alias.uid = ur.uid');
+  $user_fname_alias = $query->leftJoin('field_revision_field_user_fname', 'frfuf', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
+  $user_lname_alias = $query->leftJoin('field_revision_field_user_lname', 'frful', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
+  $user_party_alias = $query->leftJoin('field_revision_field_user_party', 'frfup', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
+  $user_constituency_alias = $query->leftJoin('field_revision_field_user_constituency', 'frfuc', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
+  $user_parliament_alias = $query->leftJoin('field_revision_field_user_parliament', 'frfupm', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
+  $term_party_alias = $query->join('taxonomy_term_data', 'p', "%alias.tid = $user_party_alias.field_user_party_tid");
+  $term_constituency_alias = $query->join('taxonomy_term_data', 'c', "%alias.tid = $user_constituency_alias.field_user_constituency_tid");
+  $term_parliament_alias = $query->join('taxonomy_term_data', 'pm', "%alias.tid = $user_parliament_alias.field_user_parliament_tid");
+  $constituency_number_alias = $query->join('field_data_field_constituency_nr', 'fdfcn', "%alias.entity_id = $user_constituency_alias.field_user_constituency_tid AND %alias.entity_type = 'taxonomy_term'");
+  $query->addField('ur', 'name', 'name');
+  $query->addField($users_alias, 'uuid');
+  $query->addField($user_fname_alias, 'field_user_fname_value', 'first_name');
+  $query->addField($user_lname_alias, 'field_user_lname_value', 'last_name');
+  $query->addField($term_party_alias, 'name', 'party');
+  $query->addField($term_constituency_alias, 'name', 'constituency_name');
+  $query->addField($term_constituency_alias, 'uuid', 'constituency_uuid');
+  $query->addField($constituency_number_alias, 'field_constituency_nr_value', 'constituency_number');
+  $query->where("$roles_alias.rid = :rid", array('rid' => 181527986))
+    ->orderBy("$users_alias.uuid", 'ASC')
+    ->orderBy('ur.vid', 'DESC' );
+
+  if ($parliament_filter == 'parliament') {
+    $query->where("$term_parliament_alias.name = :p_name", array(':p_name' => $parliament_argument));
+  }
+  elseif ($parliament_filter == 'parliament-by-uuid') {
+    $query->where("$term_parliament_alias.uuid = :p_uuid", array(':p_uuid' => $parliament_argument));
+  }
+  else {
+    return MENU_NOT_FOUND;
+  }
+
+  switch ($filter) {
+    case 'constituency':
+      $query->where("$term_constituency_alias.name = :c_name", array(':c_name' => $argument));
+      break;
+    case 'constituency-by-uuid':
+      $query->where("$term_constituency_alias.uuid = :c_uuid", array(':c_uuid' => $argument));
+      break;
+//    default:
+//      return MENU_NOT_FOUND;
+  }
+
+  $profiles = array();
+
+  foreach ($query->execute() as $row) {
+    $profiles[] = array(
+      'name' => $row->name,
+      'first_name' => $row->first_name,
+      'last_name' => $row->last_name,
+      'uuid' => $row->uuid,
+      'party' => $row->party,
+      'constituency' => array(
+        'uuid' => $row->constituency_uuid,
+        'name' => $row->constituency_name,
+        'number' => $row->constituency_number,
+      ),
+    );
+  }
+
+  drupal_add_http_header('Cache-Control', 'public, max-age=86400');
+
+  return $profiles;
 }
