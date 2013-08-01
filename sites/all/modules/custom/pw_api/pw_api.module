@@ -379,15 +379,18 @@ function pw_api_profiles($parliament_filter, $parliament_argument, $filter=NULL,
   $query = db_select('user_revision', 'ur');
   $users_alias = $query->join('users', 'u', '%alias.vid = ur.vid');
   $roles_alias = $query->join('users_roles', 'uro', '%alias.uid = ur.uid');
-  $user_fname_alias = $query->leftJoin('field_revision_field_user_fname', 'frfuf', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
-  $user_lname_alias = $query->leftJoin('field_revision_field_user_lname', 'frful', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
-  $user_party_alias = $query->leftJoin('field_revision_field_user_party', 'frfup', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
-  $user_constituency_alias = $query->leftJoin('field_revision_field_user_constituency', 'frfuc', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
-  $user_parliament_alias = $query->leftJoin('field_revision_field_user_parliament', 'frfupm', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'");
+  
+  $user_fname_alias = $query->leftJoin('field_revision_field_user_fname', 'frfuf', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.language='und'"); // choose only one language, otherwise this user will be displayed more than once
+  $user_lname_alias = $query->leftJoin('field_revision_field_user_lname', 'frful', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.language='und'"); // dito
+  $user_party_alias = $query->leftJoin('field_revision_field_user_party', 'frfup', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.delta=0"); // we assume that a user is only in one party
+  $user_constituency_alias = $query->leftJoin('field_revision_field_user_constituency', 'frfuc', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.delta=0"); // we assume that a user is in only one constituency
+  $user_parliament_alias = $query->leftJoin('field_revision_field_user_parliament', 'frfupm', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.delta=0"); // we assume that a user is in only one parliament
+  
   $term_party_alias = $query->join('taxonomy_term_data', 'p', "%alias.tid = $user_party_alias.field_user_party_tid");
   $term_constituency_alias = $query->join('taxonomy_term_data', 'c', "%alias.tid = $user_constituency_alias.field_user_constituency_tid");
   $term_parliament_alias = $query->join('taxonomy_term_data', 'pm', "%alias.tid = $user_parliament_alias.field_user_parliament_tid");
   $constituency_number_alias = $query->join('field_data_field_constituency_nr', 'fdfcn', "%alias.entity_id = $user_constituency_alias.field_user_constituency_tid AND %alias.entity_type = 'taxonomy_term'");
+  
   $query->addField('ur', 'name', 'name');
   $query->addField($users_alias, 'uuid');
   $query->addField($user_fname_alias, 'field_user_fname_value', 'first_name');
@@ -417,12 +420,20 @@ function pw_api_profiles($parliament_filter, $parliament_argument, $filter=NULL,
     case 'constituency-by-uuid':
       $query->where("$term_constituency_alias.uuid = :c_uuid", array(':c_uuid' => $argument));
       break;
-//    default:
-//      return MENU_NOT_FOUND;
+    case 'areacode':
+    case 'areacode-by-uuid':
+      $user_constituency_areacodes_alias = $query->join('field_revision_field_constituency_area_codes', 'frfcac', "%alias.revision_id = $user_constituency_alias.field_user_constituency_tid");
+      $term_areacodes_alias = $query->join('taxonomy_term_data', 'pl', "%alias.tid = $user_constituency_areacodes_alias.field_constituency_area_codes_tid");
+      if ($filter == "areacode-by-uuid") {
+        $query->where("$term_areacodes_alias.uuid = :a_uuid", array(':a_uuid' => $argument));
+      } else {
+        $query->where("$term_areacodes_alias.name = :a_name", array(':a_name' => $argument));
+      }
+      break;
   }
 
   $profiles = array();
-
+  
   foreach ($query->execute() as $row) {
     $profiles[] = array(
       'name' => $row->name,
