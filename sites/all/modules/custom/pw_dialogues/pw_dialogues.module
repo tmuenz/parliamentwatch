@@ -111,6 +111,7 @@ function pw_dialogues_cron() {
       foreach (array($comment_query, $node_query) as $query) {
         if (isset($query['answer'])) {
          $edit['field_user_answers_give'][LANGUAGE_NONE][0]['value'] += intval($query['answer']);
+
         }
         if (isset($query['question'])) {
           $edit['field_user_questions_get'][LANGUAGE_NONE][0]['value'] += intval($query['question']);
