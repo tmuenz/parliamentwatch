@@ -2417,7 +2417,7 @@ function profiles_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_user_picture_copyright',
       'field_permissions' => array(
-        'type' => '0',
+        'type' => '2',
       ),
       'foreign keys' => array(
         'format' => array(
@@ -2507,7 +2507,7 @@ function profiles_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'size' => '255',
         ),
         'type' => 'text_textfield',
         'weight' => '2',

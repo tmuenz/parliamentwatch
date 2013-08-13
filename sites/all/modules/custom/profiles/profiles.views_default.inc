@@ -2281,6 +2281,25 @@ if($record->value == 0){
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = 'Elit dignissim pulvinar placerat eros, arcu porta, integer lorem hac cursus etiam in nascetur aliquet mus? Cum augue! Facilisis amet ridiculus urna rhoncus porta, pulvinar turpis lacus magnis nec in risus est nisi mid aliquam risus, aenean nunc tristique, enim dictumst quis egestas amet duis. Duis mid pellentesque sagittis amet, phasellus pulvinar?';
   $handler->display->display_options['header']['area']['format'] = 'managed_content';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: User revision: Benutzer */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'user_revision';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  /* Relationship: Benutzer (historical data): Constituency (field_user_constituency) */
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['id'] = 'field_user_constituency_tid';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['table'] = 'field_revision_field_user_constituency';
+  $handler->display->display_options['relationships']['field_user_constituency_tid']['field'] = 'field_user_constituency_tid';
+  /* Relationship: Taxonomie-Begriff: Benutzer using Constituency */
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['id'] = 'reverse_field_user_constituency_user';
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['field'] = 'reverse_field_user_constituency_user';
+  $handler->display->display_options['relationships']['reverse_field_user_constituency_user']['relationship'] = 'field_user_constituency_tid';
+  /* Relationship: Taxonomie-Begriff: Übergeordneter Begriff */
+  $handler->display->display_options['relationships']['parent']['id'] = 'parent';
+  $handler->display->display_options['relationships']['parent']['table'] = 'taxonomy_term_hierarchy';
+  $handler->display->display_options['relationships']['parent']['field'] = 'parent';
+  $handler->display->display_options['relationships']['parent']['relationship'] = 'field_user_constituency_tid';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Feld: Benutzer: First Name */
   $handler->display->display_options['fields']['field_user_fname']['id'] = 'field_user_fname';
@@ -2784,6 +2803,26 @@ if($record->value == 0){
   $handler->display->display_options['filters']['field_user_valid_value']['expose']['operator'] = 'field_user_valid_value_op';
   $handler->display->display_options['filters']['field_user_valid_value']['expose']['identifier'] = 'field_user_valid_value';
   $handler->display->display_options['filters']['field_user_valid_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    181527986 => 0,
+    51622513 => 0,
+    185431326 => 0,
+    140336230 => 0,
+    237793809 => 0,
+  );
+  /* Filter criterion: Taxonomie-Begriff: Übergeordneter Begriff */
+  $handler->display->display_options['filters']['parent']['id'] = 'parent';
+  $handler->display->display_options['filters']['parent']['table'] = 'taxonomy_term_hierarchy';
+  $handler->display->display_options['filters']['parent']['field'] = 'parent';
+  $handler->display->display_options['filters']['parent']['relationship'] = 'parent';
+  $handler->display->display_options['filters']['parent']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['parent']['expose']['operator_id'] = 'parent_op';
+  $handler->display->display_options['filters']['parent']['expose']['label'] = 'Übergeordneter Begriff';
+  $handler->display->display_options['filters']['parent']['expose']['operator'] = 'parent_op';
+  $handler->display->display_options['filters']['parent']['expose']['identifier'] = 'parent';
+  $handler->display->display_options['filters']['parent']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     3 => 0,

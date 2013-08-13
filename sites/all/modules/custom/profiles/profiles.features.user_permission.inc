@@ -10,16 +10,6 @@
 function profiles_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create field_profile_node_connector.
-  $permissions['create field_profile_node_connector'] = array(
-    'name' => 'create field_profile_node_connector',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: create field_user_about.
   $permissions['create field_user_about'] = array(
     'name' => 'create field_user_about',
@@ -65,16 +55,6 @@ function profiles_user_default_permissions() {
   // Exported permission: create field_user_commitee.
   $permissions['create field_user_commitee'] = array(
     'name' => 'create field_user_commitee',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: create field_user_first_letter_lname.
-  $permissions['create field_user_first_letter_lname'] = array(
-    'name' => 'create field_user_first_letter_lname',
     'roles' => array(
       0 => 'administrator',
       1 => 'anonymous user',
@@ -165,6 +145,16 @@ function profiles_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: create field_user_picture_copyright.
+  $permissions['create field_user_picture_copyright'] = array(
+    'name' => 'create field_user_picture_copyright',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create field_user_political_goals.
   $permissions['create field_user_political_goals'] = array(
     'name' => 'create field_user_political_goals',
@@ -245,16 +235,6 @@ function profiles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: edit field_profile_node_connector.
-  $permissions['edit field_profile_node_connector'] = array(
-    'name' => 'edit field_profile_node_connector',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit field_user_about.
   $permissions['edit field_user_about'] = array(
     'name' => 'edit field_user_about',
@@ -298,16 +278,6 @@ function profiles_user_default_permissions() {
   // Exported permission: edit field_user_commitee.
   $permissions['edit field_user_commitee'] = array(
     'name' => 'edit field_user_commitee',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit field_user_first_letter_lname.
-  $permissions['edit field_user_first_letter_lname'] = array(
-    'name' => 'edit field_user_first_letter_lname',
     'roles' => array(
       0 => 'Content Manager',
       1 => 'administrator',
@@ -445,16 +415,6 @@ function profiles_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_profile_node_connector.
-  $permissions['edit own field_profile_node_connector'] = array(
-    'name' => 'edit own field_profile_node_connector',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit own field_user_about.
   $permissions['edit own field_user_about'] = array(
     'name' => 'edit own field_user_about',
@@ -504,16 +464,6 @@ function profiles_user_default_permissions() {
       0 => 'Content Manager',
       1 => 'Premium User',
       2 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_user_first_letter_lname.
-  $permissions['edit own field_user_first_letter_lname'] = array(
-    'name' => 'edit own field_user_first_letter_lname',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -601,6 +551,16 @@ function profiles_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own field_user_picture_copyright.
+  $permissions['edit own field_user_picture_copyright'] = array(
+    'name' => 'edit own field_user_picture_copyright',
+    'roles' => array(
+      0 => 'Content Manager',
+      1 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own field_user_political_goals.
   $permissions['edit own field_user_political_goals'] = array(
     'name' => 'edit own field_user_political_goals',
@@ -683,16 +643,6 @@ function profiles_user_default_permissions() {
     'module' => 'filter',
   );
 
-  // Exported permission: view field_profile_node_connector.
-  $permissions['view field_profile_node_connector'] = array(
-    'name' => 'view field_profile_node_connector',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view field_user_about.
   $permissions['view field_user_about'] = array(
     'name' => 'view field_user_about',
@@ -764,16 +714,6 @@ function profiles_user_default_permissions() {
       4 => 'Premium User',
       5 => 'administrator',
       6 => 'anonymous user',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view field_user_first_letter_lname.
-  $permissions['view field_user_first_letter_lname'] = array(
-    'name' => 'view field_user_first_letter_lname',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -898,6 +838,21 @@ function profiles_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view field_user_picture_copyright.
+  $permissions['view field_user_picture_copyright'] = array(
+    'name' => 'view field_user_picture_copyright',
+    'roles' => array(
+      0 => 'Candidate',
+      1 => 'Content Manager',
+      2 => 'Deputy',
+      3 => 'Politician',
+      4 => 'Premium User',
+      5 => 'administrator',
+      6 => 'anonymous user',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view field_user_political_goals.
   $permissions['view field_user_political_goals'] = array(
     'name' => 'view field_user_political_goals',
@@ -978,16 +933,6 @@ function profiles_user_default_permissions() {
     'module' => 'file_entity',
   );
 
-  // Exported permission: view own field_profile_node_connector.
-  $permissions['view own field_profile_node_connector'] = array(
-    'name' => 'view own field_profile_node_connector',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view own field_user_about.
   $permissions['view own field_user_about'] = array(
     'name' => 'view own field_user_about',
@@ -1038,16 +983,6 @@ function profiles_user_default_permissions() {
       0 => 'Content Manager',
       1 => 'Premium User',
       2 => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_user_first_letter_lname.
-  $permissions['view own field_user_first_letter_lname'] = array(
-    'name' => 'view own field_user_first_letter_lname',
-    'roles' => array(
-      0 => 'Content Manager',
-      1 => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -1131,6 +1066,17 @@ function profiles_user_default_permissions() {
   // Exported permission: view own field_user_picture.
   $permissions['view own field_user_picture'] = array(
     'name' => 'view own field_user_picture',
+    'roles' => array(
+      0 => 'Content Manager',
+      1 => 'Premium User',
+      2 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_user_picture_copyright.
+  $permissions['view own field_user_picture_copyright'] = array(
+    'name' => 'view own field_user_picture_copyright',
     'roles' => array(
       0 => 'Content Manager',
       1 => 'Premium User',
