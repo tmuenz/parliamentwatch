@@ -377,7 +377,7 @@ function pw_api_deliver_csv($page_result) {
  */
 function pw_api_profiles($parliament_filter, $parliament_argument, $filter=NULL, $argument=NULL) {
   $query = db_select('user_revision', 'ur');
-  $users_alias = $query->join('users', 'u', '%alias.vid = ur.vid');
+  $users_alias = $query->join('users', 'u', '%alias.uid = ur.uid');
   $roles_alias = $query->join('users_roles', 'uro', '%alias.uid = ur.uid');
   
   $user_fname_alias = $query->leftJoin('field_revision_field_user_fname', 'frfuf', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.language='und'"); // choose only one language, otherwise this user will be displayed more than once
