@@ -17,7 +17,7 @@ class StateTermMigration extends BasicMigrateState {
     $query = Database::getConnection('default', 'parlamentwatch')
       ->select('legacy_constituency', 'c');
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
-    $query->fields('c', array('state'));
+    $query->fields('c', array('id', 'state'));
 
     // Gets only migration terms for the current site
     switch(variable_get('site_name')){
@@ -66,32 +66,12 @@ class StateTermMigration extends BasicMigrateState {
                     ), MigrateDestinationTerm::getKeySchema()
     );
 
-    // Adds new taxonomy term 'state'
-    $this->destination = new MigrateDestinationTerm('state');
-
-    // Placeholder for emptry description
-    $lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing '
-          . 'elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore '
-          . 'magna aliquyam erat, sed diam voluptua. At vero eos et accusam et '
-          . 'justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea '
-          . 'takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum '
-          . 'dolor sit amet, consetetur sadipscing elitr, sed diam nonumy '
-          . 'eirmod tempor invidunt ut labore et dolore magna aliquyam erat, '
-          . 'sed diam voluptua. At vero eos et accusam et justo duo dolores et '
-          . 'ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est '
-          . 'Lorem ipsum dolor sit amet.';
-
-    // Maps the state term fields
-    $this->addFieldMapping('name', 'state');
-    $this->addFieldMapping('description')->defaultValue($lorem);
-
-    // @TODOTUDUsdfkhj
     // Adds new taxonomy term 'constituency'
-    //$this->destination = new MigrateDestinationTerm('constituency');
+    $this->destination = new MigrateDestinationTerm('constituency');
 
     // Maps the constituency term fields
-    //$this->addFieldMapping('name', 'state');
-    //$this->addFieldMapping('description')->defaultValue($lorem);
+    $this->addFieldMapping('name', 'state');
+    $this->addFieldMapping('description')->defaultValue($lorem);
   }
 
   public function prepareRow($r) {
