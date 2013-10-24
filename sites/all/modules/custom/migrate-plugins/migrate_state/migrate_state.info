@@ -1,0 +1,12 @@
+name = "Migrate State"
+description = "Migrate State"
+package = "Development"
+
+dependencies[] = migrate
+
+files[] = migrate_state.module
+files[] = migrate_state.inc
+
+version = "7.x-1.0-20131024"
+core = "7.x"
+project = "migrate_state"

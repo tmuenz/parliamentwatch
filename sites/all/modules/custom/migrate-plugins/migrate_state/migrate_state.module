@@ -1,0 +1,25 @@
+<?php
+
+/*
+ * Implements hook_migrate_api(), setting the API level to 2, for
+ * state migration classes to be recognized by the Migrate module.
+ */
+function migrate_state_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'migrations' => array(
+      'StateTerm' => array(
+        'class_name' => 'StateTermMigration',
+        'group_name' => 'state',
+      ),
+    ),
+  );
+  return $api;
+}
+
+/**
+ * Implements hook_update_projects_alter().
+ */
+function migrate_state_update_projects_alter(&$projects) {
+  unset($projects['migrate_state']);
+}

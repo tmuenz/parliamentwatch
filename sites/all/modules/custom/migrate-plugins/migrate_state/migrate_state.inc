@@ -1,26 +1,23 @@
 <?php
 
-abstract class BasicMigrateConstituency extends Migration {
+abstract class BasicMigrateState extends Migration {
   public function __construct() {
     parent::__construct();
   }
 }
 
-class ConstituencyTermMigration extends BasicMigrateConstituency {
+class StateTermMigration extends BasicMigrateState {
   public function __construct() {
     parent::__construct();
 
-    // Setting up dependencies, migrate parliaments & states first
+    // Setting up dependencies, migrate parliaments first
     $this->dependencies = array('ParliamentTerm');
-    $this->dependencies = array('StateTerm');
 
     // Sets up database connection and query
     $query = Database::getConnection('default', 'parlamentwatch')
       ->select('legacy_constituency', 'c');
     $query->join('legacy_projects', 'p', 'c.cmd = p.cmd');
-    $query->fields('c', array('id', 'constituency', 'constituency_nr',
-                              'area_codes', 'state'));
-    $query->fields('p', array('parliament'));
+    $query->fields('c', array('state'));
 
     // Gets only migration terms for the current site
     switch(variable_get('site_name')){
@@ -57,6 +54,9 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
         break;
     }
 
+    // We only need the states once.
+    $query->groupBy('c.state');
+
     // Starts the migration based on the created query
     $this->source = new MigrateSourceSQL($query);
     $this->map = new MigrateSQLMap($this->machineName, array(
@@ -66,8 +66,8 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
                     ), MigrateDestinationTerm::getKeySchema()
     );
 
-    // Adds new taxonomy term 'constituency'
-    $this->destination = new MigrateDestinationTerm('constituency');
+    // Adds new taxonomy term 'state'
+    $this->destination = new MigrateDestinationTerm('state');
 
     // Placeholder for emptry description
     $lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing '
@@ -81,38 +81,27 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
           . 'ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est '
           . 'Lorem ipsum dolor sit amet.';
 
-    // Maps the constituency term fields
-    $this->addFieldMapping('name', 'constituency');
+    // Maps the state term fields
+    $this->addFieldMapping('name', 'state');
     $this->addFieldMapping('description')->defaultValue($lorem);
-    $this->addFieldMapping('field_constituency_nr', 'constituency_nr');
 
-    // Connects constituency term with parliament term
-    $this->addFieldMapping('field_parliament', 'parliament');
+    // @TODOTUDUsdfkhj
+    // Adds new taxonomy term 'constituency'
+    //$this->destination = new MigrateDestinationTerm('constituency');
 
-    // Connects constituency term with area codes, creates it if not exists
-    $this->addFieldMapping('field_constituency_area_codes', 'area_codes')
-      ->separator(',')->arguments(array('create_term' => TRUE));
-
-    // Connects constituency term with federal states, creates it if not exists
-    $this->addFieldMapping('field_constituency_state', 'state')
-      ->arguments(array('create_term' => TRUE));
-
-    // Connects constituency term with federal states, creates it if not exists
-    /******************* @TODO testing & checking data structure *************/
-    /* try out stuff like: if parent.empty? */
-    //$this->addFieldMapping('parent', 'state')
-      //->arguments(array('source_type' => 'name')); //, 'create_term' => TRUE))
-      //->sourceMigration($this->machineName);
+    // Maps the constituency term fields
+    //$this->addFieldMapping('name', 'state');
+    //$this->addFieldMapping('description')->defaultValue($lorem);
   }
 
   public function prepareRow($r) {
-    if (empty($r->constituency)) {
+    if (empty($r->state)) {
 
-      // Skip empty constituency terms
+      // Skip empty state terms
       return FALSE;
     } else {
 
-      // Create constituency term
+      // Create state term
       return TRUE;
     }
   }
