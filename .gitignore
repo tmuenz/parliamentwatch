@@ -12,3 +12,7 @@ sites/*/settings*.php
 sites/*/files
 sites/*/private
 sites/sites.php
+
+# Ignore migrate tests (security relevant)
+sites/all/libraries/migrate-tests/
+sites/all/libraries/migrate-tests/*
