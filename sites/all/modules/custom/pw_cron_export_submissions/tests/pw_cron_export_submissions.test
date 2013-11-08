@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file 
+ * Contains tests for the Pw cron export submissions module.
+ */
+
+/**
+ * Test case.
+ */
+class Pw_cron_export_submissionsTestCase extends DrupalWebTestCase {
+
+  /**
+   * Implements getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('Pw cron export submissions tests'),
+      'description' => t('TODO: write me.'),
+      'group' => t('Pw cron export submissions'),
+    );
+  }
+
+  /**
+   * Implements setUp().
+   */
+  function setUp() {
+    // Call the parent with an array of modules to enable for the test.
+    parent::setUp(array('pw_cron_export_submissions'));
+
+    // TODO: perform additional setup tasks here if required.
+  }
+
+  /**
+   * Test the module's functionality.
+   */
+  function testTodoChangeThisName() {
+    // TODO: write test!
+  }
+
+}

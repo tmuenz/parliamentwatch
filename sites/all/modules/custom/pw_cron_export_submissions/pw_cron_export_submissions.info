@@ -1,0 +1,4 @@
+name = PW Cron Export Submissions for CiviCRM
+description = exports webform submissions for CiviCRM import
+core = 7.x
+files[] = tests/pw_cron_export_submissions.test

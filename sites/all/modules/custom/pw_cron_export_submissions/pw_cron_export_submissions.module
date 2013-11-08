@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file pw_cron_export_submissions.module
+ * exports webform submissions for CiviCRM import
+ */
+
+/**
+ * Implements hook_cron()..
+ */
+function pw_cron_export_submissions_cron() {
+
+  // Short-running operation example, not using a queue:
+  $expires = variable_get('pw_cron_export_last_run', REQUEST_TIME);
+  variable_set('pw_cron_export_last_run', REQUEST_TIME);
+
+	$test = webform_get_submissions(10967);
+	drupal_set_message(var_dump($test));
+
+	return;
+
+  // Long-running operation example, leveraging a queue:
+  // Fetch feeds from other sites.
+  $result = db_query('SELECT * FROM {aggregator_feed} WHERE checked + refresh < :time AND refresh <> :never', array(
+    ':time' => REQUEST_TIME,
+    ':never' => AGGREGATOR_CLEAR_NEVER,
+  ));
+  $queue = DrupalQueue::get('aggregator_feeds');
+  foreach ($result as $feed) {
+    $queue->createItem($feed);
+  }
+}
