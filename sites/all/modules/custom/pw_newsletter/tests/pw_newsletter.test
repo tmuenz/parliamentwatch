@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file 
+ * Contains tests for the PW Newsletter module.
+ */
+
+/**
+ * Test case.
+ */
+class PwNewsletterTestCase extends DrupalWebTestCase {
+
+  /**
+   * Implements getInfo().
+   */
+  public static function getInfo() {
+    return array(
+      'name' => t('PW Newsletter tests'),
+      'description' => t('TODO: write me.'),
+      'group' => t('PW Newsletter'),
+    );
+  }
+
+  /**
+   * Implements setUp().
+   */
+  function setUp() {
+    // Call the parent with an array of modules to enable for the test.
+    parent::setUp(array('pw_newsletter'));
+
+    // TODO: perform additional setup tasks here if required.
+  }
+
+  /**
+   * Test the module's functionality.
+   */
+  function testTodoChangeThisName() {
+    // TODO: write test!
+  }
+
+}

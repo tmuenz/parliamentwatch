@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @file pw_newsletter.module
+ * + helper module to subscribe users via webform to newsletter
+ */
+
+define('PW_NEWSLETTER_WEBFORM_NID', 13510);
+
+/**
+ * Implements hook_menu().
+ */
+function pw_newsletter_menu() {
+  $items = array();
+  
+  $items['newsletter/subscribe'] = array(
+    'title' => 'Newsletter Subscription',
+    'access arguments' => array('access content'),
+    'delivery callback' => 'subscribe_to_newsletter',
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  return $items;
+}
+
+function subscribe_to_newsletter(){
+	drupal_add_http_header('Content-type', 'text/html; charset=utf8');
+	
+	// check if email address is submitted via get parameter
+	$email = false;
+	if(isset($_GET['email'])){
+		$email = $_GET['email'];
+	}
+	
+	// validate email address
+	if(valid_email_address($email)){
+
+		// load webform module
+		module_load_include('inc', 'webform', 'includes/webform.submissions');
+
+		// load webform submissions
+		$webform_submissions = webform_get_submissions(PW_NEWSLETTER_WEBFORM_NID);
+
+		// check if address is still on temporary list
+		$is_in_list = false;
+		foreach($webform_submissions as $newsletter_submission){
+			if($newsletter_submission->data[1]['value'][0] == $email){
+				$is_in_list = true;
+			}
+		}
+
+		// if already in list print this
+		if($is_in_list){
+			print 'already_in_list';
+		}
+		else{
+
+			// submit as webform
+			$node = node_load(PW_NEWSLETTER_WEBFORM_NID);
+			$data = array(
+				1 => array('value' => array($email)),
+			);
+			$submission = (object) array(
+				'nid' => $node->nid,
+				'submitted' => REQUEST_TIME,
+				'remote_addr' => ip_address(),
+				'is_draft' => FALSE,
+				'data' => $data,
+			);
+
+			webform_submission_insert($node, $submission);
+			webform_submission_send_mail($node, $submission);
+			print 'success';
+		}
+	}
+	else{
+		print 'email_error';
+	}
+}
+

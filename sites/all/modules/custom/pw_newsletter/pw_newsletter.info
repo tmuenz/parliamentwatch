@@ -1,0 +1,5 @@
+name = PW Newsletter
+description = helper module for newsletter subscription via webform
+core = 7.x
+files[] = tests/pw_newsletter.install
+files[] = tests/pw_newsletter.test
