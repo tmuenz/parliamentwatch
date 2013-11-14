@@ -1,4 +1,4 @@
 Pw cron export submissions
 ==========================
 
-TODO: write some documentation.
+Exportiert derzeit nur die Newsletter Submissions. Die NID der Webform muss noch statitisch über eine Konstante gesetzt werden.

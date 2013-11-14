@@ -2,31 +2,42 @@
 
 /**
  * @file pw_cron_export_submissions.module
- * exports webform submissions for CiviCRM import
+ * cron to write submissions to a json file which will be regularly imported by an external civicrm cron
  */
+
+define('PW_NEWSLETTER_WEBFORM_NID', 13510);
 
 /**
  * Implements hook_cron()..
  */
 function pw_cron_export_submissions_cron() {
 
-  // Short-running operation example, not using a queue:
-  $expires = variable_get('pw_cron_export_last_run', REQUEST_TIME);
-  variable_set('pw_cron_export_last_run', REQUEST_TIME);
+	// load webform module
+	module_load_include('inc', 'webform', 'includes/webform.submissions');
 
-	$test = webform_get_submissions(10967);
-	drupal_set_message(var_dump($test));
+	// load webform submissions
+	$webform_submissions = webform_get_submissions(PW_NEWSLETTER_WEBFORM_NID);
 
-	return;
+	// submissions to leave on website
+	$buffer_submissions = 5;
 
-  // Long-running operation example, leveraging a queue:
-  // Fetch feeds from other sites.
-  $result = db_query('SELECT * FROM {aggregator_feed} WHERE checked + refresh < :time AND refresh <> :never', array(
-    ':time' => REQUEST_TIME,
-    ':never' => AGGREGATOR_CLEAR_NEVER,
-  ));
-  $queue = DrupalQueue::get('aggregator_feeds');
-  foreach ($result as $feed) {
-    $queue->createItem($feed);
-  }
+	// write submissions to json file and delete them from website
+	$num_submissions = sizeof($webform_submissions);
+	if($num_submissions - $buffer_submissions > 0){
+
+		// prepare and save file
+		$submissions2json = array_slice($webform_submissions, 0, sizeof($webform_submissions) - $buffer_submissions);
+		$file_json_content = json_encode($submissions2json);
+		$file_json_path = 'webforms/submissions/newsletter/submissions_'.time().'.json';
+		$file_json = file_save_data($file_json_content, 'private://'.$file_json_path, FILE_EXISTS_RENAME);
+
+		// on success delete submissions from website
+		if($file_json){
+			foreach($submissions2json as $submission){
+				$node = node_load($submission->nid);
+				webform_submission_delete($node, $submission);
+			}
+		}
+	}
+
 }
