@@ -5,7 +5,7 @@
  * + helper module to subscribe users via webform to newsletter
  */
 
-define('PW_NEWSLETTER_WEBFORM_NID', 13510);
+define('PW_NEWSLETTER_WEBFORM_NID', 10968);
 
 /**
  * Implements hook_menu().

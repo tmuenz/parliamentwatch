@@ -1,5 +1,12 @@
 name = PW Newsletter
-description = helper module for newsletter subscription via webform
+description = newsletter subscription form & helper functions
 core = 7.x
+package = Features
+version = 7.x-1.0-20131115
+project = pw_newsletter
+dependencies[] = pw_basics
+dependencies[] = webform
+features[features_api][] = api:1
+features[webform][] = newsletter_subscription
 files[] = tests/pw_newsletter.install
 files[] = tests/pw_newsletter.test
