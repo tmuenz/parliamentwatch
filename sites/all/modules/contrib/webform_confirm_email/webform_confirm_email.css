@@ -1,0 +1,13 @@
+/**
+ * @file
+ *
+ * @author    Matthias Weiss <matthias@more-onion.com>
+ * @copyright Copyright (c) 2013 copyright
+ */
+
+#edit-lifetime-container .form-item-days,
+#edit-lifetime-container .form-item-hours,
+#edit-lifetime-container .form-item-minutes {
+  float: left;
+  margin-right: 3%;
+}
