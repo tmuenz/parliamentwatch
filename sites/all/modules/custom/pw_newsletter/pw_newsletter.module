@@ -5,8 +5,6 @@
  * + helper module to subscribe users via webform to newsletter
  */
 
-define('PW_NEWSLETTER_WEBFORM_NID', 10968);
-
 /**
  * Implements hook_menu().
  */
@@ -24,7 +22,7 @@ function pw_newsletter_menu() {
 
 function subscribe_to_newsletter(){
 	drupal_add_http_header('Content-type', 'text/html; charset=utf8');
-	
+
 	// check if email address is submitted via get parameter
 	$email = false;
 	if(isset($_GET['email'])){
@@ -34,42 +32,52 @@ function subscribe_to_newsletter(){
 	// validate email address
 	if(valid_email_address($email)){
 
-		// load webform module
-		module_load_include('inc', 'webform', 'includes/webform.submissions');
+		// retrieve webform node
+		$internal_path = drupal_lookup_path('source', 'newsletter-subscription');
 
-		// load webform submissions
-		$webform_submissions = webform_get_submissions(PW_NEWSLETTER_WEBFORM_NID);
+		if($internal_path && $node = menu_get_object('node', 1, $internal_path)){
 
-		// check if address is still on temporary list
-		$is_in_list = false;
-		foreach($webform_submissions as $newsletter_submission){
-			if($newsletter_submission->data[1]['value'][0] == $email){
-				$is_in_list = true;
+			// load webform module
+			module_load_include('inc', 'webform', 'includes/webform.submissions');
+		
+			// load webform submissions
+			$webform_submissions = webform_get_submissions($node->nid);
+
+			// check if address is already or still on temporary list
+			$is_in_list = false;
+			foreach($webform_submissions as $newsletter_submission){
+				if($newsletter_submission->data[1]['value'][0] == $email){
+					$is_in_list = true;
+				}
+			}
+
+			// if already in list print this
+			if($is_in_list){
+				print 'already_in_list';
+			}
+			else{
+
+				// submit as webform
+				$data = array(
+					1 => array('value' => array($email)),
+					2 => array('value' => array('subscribed')),
+				);
+				$submission = (object) array(
+					'nid' => $node->nid,
+					'submitted' => REQUEST_TIME,
+					'remote_addr' => ip_address(),
+					'is_draft' => FALSE,
+					'data' => $data,
+				);
+
+				webform_submission_insert($node, $submission);
+				webform_submission_send_mail($node, $submission);
+				print 'success';
 			}
 		}
-
-		// if already in list print this
-		if($is_in_list){
-			print 'already_in_list';
-		}
 		else{
-
-			// submit as webform
-			$node = node_load(PW_NEWSLETTER_WEBFORM_NID);
-			$data = array(
-				1 => array('value' => array($email)),
-			);
-			$submission = (object) array(
-				'nid' => $node->nid,
-				'submitted' => REQUEST_TIME,
-				'remote_addr' => ip_address(),
-				'is_draft' => FALSE,
-				'data' => $data,
-			);
-
-			webform_submission_insert($node, $submission);
-			webform_submission_send_mail($node, $submission);
-			print 'success';
+			print 'unknown_error';
+			watchdog('pw_newsletter', 'Could not load node from path "newsletter-subscription"', NULL, WATCHDOG_ALERT);
 		}
 	}
 	else{
