@@ -1,15 +1,16 @@
 <?php
 /**
  * @file
- * pw_newsletter.features.webform.inc
+ * pw_newsletter.features.uuid_node.inc
  */
 
 /**
- * Implements hook_webform_defaults().
+ * Implements hook_uuid_features_default_content().
  */
-function pw_newsletter_webform_defaults() {
-$webforms = array();
-  $webforms['newsletter_subscription'] = array(
+function pw_newsletter_uuid_features_default_content() {
+  $nodes = array();
+
+  $nodes[] = array(
   'uid' => '1',
   'title' => 'Newsletter Subscription',
   'log' => '',
@@ -21,27 +22,12 @@ $webforms = array();
   'ds_switch' => '',
   'type' => 'webform',
   'language' => 'und',
+  'created' => '1384869211',
   'tnid' => '0',
   'translate' => '0',
   'uuid' => '02763736-dab6-4d2f-9e45-87da9211d495',
   'revision_uid' => '1',
-  'body' => array(
-    'und' => array(
-      0 => array(
-        'value' => '<p>
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</p>
-',
-        'summary' => '',
-        'format' => 'managed_content',
-        'safe_value' => '<p>
-	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-</p>
-',
-        'safe_summary' => '',
-      ),
-    ),
-  ),
+  'body' => array(),
   'rdf_mapping' => array(
     'rdftype' => array(
       0 => 'sioc:Item',
@@ -114,6 +100,7 @@ $webforms = array();
     ),
   ),
   'webform' => array(
+    'nid' => '10972',
     'confirmation' => '<p>
 	<span style="line-height: 1.5;">Thank you!</span>
 </p>
@@ -144,8 +131,10 @@ $webforms = array();
       1 => '2',
     ),
     'emails' => array(
-      0 => array(
-        'email' => 'newsletter_subscription-e_mail',
+      1 => array(
+        'nid' => '10972',
+        'eid' => '1',
+        'email' => '1',
         'subject' => 'Confirmation',
         'from_name' => 'default',
         'from_address' => 'default',
@@ -153,16 +142,13 @@ $webforms = array();
         'excluded_components' => array(),
         'html' => '0',
         'attachments' => '0',
-        'components_machine_names' => array(
-          'email' => TRUE,
-          'subject' => FALSE,
-          'from_name' => FALSE,
-          'from_address' => FALSE,
-        ),
       ),
     ),
     'components' => array(
-      'newsletter_subscription-e_mail' => array(
+      1 => array(
+        'nid' => 10972,
+        'cid' => '1',
+        'pid' => '0',
         'form_key' => 'e_mail',
         'name' => 'E-Mail',
         'type' => 'email',
@@ -184,7 +170,10 @@ $webforms = array();
         'machine_name' => 'newsletter_subscription-e_mail',
         'page_num' => 1,
       ),
-      'newsletter_subscription__status' => array(
+      2 => array(
+        'nid' => 10972,
+        'cid' => '2',
+        'pid' => '0',
         'form_key' => 'status',
         'name' => 'status',
         'type' => 'hidden',
@@ -216,6 +205,7 @@ $webforms = array();
   'picture' => '0',
   'data' => 'a:5:{s:16:"ckeditor_default";s:1:"t";s:20:"ckeditor_show_toggle";s:1:"t";s:14:"ckeditor_width";s:4:"100%";s:13:"ckeditor_lang";s:2:"en";s:18:"ckeditor_auto_lang";s:1:"t";}',
   'weight_weight' => FALSE,
+  'date' => '2013-11-19 14:53:31 +0100',
 );
-return $webforms;
+  return $nodes;
 }
