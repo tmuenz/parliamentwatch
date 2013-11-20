@@ -25,6 +25,12 @@ function pw_cron_export_submissions_cron() {
 
 		if(sizeof($submissions_confirmed) > 0){
 
+			// query db to retrieve webform components
+			$sql = "SELECT wf_comp.cid, wf_comp.form_key
+					FROM webform_component wf_comp
+					WHERE wf_comp.nid = :nid";
+			$form_fields = db_query($sql, array(':nid' => $node->nid))->fetchAllAssoc('cid');
+
 			// load webform module
 			module_load_include('inc', 'webform', 'includes/webform.submissions');
 
@@ -32,6 +38,14 @@ function pw_cron_export_submissions_cron() {
 			$submissions = webform_get_submissions(array('sid' => $submissions_confirmed));
 
 			// write submissions to json file
+			foreach($submissions as $submission){
+
+				foreach($form_fields as $cid => $component){
+					$form_key = 'export_'.$component->form_key;
+					$submission->$form_key = $submission->data[$cid]['value'][0];
+				}
+
+			}
 			$file_json_content = json_encode($submissions);
 			$file_json_path = 'webforms/submissions/newsletter/submissions_'.time().'.json';
 			$file_json = file_save_data($file_json_content, 'private://'.$file_json_path, FILE_EXISTS_RENAME);
