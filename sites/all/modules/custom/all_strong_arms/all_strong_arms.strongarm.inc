@@ -547,6 +547,7 @@ webform-client-form-18
 webform-client-form-25
 webform-client-form-6313
 webform-client-form-6578
+webform-client-form-10342
 views-exposed-form-profile-list-solr-block-2
 views-exposed-form-profile-list-solr-constituency
 custom-search-blocks-form-1
@@ -1069,6 +1070,8 @@ search-old';
     'group_user_polls_archive|user|user|default' => FALSE,
     'group_blog_searchitem|node|blogpost|search_result' => FALSE,
     'group_blog_searchmeta|node|blogpost|search_result' => TRUE,
+    'group_petition_content|node|pw_petition|form' => FALSE,
+    'group_petition_recipient|node|pw_petition|form' => FALSE,
   );
   $export['default_field_group'] = $strongarm;
 
@@ -1815,13 +1818,6 @@ search-old';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'page_compression';
-  $strongarm->value = 1;
-  $export['page_compression'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_pattern';
   $strongarm->value = '[node:title]';
   $export['pathauto_node_pattern'] = $strongarm;
@@ -2016,7 +2012,7 @@ search-old';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sharethis_node_option';
-  $strongarm->value = 'blogpost,press_article,press_release,pw_poll,0,0,0,0,0,0,0,0';
+  $strongarm->value = 'blogpost,pw_petition,press_article,press_release,pw_poll,0,0,0,0,0,0,0,0,0,0,0';
   $export['sharethis_node_option'] = $strongarm;
 
   $strongarm = new stdClass();

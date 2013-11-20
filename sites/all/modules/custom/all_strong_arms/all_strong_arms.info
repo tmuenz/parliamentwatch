@@ -210,7 +210,6 @@ features[variable][] = node_submitted_slider_item
 features[variable][] = node_submitted_webform
 features[variable][] = overlap_cjk
 features[variable][] = page_cache_maximum_age
-features[variable][] = page_compression
 features[variable][] = path_breadcrumbs_decode_entities
 features[variable][] = path_breadcrumbs_delimiter
 features[variable][] = path_breadcrumbs_hide_single_breadcrumb

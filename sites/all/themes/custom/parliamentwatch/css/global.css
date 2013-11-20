@@ -253,6 +253,9 @@ a.light,
 a.medium,
 .medium a {
     color: #666;
+}
+a.medium,
+.medium a {
     font-weight: normal;
 }
 .dark,
@@ -354,6 +357,15 @@ a.link-pdf {
 a.link-participate {
     padding-left: 22px;
     background-position: -26px -2138px;
+}
+.link-sign a,
+a.link-sign {
+    padding-left: 20px;
+    background-position: -247px -2422px;
+}
+.link-sign a:hover,
+a.link-sign:hover {
+    background-position: -207px -2462px;
 }
 .views-more-link,
 .read-more a,
@@ -2035,6 +2047,8 @@ a.link-pdf,
 .link-pdf a,
 .link-participate a,
 a.link-participate,
+.link-sign a,
+a.link-sign,
 .link-video a,
 a.link-video,
 .link-sound a,

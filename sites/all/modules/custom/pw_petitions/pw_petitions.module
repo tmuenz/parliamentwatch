@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PW Petitions feature.
+ */
+
+include_once 'pw_petitions.features.inc';
