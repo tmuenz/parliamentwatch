@@ -115,11 +115,17 @@ $webforms = array();
   ),
   'webform' => array(
     'confirmation' => '<p>
-	Please check your e-mail account
+	<span style="line-height: 1.5;">Thank you!</span>
+</p>
+<p>
+	Please check your e-mail account and click on the confirmation link in the e-mail we just send you.
+</p>
+<p>
+	<span style="line-height: 1.5;">back to </span><a href="http://www.abgeordnetenwatch.de" style="line-height: 1.5;" target="_top">homepage</a><span style="line-height: 1.5;">.</span>
 </p>
 ',
     'confirmation_format' => 'managed_content',
-    'redirect_url' => '<confirmation>',
+    'redirect_url' => '<none>',
     'status' => '1',
     'block' => '0',
     'teaser' => '0',
@@ -165,7 +171,7 @@ $webforms = array();
           'title_display' => 'before',
           'private' => 0,
           'disabled' => 0,
-          'unique' => 0,
+          'unique' => 1,
           'conditional_operator' => '=',
           'width' => '',
           'description' => '',
