@@ -143,7 +143,7 @@ function subsite_conf_default_fe_block_settings() {
         'weight' => '0',
       ),
     ),
-    'title' => 'Tags in the blog',
+    'title' => 'Tags',
     'visibility' => '0',
   );
 

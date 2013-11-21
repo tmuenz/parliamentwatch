@@ -39,7 +39,7 @@ function subsite_conf_strongarm() {
     'domain' => '',
     'prefix' => 'de',
     'weight' => '0',
-    'javascript' => 'ufovbLID3tbrtuAzU9OO574pfITWiJBkH1u4lxBxB1s',
+    'javascript' => 'OEvKVsk5J-3Ps3pqAlwOD6mj4prh8De6m7obfJEtpkI',
   );
   $export['language_default'] = $strongarm;
 
@@ -206,7 +206,7 @@ function subsite_conf_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'piwik_js_scope';
-  $strongarm->value = 'footer';
+  $strongarm->value = 'header';
   $export['piwik_js_scope'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -252,6 +252,9 @@ user/*/*';
     181527986 => '181527986',
     3 => 0,
     51622513 => 0,
+    185431326 => 0,
+    140336230 => 0,
+    237793809 => 0,
   );
   $export['piwik_roles'] = $strongarm;
 
