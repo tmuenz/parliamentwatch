@@ -1493,6 +1493,7 @@ form:after {
 }
 .text-field,
 textarea,
+.form-textarea-wrapper textarea,
 select,
 input[type="date"],
 input[type="datetime"],
@@ -1630,13 +1631,10 @@ span.form-submit.big {
     display: inline-block;
 }
 .webform-component-checkboxes {
-    position: relative;
-    padding-left: 20px;
     margin-bottom: 0.8em;
 }
-.webform-component-checkboxes .form-checkboxes {
-    position: absolute;
-    left: 0;
+input.form-checkbox {
+    margin-top: -4px;
 }
 form .webform-component-checkboxes .description {
     margin-top: 0;

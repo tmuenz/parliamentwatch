@@ -186,7 +186,7 @@ function pw_petitions_views_default_views() {
   $handler->display->display_options['fields']['comment_count']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['comment_count']['alter']['path'] = 'node/[nid]#comments';
   $handler->display->display_options['fields']['comment_count']['alter']['absolute'] = TRUE;
-  $handler->display->display_options['fields']['comment_count']['alter']['alt'] = 'go to comments';
+  $handler->display->display_options['fields']['comment_count']['alter']['alt'] = 'zu den Kommentaren';
   $handler->display->display_options['fields']['comment_count']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['comment_count']['element_wrapper_type'] = 'div';
   $handler->display->display_options['fields']['comment_count']['element_wrapper_class'] = 'comment-count clear-both';
