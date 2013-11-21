@@ -71,7 +71,7 @@ function pw_election_programmes_views_default_views() {
   $handler->display->display_options['fields']['field_teaser_image']['alter']['path'] = '[field_election_programme_open_1]';
   $handler->display->display_options['fields']['field_teaser_image']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_teaser_image']['alter']['external'] = TRUE;
-  $handler->display->display_options['fields']['field_teaser_image']['alter']['alt'] = 'open election programme';
+  $handler->display->display_options['fields']['field_teaser_image']['alter']['alt'] = 'Wahlprogramm öffnen';
   $handler->display->display_options['fields']['field_teaser_image']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_teaser_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_teaser_image']['element_wrapper_type'] = 'div';
