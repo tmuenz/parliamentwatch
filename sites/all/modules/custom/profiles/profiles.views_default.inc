@@ -2164,8 +2164,8 @@ if($record->value == 0){
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['pager']['options']['tags']['first'] = 'first';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = 'prev';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'next';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'zurück';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'weiter';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'last';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -3041,8 +3041,8 @@ if($record->value == 0){
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['tags']['first'] = 'first';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = 'prev';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'next';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'zurück';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'weiter';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'last';
   $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['defaults']['header'] = FALSE;
@@ -3073,7 +3073,7 @@ if($record->value == 0){
   $handler->display->display_options['sorts']['created_2']['relationship'] = 'cid';
   $handler->display->display_options['sorts']['created_2']['order'] = 'DESC';
   $handler->display->display_options['sorts']['created_2']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['created_2']['expose']['label'] = 'Post date';
+  $handler->display->display_options['sorts']['created_2']['expose']['label'] = 'Datum';
   /* Sort criterion: Inhalt: Anzahl an Kommentaren */
   $handler->display->display_options['sorts']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['sorts']['comment_count']['table'] = 'node_comment_statistics';
@@ -3147,7 +3147,7 @@ if($record->value == 0){
   $handler->display->display_options['filters']['comment_count']['operator'] = 'not empty';
   $handler->display->display_options['filters']['comment_count']['exposed'] = TRUE;
   $handler->display->display_options['filters']['comment_count']['expose']['operator_id'] = 'comment_count_op';
-  $handler->display->display_options['filters']['comment_count']['expose']['label'] = 'Comment count';
+  $handler->display->display_options['filters']['comment_count']['expose']['label'] = 'Anzahl an Kommentaren';
   $handler->display->display_options['filters']['comment_count']['expose']['operator'] = 'comment_count_op';
   $handler->display->display_options['filters']['comment_count']['expose']['identifier'] = 'comment_count';
   $handler->display->display_options['filters']['comment_count']['expose']['remember_roles'] = array(
@@ -3538,7 +3538,7 @@ if($record->value == 0){
   $handler->display->display_options['filters']['comment_count']['field'] = 'comment_count';
   $handler->display->display_options['filters']['comment_count']['exposed'] = TRUE;
   $handler->display->display_options['filters']['comment_count']['expose']['operator_id'] = 'comment_count_op';
-  $handler->display->display_options['filters']['comment_count']['expose']['label'] = 'Comment count';
+  $handler->display->display_options['filters']['comment_count']['expose']['label'] = 'Anzahl an Kommentaren';
   $handler->display->display_options['filters']['comment_count']['expose']['operator'] = 'comment_count_op';
   $handler->display->display_options['filters']['comment_count']['expose']['identifier'] = 'comment_count';
   $handler->display->display_options['filters']['comment_count']['is_grouped'] = TRUE;
@@ -3571,7 +3571,7 @@ if($record->value == 0){
   $handler->display->display_options['filters']['created']['field'] = 'created';
   $handler->display->display_options['filters']['created']['exposed'] = TRUE;
   $handler->display->display_options['filters']['created']['expose']['operator_id'] = 'created_op';
-  $handler->display->display_options['filters']['created']['expose']['label'] = 'Post date';
+  $handler->display->display_options['filters']['created']['expose']['label'] = 'Datum';
   $handler->display->display_options['filters']['created']['expose']['operator'] = 'created_op';
   $handler->display->display_options['filters']['created']['expose']['identifier'] = 'created';
   $handler->display->display_options['displays'] = array(
