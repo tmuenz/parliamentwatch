@@ -118,7 +118,7 @@ function pw_petitions_ds_custom_fields_info() {
     'node' => 'node',
   );
   $ds_field->properties = array(
-    'block' => 'webform|client-block-10342',
+    'block' => 'webform|client-block-10344',
     'block_render' => '1',
   );
   $export['pw_petition_form'] = $ds_field;

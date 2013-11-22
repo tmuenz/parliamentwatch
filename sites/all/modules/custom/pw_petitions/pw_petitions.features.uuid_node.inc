@@ -38,6 +38,27 @@ function pw_petitions_uuid_features_default_content() {
         'safe_summary' => '',
       ),
     ),
+    'und' => array(
+      0 => array(
+        'value' => '<p>
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</p>
+',
+        'summary' => '<p>
+	Dies ist die Zusammenfassung
+</p>
+',
+        'format' => 'managed_content',
+        'safe_value' => '<p>
+	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+</p>
+',
+        'safe_summary' => '<p>
+	Dies ist die Zusammenfassung
+</p>
+',
+      ),
+    ),
   ),
   'rdf_mapping' => array(
     'rdftype' => array(
@@ -95,23 +116,11 @@ function pw_petitions_uuid_features_default_content() {
     ),
   ),
   'translations' => array(
-    'original' => 'de',
-    'data' => array(
-      'de' => array(
-        'entity_type' => 'node',
-        'entity_id' => '10342',
-        'language' => 'de',
-        'source' => '',
-        'uid' => '1',
-        'status' => '1',
-        'translate' => '0',
-        'created' => '1383506307',
-        'changed' => '1384806379',
-      ),
-    ),
+    'original' => NULL,
+    'data' => array(),
   ),
   'webform' => array(
-    'nid' => '10342',
+    'nid' => '10344',
     'confirmation' => 'Vielen Dank für Ihre Zeichnung.',
     'confirmation_format' => 'managed_content',
     'redirect_url' => '<none>',
@@ -134,7 +143,7 @@ function pw_petitions_uuid_features_default_content() {
     'emails' => array(),
     'components' => array(
       3 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '3',
         'pid' => '0',
         'form_key' => 'prefix',
@@ -163,7 +172,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       1 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '1',
         'pid' => '0',
         'form_key' => 'first_name',
@@ -190,7 +199,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       4 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '4',
         'pid' => '0',
         'form_key' => 'last_name',
@@ -217,7 +226,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       2 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '2',
         'pid' => '0',
         'form_key' => 'e_mail',
@@ -241,7 +250,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       5 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '5',
         'pid' => '0',
         'form_key' => 'phone',
@@ -268,7 +277,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       6 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '6',
         'pid' => '0',
         'form_key' => 'street',
@@ -295,7 +304,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       7 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '7',
         'pid' => '0',
         'form_key' => 'zipcode',
@@ -322,7 +331,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       8 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '8',
         'pid' => '0',
         'form_key' => 'city',
@@ -349,7 +358,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       9 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '9',
         'pid' => '0',
         'form_key' => 'country',
@@ -377,7 +386,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       10 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '10',
         'pid' => '0',
         'form_key' => 'reason',
@@ -402,7 +411,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       11 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '11',
         'pid' => '0',
         'form_key' => 'make_subscription_public',
@@ -430,7 +439,7 @@ mr|Herr',
         'page_num' => 1,
       ),
       12 => array(
-        'nid' => 10342,
+        'nid' => 10344,
         'cid' => '12',
         'pid' => '0',
         'form_key' => 'keep_me_updated',
@@ -455,25 +464,6 @@ mr|Herr',
         ),
         'mandatory' => '0',
         'weight' => '13',
-        'page_num' => 1,
-      ),
-      13 => array(
-        'nid' => 10342,
-        'cid' => '13',
-        'pid' => '0',
-        'form_key' => 'datenschutzerklaerung',
-        'name' => 'Datenschutzerklärung',
-        'type' => 'markup',
-        'value' => 'Ihr Name und Ihre Kontaktdaten (sofern angegeben) werden von abgeordnetenwatch.de gespeichert und ggf. dem Adressaten der Petition überreicht. abgeordnetenwatch.de nutzt Ihre Daten nur mit Ihrer Einwilligung zu weiteren Zwecken. Sie haben die Möglichkeit, die bei abgeordnetenwatch.de über Sie gespeicherten Daten zu erfragen, korrigieren oder löschen zu lassen. Die ins Formular eingegebenen Daten werden verschlüsselt übertragen.<br/><a href="/datenschutzerklaerung?width=600&height=400" class="colorbox-node read-more">Datenschutzerklärung lesen</a>',
-        'extra' => array(
-          'conditional_operator' => '=',
-          'format' => 'managed_content',
-          'private' => 0,
-          'conditional_component' => '',
-          'conditional_values' => '',
-        ),
-        'mandatory' => '0',
-        'weight' => '14',
         'page_num' => 1,
       ),
     ),
