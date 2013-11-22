@@ -5,39 +5,58 @@
  * cron to write submissions to a json file which will be regularly imported by an external civicrm cron
  */
 
-define('PW_NEWSLETTER_WEBFORM_NID', 13510);
 
 /**
  * Implements hook_cron()..
  */
 function pw_cron_export_submissions_cron() {
 
-	// load webform module
-	module_load_include('inc', 'webform', 'includes/webform.submissions');
+	// retrieve webform node for newsletter subscriptions
+	$internal_path = drupal_lookup_path('source', 'newsletter-subscription');
 
-	// load webform submissions
-	$webform_submissions = webform_get_submissions(PW_NEWSLETTER_WEBFORM_NID);
+	if($internal_path && $node = menu_get_object('node', 1, $internal_path)){
 
-	// submissions to leave on website
-	$buffer_submissions = 5;
+		// query db for subscribed & confirmed submissions
+		$sql = "SELECT wf_data.sid
+				FROM webform_submitted_data wf_data
+				LEFT OUTER JOIN webform_confirm_email_code wf_email_code ON wf_data.sid = wf_email_code.sid 
+				WHERE wf_data.nid = :nid AND wf_data.data = 'subscribed' AND wf_email_code.code IS NULL";
+		$submissions_confirmed = db_query($sql, array(':nid' => $node->nid))->fetchCol();
 
-	// write submissions to json file and delete them from website
-	$num_submissions = sizeof($webform_submissions);
-	if($num_submissions - $buffer_submissions > 0){
+		if(sizeof($submissions_confirmed) > 0){
 
-		// prepare and save file
-		$submissions2json = array_slice($webform_submissions, 0, sizeof($webform_submissions) - $buffer_submissions);
-		$file_json_content = json_encode($submissions2json);
-		$file_json_path = 'webforms/submissions/newsletter/submissions_'.time().'.json';
-		$file_json = file_save_data($file_json_content, 'private://'.$file_json_path, FILE_EXISTS_RENAME);
+			// query db to retrieve webform components
+			$sql = "SELECT wf_comp.cid, wf_comp.form_key
+					FROM webform_component wf_comp
+					WHERE wf_comp.nid = :nid";
+			$form_fields = db_query($sql, array(':nid' => $node->nid))->fetchAllAssoc('cid');
 
-		// on success delete submissions from website
-		if($file_json){
-			foreach($submissions2json as $submission){
-				$node = node_load($submission->nid);
-				webform_submission_delete($node, $submission);
+			// load webform module
+			module_load_include('inc', 'webform', 'includes/webform.submissions');
+
+			// load submissions
+			$submissions = webform_get_submissions(array('sid' => $submissions_confirmed));
+
+			// write submissions to json file
+			foreach($submissions as $submission){
+
+				foreach($form_fields as $cid => $component){
+					$form_key = 'export_'.$component->form_key;
+					$submission->$form_key = $submission->data[$cid]['value'][0];
+				}
+
+			}
+			$file_json_content = json_encode($submissions);
+			$file_json_path = 'webforms/submissions/newsletter/submissions_'.time().'.json';
+			$file_json = file_save_data($file_json_content, 'private://'.$file_json_path, FILE_EXISTS_RENAME);
+
+			// on success update submissions to status=exported
+			if($file_json){
+				foreach($submissions as $submission){
+					$submission->data[2]['value'][0] = 'exported';
+					webform_submission_update($node, $submission);
+				}
 			}
 		}
 	}
-
 }
