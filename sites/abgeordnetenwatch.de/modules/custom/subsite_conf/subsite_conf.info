@@ -80,4 +80,5 @@ features[variable][] = piwik_visibility_roles
 features[variable][] = site_default_country
 features[variable][] = site_mail
 features[variable][] = theme_default
+features[variable][] = webform_blocks
 features[variable_realm][] = language:de
