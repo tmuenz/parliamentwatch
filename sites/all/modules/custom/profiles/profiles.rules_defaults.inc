@@ -12,6 +12,7 @@ function profiles_default_rules_configuration() {
   $items['rules_submitting_question'] = entity_import('rules_config', '{ "rules_submitting_question" : {
       "LABEL" : "Submitting Question",
       "PLUGIN" : "reaction rule",
+      "ACTIVE" : false,
       "REQUIRES" : [ "webform_rules", "php", "rules" ],
       "ON" : [ "webform_rules_submit" ],
       "IF" : [
