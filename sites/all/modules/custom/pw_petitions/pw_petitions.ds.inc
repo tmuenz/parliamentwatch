@@ -22,7 +22,10 @@ function pw_petitions_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
       'ft' => array(
-        'func' => 'theme_ds_field_reset',
+        'func' => 'theme_ds_field_expert',
+        'ow' => TRUE,
+        'ow-el' => 'div',
+        'ow-cl' => 'pw-petition-form',
       ),
     ),
     'sharethis' => array(
@@ -59,10 +62,7 @@ function pw_petitions_ds_field_settings_info() {
     ),
     'field_blogpost_blogtags' => array(
       'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'icon-taxonomy',
+        'func' => 'theme_ds_field_reset',
       ),
     ),
     'field_teaser_image' => array(
@@ -71,6 +71,17 @@ function pw_petitions_ds_field_settings_info() {
         'ow' => TRUE,
         'ow-el' => 'div',
         'ow-cl' => 'file-image float-left push-bottom-s',
+      ),
+    ),
+    'field_petition_content' => array(
+      'ft' => array(
+        'func' => 'theme_ds_field_expert',
+        'ow' => TRUE,
+        'ow-el' => 'fieldset',
+        'ow-cl' => 'comment push-bottom-m',
+        'fis' => TRUE,
+        'fis-el' => 'div',
+        'fis-cl' => 'padding-m',
       ),
     ),
     'field_petition_recipient' => array(
@@ -152,8 +163,9 @@ function pw_petitions_ds_layout_settings_info() {
         5 => 'body',
         6 => 'field_petitions_required',
         7 => 'field_petition_signings',
-        8 => 'pw_petition_form',
-        9 => 'comments',
+        8 => 'field_petition_content',
+        9 => 'pw_petition_form',
+        10 => 'comments',
       ),
     ),
     'fields' => array(
@@ -165,6 +177,7 @@ function pw_petitions_ds_layout_settings_info() {
       'body' => 'ds_content',
       'field_petitions_required' => 'ds_content',
       'field_petition_signings' => 'ds_content',
+      'field_petition_content' => 'ds_content',
       'pw_petition_form' => 'ds_content',
       'comments' => 'ds_content',
     ),
