@@ -114,6 +114,9 @@ h4 {
 .boxed p:last-child {
     margin-bottom: 0;
 }
+.padding-m {
+    padding: 10px;
+}
 table.table th,
 table.table td {
     border: 1px solid #999;
@@ -1756,6 +1759,42 @@ form .webform-component-checkboxes .description {
 }
 #comment-form #edit-captcha-response.form-text {
     width: 180px;
+}
+
+
+/* /////////////////////////// petition form //////////////// */
+
+.pw-petition-form #edit-submitted-prefix {
+    width: 191px;
+}
+.pw-petition-form #webform-component-prefix label {
+    display: none;
+}
+.pw-petition-form input.form-text,
+.pw-petition-form select {
+    width: 423px;
+}
+.pw-petition-form #webform-component-zipcode,
+.pw-petition-form #webform-component-zipcode input {
+    width: 98px;
+    float: left;
+}
+.pw-petition-form #webform-component-zipcode {
+    margin-right: 10px;
+}
+.pw-petition-form #webform-component-city,
+.pw-petition-form #webform-component-city input {
+    width: 314px;
+    float: left;
+}
+.pw-petition-form #webform-component-country label {
+    display: none;
+}
+.pw-petition-form #webform-component-country {
+    clear: both;
+}
+.pw-petition-form #edit-submitted-reason {
+    height: 15em;
 }
 
 

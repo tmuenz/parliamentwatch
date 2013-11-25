@@ -145,9 +145,21 @@ function pw_petitions_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
-          'module' => 'i18n_taxonomy',
-          'settings' => array(),
-          'type' => 'i18n_taxonomy_term_reference_link',
+          'module' => 'textformatter',
+          'settings' => array(
+            'textformatter_class' => 'icon-taxonomy',
+            'textformatter_comma_and' => 0,
+            'textformatter_comma_full_stop' => 0,
+            'textformatter_comma_override' => 0,
+            'textformatter_comma_tag' => 'div',
+            'textformatter_contrib' => array(),
+            'textformatter_separator_custom' => '',
+            'textformatter_separator_custom_class' => 'textformatter-separator',
+            'textformatter_separator_custom_tag' => 'span',
+            'textformatter_term_plain' => 0,
+            'textformatter_type' => 'comma',
+          ),
+          'type' => 'textformatter_list',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -227,8 +239,9 @@ function pw_petitions_field_default_fields() {
         ),
         'full' => array(
           'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'text_default',
           'weight' => '8',
         ),
         'teaser' => array(
@@ -476,7 +489,7 @@ function pw_petitions_field_default_fields() {
         'max' => '',
         'min' => '',
         'prefix' => '',
-        'suffix' => ' people support this petition',
+        'suffix' => ' people support this petition| people support this petition',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
