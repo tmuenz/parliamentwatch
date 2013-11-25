@@ -56,6 +56,14 @@ function pw_petitions_views_default_views() {
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
   $handler->display->display_options['fields']['nid']['node_in_colorbox_width'] = '600';
   $handler->display->display_options['fields']['nid']['node_in_colorbox_height'] = '600';
+  /* Feld: Inhalt: Progress */
+  $handler->display->display_options['fields']['field_petition_progress']['id'] = 'field_petition_progress';
+  $handler->display->display_options['fields']['field_petition_progress']['table'] = 'field_data_field_petition_progress';
+  $handler->display->display_options['fields']['field_petition_progress']['field'] = 'field_petition_progress';
+  $handler->display->display_options['fields']['field_petition_progress']['label'] = '';
+  $handler->display->display_options['fields']['field_petition_progress']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_petition_progress']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_petition_progress']['type'] = 'computed_field_unsanitized';
   /* Feld: Inhalt: ShareThis Link */
   $handler->display->display_options['fields']['sharethis']['id'] = 'sharethis';
   $handler->display->display_options['fields']['sharethis']['table'] = 'node';
@@ -131,6 +139,17 @@ function pw_petitions_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
   );
+  /* Feld: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<div class="pw-petition-progress-wrapper"><div class="pw-petition-progress" style="width: <?php  print $data->_field_data[\'nid\'][\'entity\']->field_petition_progress[\'und\'][0][\'value\']; ?>%;"></div></div>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Feld: Inhalt: Required signings */
   $handler->display->display_options['fields']['field_petitions_required']['id'] = 'field_petitions_required';
   $handler->display->display_options['fields']['field_petitions_required']['table'] = 'field_data_field_petitions_required';
@@ -252,6 +271,54 @@ function pw_petitions_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
+
+  /* Display: Block Progress */
+  $handler = $view->new_display('block', 'Block Progress', 'block_2');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Feld: Inhalt: Progress */
+  $handler->display->display_options['fields']['field_petition_progress']['id'] = 'field_petition_progress';
+  $handler->display->display_options['fields']['field_petition_progress']['table'] = 'field_data_field_petition_progress';
+  $handler->display->display_options['fields']['field_petition_progress']['field'] = 'field_petition_progress';
+  $handler->display->display_options['fields']['field_petition_progress']['label'] = '';
+  $handler->display->display_options['fields']['field_petition_progress']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_petition_progress']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_petition_progress']['type'] = 'computed_field_unsanitized';
+  /* Feld: Global: PHP */
+  $handler->display->display_options['fields']['php']['id'] = 'php';
+  $handler->display->display_options['fields']['php']['table'] = 'views';
+  $handler->display->display_options['fields']['php']['field'] = 'php';
+  $handler->display->display_options['fields']['php']['label'] = '';
+  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['php']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['fields']['php']['php_output'] = '<div class="pw-petition-progress-wrapper"><div class="pw-petition-progress" style="width: <?php  print $data->_field_data[\'nid\'][\'entity\']->field_petition_progress[\'und\'][0][\'value\']; ?>%;"></div></div>';
+  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
+  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Inhalt: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Alle';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
   $export['pw_petitions'] = $view;
 
   return $export;

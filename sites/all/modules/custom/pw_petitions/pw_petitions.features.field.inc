@@ -242,7 +242,7 @@ function pw_petitions_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -302,6 +302,85 @@ function pw_petitions_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-pw_petition-field_petition_progress'.
+  $fields['node-pw_petition-field_petition_progress'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_petition_progress',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'computed_field',
+      'settings' => array(
+        'code' => '$required = $entity->field_petitions_required[LANGUAGE_NONE][0][\'value\'];
+$signings = $entity->field_petition_signings[LANGUAGE_NONE][0][\'value\'];
+$result = ($signings / $required) * 100;
+$entity_field[0][\'value\'] = $result;',
+        'database' => array(
+          'data_default' => '0',
+          'data_index' => 0,
+          'data_length' => '32',
+          'data_not_NULL' => 0,
+          'data_precision' => '10',
+          'data_scale' => 2,
+          'data_size' => 'small',
+          'data_type' => 'numeric',
+        ),
+        'display_format' => '$display_output = $entity_field_item[\'value\'];',
+        'store' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'computed',
+    ),
+    'field_instance' => array(
+      'bundle' => 'pw_petition',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'computed_field',
+          'settings' => array(),
+          'type' => 'computed_field_plain',
+          'weight' => 8,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_petition_progress',
+      'label' => 'Progress',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed',
+        'weight' => '7',
       ),
     ),
   );
@@ -471,7 +550,7 @@ function pw_petitions_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -549,7 +628,7 @@ function pw_petitions_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -635,7 +714,7 @@ function pw_petitions_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '29',
+          'weight' => '31',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -777,6 +856,7 @@ function pw_petitions_field_default_fields() {
   t('Body');
   t('Parliament');
   t('Petition content');
+  t('Progress');
   t('Recipient');
   t('Required signings');
   t('Signings');

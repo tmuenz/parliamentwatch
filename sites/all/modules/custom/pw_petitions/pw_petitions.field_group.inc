@@ -28,6 +28,7 @@ function pw_petitions_field_group_info() {
       2 => 'field_teaser_image',
       3 => 'field_petitions_required',
       4 => 'field_petition_signings',
+      5 => 'field_petition_progress',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -17,15 +17,12 @@ function pw_petitions_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'pw_petition';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'pw_petition_form' => array(
-      'weight' => '9',
+    'pw_petition_progress' => array(
+      'weight' => '6',
       'label' => 'hidden',
       'format' => 'default',
       'ft' => array(
-        'func' => 'theme_ds_field_expert',
-        'ow' => TRUE,
-        'ow-el' => 'div',
-        'ow-cl' => 'pw-petition-form',
+        'func' => 'theme_ds_field_reset',
       ),
     ),
     'sharethis' => array(
@@ -47,8 +44,19 @@ function pw_petitions_ds_field_settings_info() {
         'ow-cl' => 'comment-count push-bottom-m',
       ),
     ),
-    'comments' => array(
+    'pw_petition_form' => array(
       'weight' => '10',
+      'label' => 'hidden',
+      'format' => 'default',
+      'ft' => array(
+        'func' => 'theme_ds_field_expert',
+        'ow' => TRUE,
+        'ow-el' => 'div',
+        'ow-cl' => 'pw-petition-form',
+      ),
+    ),
+    'comments' => array(
+      'weight' => '11',
       'label' => 'above',
       'format' => 'default',
       'ft' => array(
@@ -77,11 +85,8 @@ function pw_petitions_ds_field_settings_info() {
       'ft' => array(
         'func' => 'theme_ds_field_expert',
         'ow' => TRUE,
-        'ow-el' => 'fieldset',
-        'ow-cl' => 'comment push-bottom-m',
-        'fis' => TRUE,
-        'fis-el' => 'div',
-        'fis-cl' => 'padding-m',
+        'ow-el' => 'blockquote',
+        'ow-cl' => '',
       ),
     ),
     'field_petition_recipient' => array(
@@ -134,6 +139,20 @@ function pw_petitions_ds_custom_fields_info() {
   );
   $export['pw_petition_form'] = $ds_field;
 
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
+  $ds_field->field = 'pw_petition_progress';
+  $ds_field->label = 'Petition Progress';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->properties = array(
+    'block' => 'views|pw_petitions-block_2',
+    'block_render' => '3',
+  );
+  $export['pw_petition_progress'] = $ds_field;
+
   return $export;
 }
 
@@ -161,11 +180,12 @@ function pw_petitions_ds_layout_settings_info() {
         3 => 'custom_comment_counter',
         4 => 'field_teaser_image',
         5 => 'body',
-        6 => 'field_petitions_required',
-        7 => 'field_petition_signings',
-        8 => 'field_petition_content',
-        9 => 'pw_petition_form',
-        10 => 'comments',
+        6 => 'pw_petition_progress',
+        7 => 'field_petitions_required',
+        8 => 'field_petition_signings',
+        9 => 'field_petition_content',
+        10 => 'pw_petition_form',
+        11 => 'comments',
       ),
     ),
     'fields' => array(
@@ -175,6 +195,7 @@ function pw_petitions_ds_layout_settings_info() {
       'custom_comment_counter' => 'ds_content',
       'field_teaser_image' => 'ds_content',
       'body' => 'ds_content',
+      'pw_petition_progress' => 'ds_content',
       'field_petitions_required' => 'ds_content',
       'field_petition_signings' => 'ds_content',
       'field_petition_content' => 'ds_content',
