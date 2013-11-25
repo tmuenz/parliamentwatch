@@ -547,7 +547,7 @@ webform-client-form-18
 webform-client-form-25
 webform-client-form-6313
 webform-client-form-6578
-webform-client-form-10342
+webform-client-form-10344
 views-exposed-form-profile-list-solr-block-2
 views-exposed-form-profile-list-solr-constituency
 custom-search-blocks-form-1
@@ -1486,9 +1486,25 @@ search-old';
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'colorbox' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+      ),
       'display' => array(
         'webform' => array(
           'default' => array(

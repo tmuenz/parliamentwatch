@@ -5,3 +5,55 @@
  */
 
 include_once 'pw_petitions.features.inc';
+
+function pw_petitions_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'webform_client_form_10344':
+      $form['#validate'][] = 'pw_petitions_validate_form';
+  }
+}
+
+function pw_petitions_validate_form($form_id, $form_values){
+
+  // load webform module
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+
+  // prepare
+  $webform_nid = $form_values['values']['details']['nid'];
+  $e_mail_value = $form_values['values']['submitted']['e_mail'];
+  $node_path_value = $form_values['values']['submitted']['node_path'];
+  foreach($form_values['webform']['component_tree']['children'] as $cid => $component){
+    switch($component['form_key']){
+      case 'e_mail':
+        $cid_e_mail = $cid;
+        break;
+      case 'node_path':
+        $cid_node_path = $cid;
+        break;
+      case 'newsletter_subscription':
+        $cid_newsletter_subscription = $cid;
+        break;
+    }
+  }
+
+  // load all previous submissions and
+  // check if current submission has not same node_path and e_mail value as previous submissions
+  $prev_submissions = webform_get_submissions($webform_nid);
+  foreach($prev_submissions as $prev_submission){
+
+    // compare node path
+	if($prev_submission->data[$cid_node_path]['value'][0] == $node_path_value){
+
+      // compare email 
+      if($prev_submission->data[$cid_e_mail]['value'][0] == $e_mail_value){
+        form_set_error('already_submitted_error', t('You already submitted this form.'));
+        // return false;
+      }
+    }
+  }
+
+  if($node = menu_get_object('node', 1, $node_path_value)){
+    $node->field_petition_signings['und'][0]['value']++;
+	node_save($node);
+  }
+}

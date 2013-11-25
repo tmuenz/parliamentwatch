@@ -116,12 +116,27 @@ function pw_petitions_uuid_features_default_content() {
     ),
   ),
   'translations' => array(
-    'original' => NULL,
-    'data' => array(),
+    'original' => 'de',
+    'data' => array(
+      'de' => array(
+        'entity_type' => 'node',
+        'entity_id' => '10344',
+        'language' => 'de',
+        'source' => '',
+        'uid' => '1',
+        'status' => '1',
+        'translate' => '0',
+        'created' => '1385378982',
+        'changed' => '1385378982',
+      ),
+    ),
   ),
   'webform' => array(
     'nid' => '10344',
-    'confirmation' => 'Vielen Dank für Ihre Zeichnung.',
+    'confirmation' => '<p>
+	Vielen Dank für Ihre Zeichnung!
+</p>
+',
     'confirmation_format' => 'managed_content',
     'redirect_url' => '<none>',
     'status' => '1',
@@ -140,7 +155,47 @@ function pw_petitions_uuid_features_default_content() {
       0 => '1',
       1 => '2',
     ),
-    'emails' => array(),
+    'emails' => array(
+      1 => array(
+        'nid' => '10344',
+        'eid' => '1',
+        'email' => '2',
+        'subject' => 'Vielen Dank für Ihre Zeichnung!',
+        'from_name' => 'default',
+        'from_address' => 'default',
+        'template' => 'Hallo %value[first_name] %value[last_name],
+
+vielen Dank, dass Sie die Petition unterstützen! Damit Ihre Unterschrift gezählt werden kann, klicken Sie bitte auf den folgenden Bestätigungslink:
+
+%confirm_url
+
+Gemeinsam werden wir erfolgreich sein!
+
+Beste Grüße aus Hamburg,
+Gregor Hackmack, Boris Hekele
+und das abgeordnetenwatch.de-Team
+
+Kontakt:
+info@abgeordnetenwatch.de
+Tel.: 040 - 317 69 10 - 26
+Fax: 040 - 317 69 10 - 28
+
+Immer auf dem Laufenden bleiben:
+
+im Blog: http://blog.abgeordnetenwatch.de/
+bei Twitter: http://www.twitter.com/a_watch
+bei Facebook: https://www.facebook.com/abgeordnetenwatch.de
+bei Google+: https://plus.google.com/+abgeordnetenwatch/posts
+Mittelweg 12
+20148 Hamburg
+www.abgeordnetenwatch.de',
+        'excluded_components' => array(
+          0 => '13',
+        ),
+        'html' => '0',
+        'attachments' => '0',
+      ),
+    ),
     'components' => array(
       3 => array(
         'nid' => 10344,
@@ -439,12 +494,40 @@ mr|Herr',
         'weight' => '12',
         'page_num' => 1,
       ),
+      14 => array(
+        'nid' => 10344,
+        'cid' => '14',
+        'pid' => '0',
+        'form_key' => 'newsletter_subscription',
+        'name' => 'Newsletter',
+        'type' => 'select',
+        'value' => '',
+        'extra' => array(
+          'items' => 'yes|Ja, ich möchte den abgeordnetenwatch.de-Newsletter per E-Mail erhalten. Der Newsletter kann jederzeit wieder abbestellt werden.',
+          'multiple' => 1,
+          'title_display' => 'none',
+          'private' => 0,
+          'aslist' => 0,
+          'optrand' => 0,
+          'conditional_operator' => '=',
+          'other_option' => NULL,
+          'other_text' => 'Other...',
+          'description' => '',
+          'custom_keys' => FALSE,
+          'options_source' => '',
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '0',
+        'weight' => '13',
+        'page_num' => 1,
+      ),
       12 => array(
         'nid' => 10344,
         'cid' => '12',
         'pid' => '0',
         'form_key' => 'keep_me_updated',
-        'name' => 'auf dem laufenden halten',
+        'name' => 'Auf dem Laufenden halten',
         'type' => 'select',
         'value' => '',
         'extra' => array(
@@ -464,7 +547,7 @@ mr|Herr',
           'conditional_values' => '',
         ),
         'mandatory' => '0',
-        'weight' => '13',
+        'weight' => '14',
         'page_num' => 1,
       ),
       13 => array(
@@ -484,7 +567,45 @@ mr|Herr',
           'conditional_values' => '',
         ),
         'mandatory' => '0',
-        'weight' => '14',
+        'weight' => '15',
+        'page_num' => 1,
+      ),
+      16 => array(
+        'nid' => 10344,
+        'cid' => '16',
+        'pid' => '0',
+        'form_key' => 'node_path',
+        'name' => 'Node Path',
+        'type' => 'hidden',
+        'value' => '%get[q]',
+        'extra' => array(
+          'hidden_type' => 'value',
+          'conditional_operator' => '=',
+          'private' => 0,
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '0',
+        'weight' => '16',
+        'page_num' => 1,
+      ),
+      15 => array(
+        'nid' => 10344,
+        'cid' => '15',
+        'pid' => '0',
+        'form_key' => 'status',
+        'name' => 'Status',
+        'type' => 'hidden',
+        'value' => 'subscribed',
+        'extra' => array(
+          'hidden_type' => 'value',
+          'conditional_operator' => '=',
+          'private' => 0,
+          'conditional_component' => '',
+          'conditional_values' => '',
+        ),
+        'mandatory' => '0',
+        'weight' => '17',
         'page_num' => 1,
       ),
     ),
