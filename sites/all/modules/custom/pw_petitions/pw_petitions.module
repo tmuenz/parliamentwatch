@@ -6,14 +6,27 @@
 
 include_once 'pw_petitions.features.inc';
 
+/**
+ * add additional handlers for petition webform
+ *  
+ */
 function pw_petitions_form_alter(&$form, &$form_state, $form_id) {
+
   switch ($form_id) {
     case 'webform_client_form_10344':
-      $form['#validate'][] = 'pw_petitions_validate_form';
+      $form['#validate'][] = 'pw_petitions_form_validate';
+      $form['#submit'][] = 'pw_petitions_form_submit';
   }
 }
 
-function pw_petitions_validate_form($form_id, $form_values){
+/**
+ * Validation for petition form
+ * 
+ * validates if user has never submitted this form under
+ * this node path for this petition.
+ *  
+ */
+function pw_petitions_form_validate($form_id, $form_values){
 
   // load webform module
   module_load_include('inc', 'webform', 'includes/webform.submissions');
@@ -37,7 +50,8 @@ function pw_petitions_validate_form($form_id, $form_values){
   }
 
   // load all previous submissions and
-  // check if current submission has not same node_path and e_mail value as previous submissions
+  // check if current submission has not same node_path 
+  // and e_mail value as previous submissions
   $prev_submissions = webform_get_submissions($webform_nid);
   foreach($prev_submissions as $prev_submission){
 
@@ -46,12 +60,22 @@ function pw_petitions_validate_form($form_id, $form_values){
 
       // compare email 
       if($prev_submission->data[$cid_e_mail]['value'][0] == $e_mail_value){
-        form_set_error('already_submitted_error', t('You already submitted this form.'));
-        // return false;
+        form_set_error("e_mail", t('Sorry, but you already signed this petition!'));
       }
     }
   }
+}
 
+/**
+ * Count signings
+ * 
+ * Set signings to +1 of form is submitted
+ *  
+ */
+function pw_petitions_form_submit(&$form, &$form_state){
+  // count +1 to signings
+  $node_path_value = $form_values['values']['submitted']['node_path'];
+  krumo($node_path_value);
   if($node = menu_get_object('node', 1, $node_path_value)){
     $node->field_petition_signings['und'][0]['value']++;
 	node_save($node);

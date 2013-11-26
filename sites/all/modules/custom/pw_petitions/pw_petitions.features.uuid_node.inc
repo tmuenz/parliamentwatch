@@ -133,9 +133,7 @@ function pw_petitions_uuid_features_default_content() {
   ),
   'webform' => array(
     'nid' => '10344',
-    'confirmation' => '<p>
-	Vielen Dank für Ihre Zeichnung!
-</p>
+    'confirmation' => 'Vielen Dank für Ihre Zeichnung!
 ',
     'confirmation_format' => 'managed_content',
     'redirect_url' => '<none>',
