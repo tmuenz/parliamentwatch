@@ -147,7 +147,7 @@ function pw_petitions_views_default_views() {
   $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['php']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<div class="pw-petition-progress-wrapper"><div class="pw-petition-progress" style="width: <?php  print $data->_field_data[\'nid\'][\'entity\']->field_petition_progress[\'und\'][0][\'value\']; ?>%;"></div></div>';
+  $handler->display->display_options['fields']['php']['php_output'] = '<div class="pw-petition-progress-wrapper float-left"><div class="pw-petition-progress" style="width: <?php  print $data->_field_data[\'nid\'][\'entity\']->field_petition_progress[\'und\'][0][\'value\']; ?>%;"></div></div>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Feld: Inhalt: Required signings */
@@ -155,8 +155,10 @@ function pw_petitions_views_default_views() {
   $handler->display->display_options['fields']['field_petitions_required']['table'] = 'field_data_field_petitions_required';
   $handler->display->display_options['fields']['field_petitions_required']['field'] = 'field_petitions_required';
   $handler->display->display_options['fields']['field_petitions_required']['label'] = 'Benötigte Unterschriften';
-  $handler->display->display_options['fields']['field_petitions_required']['element_wrapper_type'] = 'strong';
-  $handler->display->display_options['fields']['field_petitions_required']['element_wrapper_class'] = 'medium';
+  $handler->display->display_options['fields']['field_petitions_required']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['field_petitions_required']['element_class'] = 'medium';
+  $handler->display->display_options['fields']['field_petitions_required']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_petitions_required']['element_wrapper_class'] = 'clear-both';
   $handler->display->display_options['fields']['field_petitions_required']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_petitions_required']['settings'] = array(
     'thousand_separator' => '',
