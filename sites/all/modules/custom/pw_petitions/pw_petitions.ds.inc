@@ -100,9 +100,13 @@ function pw_petitions_ds_field_settings_info() {
     'field_petitions_required' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
+        'lb-el' => 'h4',
         'ow' => TRUE,
-        'ow-el' => 'strong',
-        'ow-cl' => 'medium',
+        'ow-el' => 'div',
+        'ow-cl' => 'medium clear-both',
+        'fis' => TRUE,
+        'fis-el' => 'strong',
+        'fis-cl' => '',
       ),
     ),
     'field_petition_signings' => array(
