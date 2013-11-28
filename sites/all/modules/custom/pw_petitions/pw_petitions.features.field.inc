@@ -322,7 +322,7 @@ function pw_petitions_field_default_fields() {
       'locked' => '0',
       'module' => 'computed_field',
       'settings' => array(
-        'code' => '$required = $entity->field_petitions_required[LANGUAGE_NONE][0][\'value\'];
+        'code' => '$required = $entity->field_petition_required[LANGUAGE_NONE][0][\'value\'];
 $signings = $entity->field_petition_signings[LANGUAGE_NONE][0][\'value\'];
 $result = ($signings / $required) * 100;
 $entity_field[0][\'value\'] = $result;',
@@ -581,14 +581,14 @@ $entity_field[0][\'value\'] = $result;',
     ),
   );
 
-  // Exported field: 'node-pw_petition-field_petitions_required'.
-  $fields['node-pw_petition-field_petitions_required'] = array(
+  // Exported field: 'node-pw_petition-field_petition_required'.
+  $fields['node-pw_petition-field_petition_required'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_petitions_required',
+      'field_name' => 'field_petition_required',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -639,7 +639,7 @@ $entity_field[0][\'value\'] = $result;',
       ),
       'ds_extras_field_template' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_petitions_required',
+      'field_name' => 'field_petition_required',
       'label' => 'Required signings',
       'required' => 1,
       'settings' => array(

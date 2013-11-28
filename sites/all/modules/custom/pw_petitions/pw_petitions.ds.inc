@@ -97,7 +97,7 @@ function pw_petitions_ds_field_settings_info() {
         'ow-cl' => 'medium',
       ),
     ),
-    'field_petitions_required' => array(
+    'field_petition_required' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
         'lb-el' => 'h4',
@@ -185,7 +185,7 @@ function pw_petitions_ds_layout_settings_info() {
         4 => 'field_teaser_image',
         5 => 'body',
         6 => 'pw_petition_progress',
-        7 => 'field_petitions_required',
+        7 => 'field_petition_required',
         8 => 'field_petition_signings',
         9 => 'field_petition_content',
         10 => 'pw_petition_form',
@@ -200,7 +200,7 @@ function pw_petitions_ds_layout_settings_info() {
       'field_teaser_image' => 'ds_content',
       'body' => 'ds_content',
       'pw_petition_progress' => 'ds_content',
-      'field_petitions_required' => 'ds_content',
+      'field_petition_required' => 'ds_content',
       'field_petition_signings' => 'ds_content',
       'field_petition_content' => 'ds_content',
       'pw_petition_form' => 'ds_content',

@@ -148,7 +148,7 @@ function pw_petitions_views_default_views() {
   $handler->display->display_options['fields']['php']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<div class="pw-petition-progress-wrapper float-left"><div class="pw-petition-progress" style="width: <?php 
-$required = $data->_field_data[\'nid\'][\'entity\']->field_petitions_required[\'und\'][0][\'value\'];
+$required = $data->_field_data[\'nid\'][\'entity\']->field_petition_required[\'und\'][0][\'value\'];
 $signings = $data->_field_data[\'nid\'][\'entity\']->field_petition_signings[\'und\'][0][\'value\'];
 $progress = $data->_field_data[\'nid\'][\'entity\']->field_petition_progress[\'und\'][0][\'value\'];
 if($signings > $required){
@@ -158,18 +158,18 @@ print $progress; ?>%;"></div></div>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Feld: Inhalt: Required signings */
-  $handler->display->display_options['fields']['field_petitions_required']['id'] = 'field_petitions_required';
-  $handler->display->display_options['fields']['field_petitions_required']['table'] = 'field_data_field_petitions_required';
-  $handler->display->display_options['fields']['field_petitions_required']['field'] = 'field_petitions_required';
-  $handler->display->display_options['fields']['field_petitions_required']['label'] = 'Benötigte Unterschriften';
-  $handler->display->display_options['fields']['field_petitions_required']['element_type'] = 'strong';
-  $handler->display->display_options['fields']['field_petitions_required']['element_class'] = 'medium';
-  $handler->display->display_options['fields']['field_petitions_required']['element_label_type'] = 'h4';
-  $handler->display->display_options['fields']['field_petitions_required']['element_label_class'] = 'label-inline';
-  $handler->display->display_options['fields']['field_petitions_required']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_petitions_required']['element_wrapper_class'] = 'medium clear-both';
-  $handler->display->display_options['fields']['field_petitions_required']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_petitions_required']['settings'] = array(
+  $handler->display->display_options['fields']['field_petition_required']['id'] = 'field_petition_required';
+  $handler->display->display_options['fields']['field_petition_required']['table'] = 'field_data_field_petition_required';
+  $handler->display->display_options['fields']['field_petition_required']['field'] = 'field_petition_required';
+  $handler->display->display_options['fields']['field_petition_required']['label'] = 'Benötigte Unterschriften';
+  $handler->display->display_options['fields']['field_petition_required']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['field_petition_required']['element_class'] = 'medium';
+  $handler->display->display_options['fields']['field_petition_required']['element_label_type'] = 'h4';
+  $handler->display->display_options['fields']['field_petition_required']['element_label_class'] = 'label-inline';
+  $handler->display->display_options['fields']['field_petition_required']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_petition_required']['element_wrapper_class'] = 'medium clear-both';
+  $handler->display->display_options['fields']['field_petition_required']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_petition_required']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 0,
   );
@@ -249,7 +249,7 @@ print $progress; ?>%;"></div></div>';
     'field_image_copyright' => 0,
     'field_petition_recipient' => 0,
     'body' => 0,
-    'field_petitions_required' => 0,
+    'field_petition_required' => 0,
     'field_petition_signings' => 0,
     'view_node' => 0,
     'field_blogpost_blogtags' => 0,
@@ -316,7 +316,7 @@ print $progress; ?>%;"></div></div>';
   $handler->display->display_options['fields']['php']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
   $handler->display->display_options['fields']['php']['php_output'] = '<div class="pw-petition-progress-wrapper float-left"><div class="pw-petition-progress" style="width: <?php 
-$required = $data->_field_data[\'nid\'][\'entity\']->field_petitions_required[\'und\'][0][\'value\'];
+$required = $data->_field_data[\'nid\'][\'entity\']->field_petition_required[\'und\'][0][\'value\'];
 $signings = $data->_field_data[\'nid\'][\'entity\']->field_petition_signings[\'und\'][0][\'value\'];
 $progress = $data->_field_data[\'nid\'][\'entity\']->field_petition_progress[\'und\'][0][\'value\'];
 if($signings > $required){
