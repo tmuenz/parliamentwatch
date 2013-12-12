@@ -96,6 +96,7 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
     // Connects constituency term with federal states, creates it if not exists
     /******************* @TODO testing & checking data structure *************/
     /* try out stuff like: if parent.empty? */
+
     $this->addFieldMapping('parent_name', 'state')
       ->arguments(array('source_type' => 'name')) //, 'create_term' => TRUE))
       ->sourceMigration($this->machineName);
