@@ -57,6 +57,9 @@ class StateTermMigration extends BasicMigrateState {
     // We only need the states once.
     $query->groupBy('c.state');
 
+    // Ignore empty values
+    $query->condition('c.state', '', 'NOT LIKE');
+
     // Starts the migration based on the created query
     $this->source = new MigrateSourceSQL($query);
     $this->map = new MigrateSQLMap($this->machineName, array(
@@ -68,6 +71,18 @@ class StateTermMigration extends BasicMigrateState {
 
     // Adds new taxonomy term 'constituency'
     $this->destination = new MigrateDestinationTerm('constituency');
+
+    // Placeholder for empty description
+    $lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing '
+          . 'elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore '
+          . 'magna aliquyam erat, sed diam voluptua. At vero eos et accusam et '
+          . 'justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea '
+          . 'takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum '
+          . 'dolor sit amet, consetetur sadipscing elitr, sed diam nonumy '
+          . 'eirmod tempor invidunt ut labore et dolore magna aliquyam erat, '
+          . 'sed diam voluptua. At vero eos et accusam et justo duo dolores et '
+          . 'ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est '
+          . 'Lorem ipsum dolor sit amet.';
 
     // Maps the constituency term fields
     $this->addFieldMapping('name', 'state');

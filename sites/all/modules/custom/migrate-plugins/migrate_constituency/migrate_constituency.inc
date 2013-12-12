@@ -69,7 +69,7 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
     // Adds new taxonomy term 'constituency'
     $this->destination = new MigrateDestinationTerm('constituency');
 
-    // Placeholder for emptry description
+    // Placeholder for empty description
     $lorem = 'Lorem ipsum dolor sit amet, consetetur sadipscing '
           . 'elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore '
           . 'magna aliquyam erat, sed diam voluptua. At vero eos et accusam et '
@@ -93,12 +93,9 @@ class ConstituencyTermMigration extends BasicMigrateConstituency {
     $this->addFieldMapping('field_constituency_area_codes', 'area_codes')
       ->separator(',')->arguments(array('create_term' => TRUE));
 
-    // Connects constituency term with federal states, creates it if not exists
-    /******************* @TODO testing & checking data structure *************/
-    /* try out stuff like: if parent.empty? */
-
+    // Connects constituency term with federal states
     $this->addFieldMapping('parent_name', 'state')
-      ->arguments(array('source_type' => 'name')) //, 'create_term' => TRUE))
+      ->arguments(array('source_type' => 'name'))
       ->sourceMigration($this->machineName);
   }
 
