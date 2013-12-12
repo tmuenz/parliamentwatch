@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PW Announcements feature.
+ */
+
+include_once 'pw_announcements.features.inc';

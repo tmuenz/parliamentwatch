@@ -21,6 +21,13 @@ function pw_profileswitch_admin_settings() {
   foreach ($view_modes_raw as $view_mode_raw_id => $view_mode_raw_arr) {
     $display_mode_choice[$view_mode_raw_id] = $view_mode_raw_arr["label"]." (".$view_mode_raw_id.")";
   }
+  //obtain available user roles from the taxonomy field_user_roles_for_view_mode_switch:
+  $vocabulary = taxonomy_vocabulary_machine_name_load('pw_profile_roles_for_view_mode_switch');
+  $terms = taxonomy_get_tree($vocabulary->vid);
+  $roleArray = array();
+  foreach($terms as $term) {
+      $roleArray[$term->tid] = $term->name;
+  }
   
   $form = array();
   $count = 1;
@@ -39,7 +46,7 @@ function pw_profileswitch_admin_settings() {
     $form['group'.$count]['pw_profileswitch_role'.$count] = array(
         '#type' => 'select',
         '#title' => t('Role'),
-        '#options' => user_roles(),
+        '#options' => $roleArray, //user_roles(),
         '#default_value' => $rid,
         "#empty_option"=>t('- Select -'),
     );

@@ -32,6 +32,45 @@ function parliamentwatch_alpha_process_region(&$vars) {
 }
 
 /**
+ * Customize the linear output of addressfield tokens.
+ */
+function parliamentwatch_addressfield_formatter__linear($vars) {
+  $loc = $vars['address'];
+  
+  // Determine which location components to render
+  $out = array();
+  if (!empty($loc['name_line']) && $vars['name_line']) {
+    $out[] = $loc['name_line'];
+  }
+  if (!empty($loc['organisation_name']) && $vars['organisation_name']) {
+    $out[] = $loc['organisation_name'];
+  }
+  if (!empty($loc['thoroughfare'])) {
+    $out[] = $loc['thoroughfare'];
+  }
+  if (!empty($loc['premise']) && $vars['premise']) {
+    $out[] = $loc['premise'];
+  }
+  if (!empty($loc['administrative_area'])) {
+    $out[] = $loc['administrative_area'];
+  }
+  if (!empty($loc['locality'])) {
+    $locality = $loc['locality'];
+  }
+  if (!empty($loc['postal_code'])) {
+    $out[] = $loc['postal_code'].' '.$locality;
+  }
+  if ($loc['country'] != addressfield_tokens_default_country() && $country_name = _addressfield_tokens_country($loc['country'])) {
+    $out[] = $country_name;
+  }
+  
+  // Render the location components
+  $output = implode(', ', $out);
+  
+  return $output;
+}
+
+/**
  * Implements hook_css_alter().
  */
 function parliamentwatch_css_alter(&$css) {
@@ -43,6 +82,11 @@ function parliamentwatch_css_alter(&$css) {
   // Use parliamentwatch scroll_to_top.css instead of the default one.
   if (isset($css['sites/all/modules/contrib/scroll_to_top/scroll_to_top.css'])) {
     $css['sites/all/modules/contrib/scroll_to_top/scroll_to_top.css']['data'] = drupal_get_path('theme', 'parliamentwatch') . '/css/scroll_to_top.css';
+    $css['sites/all/modules/contrib/scroll_to_top/scroll_to_top.css']['type'] = 'file';
+  }
+  // Use parliamentwatch jcarousel-default.css instead of the default one.
+  if (isset($css['sites/all/modules/contrib/jcarousel/skins/default/jcarousel-default.css'])) {
+    $css['sites/all/modules/contrib/jcarousel/skins/default/jcarousel-default.css']['data'] = drupal_get_path('theme', 'parliamentwatch') . '/css/jcarousel-default.css';
     $css['sites/all/modules/contrib/scroll_to_top/scroll_to_top.css']['type'] = 'file';
   }
 }

@@ -111,6 +111,41 @@ function pw_press_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'diff_enable_revisions_page_node_press_release';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_show_preview_changes_node_press_release';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'diff_view_mode_preview_node_press_release';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_comment_filter_press_release';
+  $strongarm->value = 0;
+  $export['entity_translation_comment_filter_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_node_metadata_press_release';
+  $strongarm->value = '0';
+  $export['entity_translation_node_metadata_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__press_article';
   $strongarm->value = array(
     'view_modes' => array(
@@ -309,6 +344,34 @@ function pw_press_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_press_article';
+  $strongarm->value = '';
+  $export['page_title_type_press_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_press_article_showfield';
+  $strongarm->value = 0;
+  $export['page_title_type_press_article_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_press_release';
+  $strongarm->value = '';
+  $export['page_title_type_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_press_release_showfield';
+  $strongarm->value = 0;
+  $export['page_title_type_press_release_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_press_article_pattern';
   $strongarm->value = 'about/press/press-articles/[node:field-press-article-date:custom:Y-m-d]/[node:title]';
   $export['pathauto_node_press_article_pattern'] = $strongarm;
@@ -333,6 +396,125 @@ function pw_press_strongarm() {
   $strongarm->name = 'pathauto_node_press_release_und_pattern';
   $strongarm->value = 'ueber-uns/presse/pressemitteilungen/[node:field-press-release-date:custom:Y-m-d]/[node:title]';
   $export['pathauto_node_press_release_und_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_display_comment_press_release';
+  $strongarm->value = 0;
+  $export['print_display_comment_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_display_press_release';
+  $strongarm->value = 0;
+  $export['print_display_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_display_urllist_press_release';
+  $strongarm->value = 0;
+  $export['print_display_urllist_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_display_press_release';
+  $strongarm->value = '0';
+  $export['siblingmenutree_display_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_enable_press_release';
+  $strongarm->value = 0;
+  $export['siblingmenutree_enable_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_title_press_release';
+  $strongarm->value = '';
+  $export['siblingmenutree_title_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_weight_press_release';
+  $strongarm->value = '0';
+  $export['siblingmenutree_weight_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_display_press_release';
+  $strongarm->value = '0';
+  $export['submenutree_display_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_enable_press_release';
+  $strongarm->value = 0;
+  $export['submenutree_enable_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_node_type_press_release';
+  $strongarm->value = '0';
+  $export['submenutree_node_type_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_title_press_release';
+  $strongarm->value = '';
+  $export['submenutree_title_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_weight_press_release';
+  $strongarm->value = '0';
+  $export['submenutree_weight_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'sync_translations_press_release';
+  $strongarm->value = '0';
+  $export['sync_translations_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_press_release';
+  $strongarm->value = '0';
+  $export['weight_default_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_press_release';
+  $strongarm->value = '0';
+  $export['weight_enabled_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_press_release';
+  $strongarm->value = '0';
+  $export['weight_menu_press_release'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_press_release';
+  $strongarm->value = '20';
+  $export['weight_range_press_release'] = $strongarm;
 
   return $export;
 }

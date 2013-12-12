@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PW Globals feature.
+ */
+
+include_once 'pw_globals.features.inc';

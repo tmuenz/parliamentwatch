@@ -1,0 +1,32 @@
+/**
+ * @file
+ * Display Suite PW Two Rows Content and Sidebar stacked stylesheet.
+ */
+
+.ds-header {
+  /* Styles for the "header" region go here */
+}
+
+.ds-left-1 {
+  /* Styles for the "left-1" region go here */
+}
+
+.ds-right-1 {
+  /* Styles for the "right-1" region go here */
+}
+
+.ds-inbetween {
+  /* Styles for the "inbetween" region go here */
+}
+
+.ds-left-2 {
+  /* Styles for the "left-2" region go here */
+}
+
+.ds-right-2 {
+  /* Styles for the "right-2" region go here */
+}
+
+.ds-footer {
+  /* Styles for the "footer" region go here */
+}

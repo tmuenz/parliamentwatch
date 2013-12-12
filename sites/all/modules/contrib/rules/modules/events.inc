@@ -164,5 +164,12 @@ function rules_get_entity_view_modes($name, $var_info) {
 }
 
 /**
+ * Implements of hook_comment_publish().
+ */
+function rules_comment_publish($comment) {
+  rules_invoke_event('comment_approve', $comment);
+}
+
+/**
  * @}
  */

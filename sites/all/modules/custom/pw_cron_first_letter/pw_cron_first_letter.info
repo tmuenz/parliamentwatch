@@ -1,0 +1,6 @@
+name = PW Cron First Letter
+description = writes first letter of surname of each politician in a separate field
+core = 7.x
+version = 7.x-1.0-20131211
+package = Parliamentwatch
+files[] = tests/pw_cron_first_letter.test

@@ -14,7 +14,7 @@ function pw_election_programmes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_election_programme';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-weight-settings';
   $export['additional_settings__active_tab_election_programme'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -326,7 +326,7 @@ function pw_election_programmes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'sync_translations_election_programme';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['sync_translations_election_programme'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -340,7 +340,7 @@ function pw_election_programmes_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_enabled_election_programme';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['weight_enabled_election_programme'] = $strongarm;
 
   $strongarm = new stdClass();

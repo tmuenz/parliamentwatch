@@ -8,7 +8,7 @@
 /**
  * A buffer of overlap between the imports in seconds.
  */
-define('PW_DIALOGUES_IMPORT_BUFFER', 60 * 60);
+define('PW_DIALOGUES_IMPORT_BUFFER', 60 * 60 * 24);
 
 /**
  * Implements hook_menu().
@@ -67,13 +67,13 @@ function pw_dialogues_cron() {
         $source .= '?updated_since=' . $updated_since;
       }
       else {
-        $source .= '&updated_since' . $updated_since;
+        $source .= '&updated_since=' . $updated_since;
       }
     }
 
     variable_set('pw_dialogues_last_import', REQUEST_TIME);
 
-    // Import dialogues.
+    // Import dialogues (questions).
     $dialogue_feed = feeds_source('dialogue_importer');
     $dialogue_feed->addConfig(array(
       'FeedsHTTPFetcher' => array(
@@ -82,7 +82,7 @@ function pw_dialogues_cron() {
     ));
     while (FEEDS_BATCH_COMPLETE != $dialogue_feed->import());
 
-    // Import messages.
+    // Import messages (answers).
     $message_feed = feeds_source('dialogue_message_importer');
     $message_feed->addConfig(array(
       'FeedsHTTPFetcher' => array(
@@ -92,15 +92,16 @@ function pw_dialogues_cron() {
     while (FEEDS_BATCH_COMPLETE != $message_feed->import());
 
     // Query which politicians have a changed question and answer count.
-    $users = db_query('SELECT DISTINCT field_dialogue_recipient_target_id FROM {field_data_field_dialogue_recipient} AS f INNER JOIN {feeds_item} AS i ON f.entity_type = i.entity_type AND f.entity_id = i.entity_id')->fetchCol();
-#  WHERE i.imported >= :imported', array(':imported' => REQUEST_TIME - PW_DIALOGUES_IMPORT_BUFFER)
+    $users = db_query('SELECT DISTINCT f.field_dialogue_recipient_target_id
+                        FROM {field_data_field_dialogue_recipient} AS f 
+                        INNER JOIN {feeds_item} AS i ON f.entity_type = i.entity_type AND f.entity_id = i.entity_id
+                        WHERE i.imported >= :imported', array(':imported' => REQUEST_TIME - PW_DIALOGUES_IMPORT_BUFFER))->fetchCol();
+                        
     foreach ($users as $uid) {
-      $uid = intval($uid);
 
-      // Query comments and nodes resulting in two arrays, keyed by 'answer' and
-      // 'question' with the corresponding counts as values.
-      $comment_query = db_query('SELECT field_dialogue_message_type_value AS type, COUNT(cid) AS count FROM {comment} AS c INNER JOIN {field_data_field_dialogue_message_type} AS f ON f.entity_type = \'comment\' AND f.entity_id = c.cid WHERE uid = :uid AND c.status = 1 GROUP BY f.field_dialogue_message_type_value', array(':uid' => $uid))->fetchAllKeyed();
+      // Query comments and nodes resulting in two arrays, keyed by 'answer' and 'question' with the corresponding counts as values.
       $node_query = db_query('SELECT field_dialogue_message_type_value AS type, COUNT(nid) AS count FROM {node} AS n INNER JOIN {field_data_field_dialogue_recipient} AS r ON r.entity_type = \'node\' AND r.entity_id = n.nid INNER JOIN {field_data_field_dialogue_message_type} AS f ON f.entity_type = \'node\' AND f.entity_id = n.nid WHERE r.field_dialogue_recipient_target_id = :uid AND n.status = 1 GROUP BY f.field_dialogue_message_type_value', array(':uid' => $uid))->fetchAllKeyed();
+      $comment_query = db_query('SELECT field_dialogue_message_type_value AS type, COUNT(cid) AS count FROM {comment} AS c INNER JOIN {field_data_field_dialogue_message_type} AS f ON f.entity_type = \'comment\' AND f.entity_id = c.cid WHERE uid = :uid AND c.status = 1 GROUP BY f.field_dialogue_message_type_value', array(':uid' => $uid))->fetchAllKeyed();
 
       // Load the politician and update the fields.
       $account = user_load($uid);
@@ -109,11 +110,11 @@ function pw_dialogues_cron() {
       $edit['field_user_answers_give'][LANGUAGE_NONE][0]['value'] = 0;
       $edit['revision'] = 0;
       foreach (array($comment_query, $node_query) as $query) {
-        if (isset($query['answer'])) {
-         $edit['field_user_answers_give'][LANGUAGE_NONE][0]['value'] += intval($query['answer']);
-        }
         if (isset($query['question'])) {
           $edit['field_user_questions_get'][LANGUAGE_NONE][0]['value'] += intval($query['question']);
+        }
+        if (isset($query['answer'])) {
+         $edit['field_user_answers_give'][LANGUAGE_NONE][0]['value'] += intval($query['answer']);
         }
       }
       user_save($account, $edit);

@@ -1,4 +1,4 @@
-name = Dialogue importer
+name = PW Dialogue importer
 core = 7.x
 dependencies[] = dialogues
 dependencies[] = uuid

@@ -213,6 +213,7 @@ function pw_poll_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'block' => 'views|pw_polls_list-details',
     'block_render' => '1',
@@ -227,6 +228,7 @@ function pw_poll_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'block' => 'block|4',
     'block_render' => '3',
@@ -241,6 +243,7 @@ function pw_poll_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'block' => 'pw_blocks|pw_per_party_votes',
     'block_render' => '3',
@@ -255,6 +258,7 @@ function pw_poll_ds_custom_fields_info() {
   $ds_field->entities = array(
     'node' => 'node',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'block' => 'pw_blocks|pw_total_votes',
     'block_render' => '3',

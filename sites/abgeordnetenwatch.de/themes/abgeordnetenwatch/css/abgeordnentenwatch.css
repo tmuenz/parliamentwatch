@@ -17,7 +17,54 @@
     padding: 0 13px 0 13px;
     color: #858585 !important;
     font: 9px/21px Lucida Grande,Helvetica,Arial,sans-serif;
+    font: 0.9rem/2.1rem Lucida Grande,Helvetica,Arial,sans-serif;
 }
+
+
+/* menu country icons */
+
+@media only screen and ( min-width: 600px ) {
+    
+    #nav ul ul .menu-region {
+        padding-left: 21px;
+        background-image: url(../images/sprite_countryicons.png);
+        background-repeat: no-repeat;
+    }
+    #nav ul ul .menu-region.region-bt { /* bundestag */
+        background-position: -326px -51px;
+    }
+    #nav ul ul .menu-region.region-eu { /* EU */
+        background-position: -367px -9px;
+    }
+    #nav ul ul .menu-region.region-bw { /* BW */
+        background-position: -285px -93px;
+    }
+    #nav ul ul .menu-region.region-by { /* BY */
+        background-position: -246px -136px;
+    }
+    #nav ul ul .menu-region.region-be { /* BE */
+        background-position: -212px -178px;
+    }
+    #nav ul ul .menu-region.region-hh { /* HH */
+        background-position: -89px -301px;
+    }
+    #nav ul ul .menu-region.region-he { /* HE */
+        background-position: -47px -346px;
+    }
+    #nav ul ul .menu-region.region-ni { /* NI */
+        background-position: -328px -428px;
+    }
+    #nav ul ul .menu-region.region-nw { /* NW */
+        background-position: -286px -470px;
+    }
+    #nav ul ul .menu-region.region-sh { /* SH */
+        background-position: -89px -681px;
+    }
+    #nav ul ul .menu-region.region-sn { /* SH */
+        background-position: -172px -595px;
+    }
+}
+
 
 /* blog wordpress */
 
@@ -47,6 +94,7 @@
 form#search-old .form-text {
     width: 100%;
     font-size: 14px;
+    font-size: 1.4rem;
 }
 form#search-old #edit-submit {
     background: transparent;
@@ -76,13 +124,13 @@ a.header_login {
     background-position: 0 0;
 }
 #views_slideshow_cycle_div_slider-block_1 {
-    background-position: 0 -168px;
+    background-position: 0 -171px;
 }
 #views_slideshow_cycle_div_slider-block_2 {
-    background-position: 0 -336px;
+    background-position: 0 -342px;
 }
 #views_slideshow_cycle_div_slider-block_3 {
-    background-position: 0 -504px;
+    background-position: 0 -512px;
 }
 #views_slideshow_pager_field_item_bottom_slider-block_0 .item {
     background-position: -965px -760px;

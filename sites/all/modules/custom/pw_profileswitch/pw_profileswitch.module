@@ -17,9 +17,15 @@
  * @return type 
  */
 function pw_profileswitch_user_custom_view($account, $view_mode = 'full', $langcode = NULL) {
+  // retrieve user roles of the field field_user_roles_for_view_mode_switch:
+  $assignedRoles = array();
+  foreach ($account->field_user_roles_for_view_mode_s['und'] as $role) {
+    $assignedRoles[$role['tid']] = $role['tid'];
+  }
+  
   $assignment = variable_get('pw_profileswitch_assignment', array()); // array(roleId => displayModeId)
   foreach ($assignment as $rid => $did) {
-    if (array_key_exists($rid, $account->roles)) {
+    if (array_key_exists($rid, $assignedRoles)) { // old: $account->roles
       $view_mode = $did;
       break; // "First role wins": We assume role assignments to users to be DISTINCT!
     }

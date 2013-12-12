@@ -1,0 +1,6 @@
+name = PW Cron Orphaned Files
+description = deletes orphaned files
+core = 7.x
+version = 7.x-1.0-20131211
+package = Parliamentwatch
+files[] = tests/pw_cron_orphaned_files.test

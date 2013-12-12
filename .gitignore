@@ -2,17 +2,24 @@
 *.save
 *~
 
-# Ignore development php.ini settings
+# Ignore development PHP settings
 php.ini
 
 # Ignore configuration files that may contain sensitive information.
-sites/*/settings*.php
+sites/*/*settings*.php
 
 # Ignore paths that contain user-generated content.
-sites/*/files
-sites/*/private
+sites/*/files/*
+sites/*/private/*
 sites/sites.php
 
-# Ignore migrate tests (security relevant)
-sites/all/libraries/migrate-tests/
-sites/all/libraries/migrate-tests/*
+# Ignore development stuff
+/.idea/
+/nbproject/private/
+nbproject/.gitignore
+
+# Do NOT ignore .htaccess rules (Drupal SA-CORE-2013-003)
+!*/.htaccess
+!sites/*/files/.htaccess
+!sites/*/private/.htaccess
+!sites/*/files/private/.htaccess

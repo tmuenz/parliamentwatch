@@ -53,7 +53,7 @@ CKEDITOR.addTemplates( 'default', {
 		description: 'A container with an image and a subline floating to the left.',
 		html: '<div class="file-image float-left">' +
                 '<img src="/sites/all/modules/contrib/ckeditor/ckeditor/plugins/templates/templates/images/template1.gif">' +
-                '<div class="field-name-field-image-copyright">©opyright</div>' +			
+                '<div class="copyright">©opyright</div>' +			
 			'</div>'
 	},
 		{
@@ -62,7 +62,7 @@ CKEDITOR.addTemplates( 'default', {
 		description: 'A container with an image and a subline floating to the right.',
 		html: '<div class="file-image float-right">' +
                 '<img src="/sites/all/modules/contrib/ckeditor/ckeditor/plugins/templates/templates/images/template4.gif">' +
-                '<div class="field-name-field-image-copyright">©opyright</div>' +			
+                '<div class="copyright">©opyright</div>' +			
 			'</div>'
 	}
 	]

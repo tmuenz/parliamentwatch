@@ -38,10 +38,19 @@ function dialogues_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'dialogue';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'question_and_answer_full_content' => array(
-      'weight' => '1',
+    'dialogue_full_content' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'show_title' => 0,
+        'title_wrapper' => '',
+        'ctools' => 'a:3:{s:4:"conf";a:4:{s:12:"link_to_view";i:0;s:9:"use_pager";i:0;s:8:"pager_id";s:1:"0";s:14:"items_per_page";s:1:"1";}s:4:"type";s:11:"views_panes";s:7:"subtype";s:38:"profile_questions_answers-full_content";}',
+        'load_terms' => 0,
+        'ft' => array(
+          'func' => 'theme_ds_field_reset',
+        ),
+      ),
     ),
   );
   $export['node|dialogue|full'] = $ds_fieldsetting;
@@ -72,15 +81,13 @@ function dialogues_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
-  $ds_field->field = 'question_and_answer_colorbox';
-  $ds_field->label = 'Question and answer colorbox';
+  $ds_field->field = 'dialogue_full_content';
+  $ds_field->label = 'Dialogue full content';
   $ds_field->field_type = 7;
   $ds_field->entities = array(
-    'comment' => 'comment',
     'node' => 'node',
-    'taxonomy_term' => 'taxonomy_term',
-    'user' => 'user',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'default' => array(),
     'settings' => array(
@@ -96,21 +103,7 @@ function dialogues_ds_custom_fields_info() {
       ),
     ),
   );
-  $export['question_and_answer_colorbox'] = $ds_field;
-
-  $ds_field = new stdClass();
-  $ds_field->api_version = 1;
-  $ds_field->field = 'question_and_answer_full_content';
-  $ds_field->label = 'Question and answer full content';
-  $ds_field->field_type = 6;
-  $ds_field->entities = array(
-    'node' => 'node',
-  );
-  $ds_field->properties = array(
-    'block' => 'views|7db3831b093872af21a56d09f89f7dcf',
-    'block_render' => '1',
-  );
-  $export['question_and_answer_full_content'] = $ds_field;
+  $export['dialogue_full_content'] = $ds_field;
 
   return $export;
 }
@@ -151,19 +144,25 @@ function dialogues_ds_layout_settings_info() {
   $ds_layout->view_mode = 'full';
   $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
-    'hide_empty_regions' => 0,
-    'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'question_and_answer_full_content',
+        0 => 'dialogue_full_content',
       ),
     ),
     'fields' => array(
-      'question_and_answer_full_content' => 'ds_content',
+      'dialogue_full_content' => 'ds_content',
     ),
     'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+      'ds_hidden' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
     'hide_page_title' => '1',
     'page_option_title' => '',
+    'hide_sidebars' => 0,
   );
   $export['node|dialogue|full'] = $ds_layout;
 

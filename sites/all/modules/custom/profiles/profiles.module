@@ -6,6 +6,102 @@
 
 include_once 'profiles.features.inc';
 
+/**
+ * (Un-)Installs the needed cache table for user filters
+ * @return array
+ */
+function profiles_schema() {
+  $schema['user_filter_cache'] = array (
+    'fields' => 
+    array (
+      'output_tid' => 
+      array (
+        'type' => 'int',
+        'unsigned' => true,
+        'not null' => true,
+        'default' => 0,
+      ),
+      'output_name' => 
+      array (
+        'type' => 'varchar',
+        'length' => 45,
+        'not null' => true,
+        'default' => '',
+      ),
+      'input_output_type' => 
+      array (
+        'type' => 'varchar',
+        'length' => 45,
+        'not null' => true,
+        'default' => '',
+      ),
+      'input_role_name' => 
+      array (
+        'type' => 'varchar',
+        'length' => 45,
+        'not null' => true,
+        'default' => '',
+      ),
+      'input_parliament_name' => 
+      array (
+        'type' => 'varchar',
+        'length' => 45,
+        'not null' => true,
+        'default' => '',
+      ),
+    ),
+    'indexes' => 
+    array (
+    ),
+    'unique_keys' => 
+    array (
+      'uniqueness' => 
+      array (
+        0 => 'output_tid',
+        1 => 'output_name',
+        2 => 'input_output_type',
+        3 => 'input_role_name',
+        4 => 'input_parliament_name',
+      ),
+    ),
+    'module' => 'profiles',
+    'name' => 'user_filter_cache',
+  );
+  return $schema;
+}
+
+/**
+ * Add index to the table to optimize select queries from pw_forms_filter_alter:
+ */
+function profiles_update_1() {
+  db_add_index('user_filter_cache', 'pw_forms_filter_alter_ix', array('input_output_type', 
+      'input_role_name', 'input_parliament_name'));
+}
+
+/**
+ * This function maintains the cache table user_filter_cache
+ */
+function profiles_cron() {
+  // Short-running operation example, not using a queue:
+  // Delete all expired records since the last cron run.
+  $expires = variable_get('profiles_cron_last_run', REQUEST_TIME);
+  // Delete all unused items in the table:
+  db_query('TRUNCATE TABLE {user_filter_cache}');
+  
+  // recreate the items in the table:
+  db_query('INSERT INTO user_filter_cache (output_tid, output_name, input_output_type, input_role_name, input_parliament_name) SELECT DISTINCT tparty.tid as output_tid, tparty.name as output_name, \'party\' as input_output_type, trole.name as input_role_name, tparl.name as input_parliament_name
+		FROM users AS u 
+		INNER JOIN user_revision AS urev ON u.uid = urev.uid
+		INNER JOIN field_revision_field_user_roles_for_view_mode_s AS ur ON ur.entity_type = \'user\' AND u.uid = ur.entity_id AND urev.vid = ur.revision_id
+		INNER JOIN taxonomy_term_data AS trole ON ur.field_user_roles_for_view_mode_s_tid = trole.tid
+		INNER JOIN field_revision_field_user_parliament AS uparl ON uparl.entity_type = \'user\' AND u.uid = uparl.entity_id AND urev.vid = uparl.revision_id
+		INNER JOIN taxonomy_term_data AS tparl ON uparl.field_user_parliament_tid = tparl.tid 
+		INNER JOIN field_revision_field_user_party AS uparty ON uparty.entity_type = \'user\' AND u.uid = uparty.entity_id AND urev.vid = uparty.revision_id 
+		INNER JOIN taxonomy_term_data AS tparty ON uparty.field_user_party_tid = tparty.tid');
+  
+  variable_set('profiles_cron_last_run', REQUEST_TIME);
+}
+
 function profiles_form_alter(&$form, &$form_state, $form_id) {
 if ($form_id == "user_profile_form") {
 unset($form["locale"]);
@@ -19,4 +115,42 @@ $form['views_embedder'] = array(
        );
  return $form;
 }
+}
+
+/**
+ * FFI: Saves changes to the user role in the corresponding taxonomy. 
+ * This is important for the profile switch that relies on this taxonomy.
+ */
+function profiles_user_presave(&$edit, $account, $category) {
+  // fetch the chosen roles from $edit['roles']:
+  $roleIdArray = array();
+  
+  // $edit['roles'] is unset if user_save() is called programmatically with 
+  // modifications that do not include the roles. In order to reset the roles
+  // anyway, we load the roles from the $account:
+  if(!isset($edit['roles'])) {
+    foreach ($account->roles as $key => $value)
+      $edit['roles'][$key] = $key;
+  }
+  
+  foreach ($edit['roles'] as $key => $value) {
+    if ($value != 0) {
+      $roleIdArray[] = $key;
+    }
+  }
+  
+  // reset the $edit['field_user_roles_for_view_mode_s']['und'] array:
+  $edit['field_user_roles_for_view_mode_s']['und'] = array();
+
+  foreach ($roleIdArray as $roleId) {
+    $role = user_role_load($roleId);
+    $roleName = $role->name; // i.e., Politician
+    // search for this roleName in the taxonomy:
+    $taxonomyArray = taxonomy_get_term_by_name($roleName, 'pw_profile_roles_for_view_mode_switch');
+    foreach ($taxonomyArray as $taxonomy) {
+      $tid = $taxonomy->tid;
+      $edit['field_user_roles_for_view_mode_s']['und'][] = array('tid' => "$tid");
+      break; // If there are several taxonomies with the same name that's a data error.
+    }
+  } 
 }

@@ -2,10 +2,12 @@
 name = Delete content and users
 description = Allows deletion of all nodes, comments and users on a site. Useful for development or prior to launching a site.
 package = Development
+configure = admin/content/delete_content
 core=7.x
-; Information added by drupal.org packaging script on 2012-11-06
-version = "7.x-1.1+3-dev"
+
+; Information added by drupal.org packaging script on 2013-09-30
+version = "7.x-1.1+4-dev"
 core = "7.x"
 project = "delete_all"
-datestamp = "1352162878"
+datestamp = "1380569145"
 

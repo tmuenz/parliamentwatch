@@ -14,12 +14,12 @@ div.horizontal-tabs .view-content {
 .field-group-htab h4,
 .field-group-htab h4 a {
     font-family: 'Times New Roman',Georgia,serif;
-    font-size: 16px;
+    font-size: 1.6rem;
     margin-bottom: 0;
     font-weight: normal;
 }
 .view-id-polls_profile .view-header {
-    padding: 0 10px 0.8em;
+    padding: 0 10px 0.8rem;
 }
 .view-id-polls_profile table {
     width: 100%;
@@ -28,33 +28,39 @@ div.horizontal-tabs .view-content {
     padding: 5px 10px;
 }
 #block-views-polls-profile-last .description {
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 
 
 
 
 
-table.views-view-grid {
+.view-id-profile_list_rev table {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 2.6rem;
 }
-table.views-view-grid td {
+.view-id-profile_list_rev td {
     padding: 16px 22px;
     border: 1px solid #eee;
     width: 33%;
 }
-table.views-view-grid td.col-first {
+.view-id-profile_list_rev td.col-first {
     border-left: 0;
 }
-table.views-view-grid td.col-last {
+.view-id-profile_list_rev td.col-last {
     border-right: 0;
 }
-table.views-view-grid .row-first td {
+.view-id-profile_list_rev .row-first td {
     border-top: 0;
 }
-table.views-view-grid .row-last td {
+.view-id-profile_list_rev .row-last td {
     border-bottom: 0;
+}
+.view-id-profile_list_rev .profile-list-compact-info .file-image .content {
+    width: 140px;
+    height: 210px;
+    background: url(/sites/abgeordnetenwatch.de/files/default_images/profile-picture-default.jpg) no-repeat;
+    outline: 1px solid #ccc;
 }
 
 .block-views-profile-questions-answers-block .link-report {
@@ -89,14 +95,14 @@ table.views-view-grid .row-last td {
     margin-bottom: 4px;
 }
 .profiles-list-compact-wrapper {
-    position: relative;    
+    position: relative;
 }
 .profiles-list-compact-wrapper .row {
     margin-right: -12px;
-    padding: 0 12px;  
+    padding: 0 12px;
 }
 .col-last .profiles-list-compact-wrapper h3 {
-    text-align: right;   
+    text-align: right;
 }
 .col-last .profiles-list-compact-wrapper .row {
     margin-left: -12px;
@@ -116,7 +122,7 @@ table.views-view-grid .row-last td {
     -moz-box-shadow: 0 0 2px 2px #DEDEDE;
     box-shadow: 0 0 2px 2px #DEDEDE;
     border: 1px solid #dedede;
-    
+
 }
 .col-last .profiles-list-compact-wrapper:hover .element-hidden {
     left: auto;
@@ -133,10 +139,10 @@ table.views-view-grid .row-last td {
 
 
 /* list */
- 
+
 .pw-list-item .pw-list-item {
     position: relative;
-} 
+}
 .pw-list-item .float-left .file-image {
     margin-bottom: 0;
 }
@@ -144,7 +150,7 @@ table.views-view-grid .row-last td {
 .pw-list-item a.link-profile {
     position: absolute;
     right: 0; /* LTR */
-    bottom: 1em;
+    bottom: 1rem;
 }
 
 
@@ -174,7 +180,7 @@ table.views-view-grid .row-last td {
     margin-top: 0;
     width: 40px;
     height: 40px;
-    text-indent: -5000em;
+    text-indent: -5000rem;
 }
 
 
@@ -201,8 +207,8 @@ table.views-view-grid .row-last td {
 #views-exposed-form-profile-list-solr-block-2 #edit-field-user-constituency-field-constituency-area-codes-name,
 #views-exposed-form-profile-list-solr-block-2 #edit-field-user-constituency-field-constituency-area-codes-name-wrapper label {
     height: 35px;
-    font-size: 13px;
-    line-height: 35px;
+    font-size: 1.3rem;
+    line-height: 3.5em;
     margin-right: 10px;
     width: 300px;
 }
@@ -210,7 +216,7 @@ table.views-view-grid .row-last td {
     margin-top: 0;
     width: 35px;
     height: 35px;
-    text-indent: -5000em;
+    text-indent: -5000rem;
 }
 
 /* search */
@@ -226,14 +232,14 @@ form#views-exposed-form-profile-list-solr-constituency.compact-form {
 #views-exposed-form-profile-list-solr-block-2 {
     position: relative;
     padding-top: 4em !important;
-    margin-top: 0.5em;
+    margin-top: 0.5rem;
     margin-bottom: 2em !important;
 }
 #views-exposed-form-profile-list-solr-block-2 .description {
     color: inherit;
-    font-size: 12px;
+    font-size: 1.2rem;
     position: absolute;
-    top: -2em;
+    top: -2rem;
     width: 588px;
 }
 .view-id-profile_list_solr .views-exposed-form .views-exposed-widget {
@@ -247,45 +253,176 @@ form#views-exposed-form-profile-list-solr-constituency.compact-form {
 .view-id-profile_list_solr .views-exposed-form .views-exposed-widget .form-submit,
 #views-exposed-form-profile-list-solr-constituency .form-submit {
     margin-top: 0;
-    text-indent: -5000em;
+    text-indent: -5000rem;
     width: 35px;
     height: 35px;
-    font-size: 13px;
-    line-height: 35px;
+    font-size: 1.3rem;
+    line-height: 3.5em;
     margin-right: 10px;
+}
+
+
+
+/* profiles extended */
+
+.view-constituency-for-the-profile img {
+    margin-top: 1px;
+}
+.view-constituency-for-the-profile li {
+    height: 62px;
+    height: 6.2rem;
+    width: 180px;
+}
+.user-profile .ds-left-1 h2.block-title {
+    color: #333;
+    font-size: 2rem;
+}
+.user-profile .ds-right-2 {
+    margin-top: 37px;
+    margin-top: 3.7rem;
+}
+.field-name-same-constituency {
+    border: 1px dotted #dbdbdb;
+    border-width: 1px 0;
+    padding: 1.2rem 0 0;
+    margin-bottom: 3.0rem;
+}
+.field-name-same-constituency h2.block-title {
+    font-size: 1.7rem;
+    color: #666;
+    margin-bottom: 0;
+}
+.user-image-gallery-wrapper {
+    margin: 0 18px 16px 0;
+    float: left;
+}
+.user-image-gallery-wrapper img {
+    outline: 1px solid #ccc;
+}
+.view-display-id-image_gallery_page .user-image-gallery-wrapper {
+    width: 100px;
+}
+.field-name-additional-links- table {
+    width: 100%
+}
+.view-user-profile-fields.view-display-id-additional_links li {
+    padding: 2px 0.5%;
+    list-style: none;
+}
+.view-user-profile-fields.view-display-id-additional_links .views-row-even {
+    background: #f4f4f4;
+}
+.view-user-profile-fields.view-display-id-additional_links .view-content a,
+.view-user-profile-fields.view-display-id-additional_links_page .zebra a {
+    color: #333;
+    font-weight: normal;
+}
+.view-user-profile-fields.view-display-id-basic_info dt,
+.view-user-profile-fields.view-display-id-basic_info dd {
+    padding: 2px 0.5%;
+}
+.view-user-profile-fields.view-display-id-basic_info dt {
+    width: 31%;
+    float: left;
+    clear: both;
+}
+.view-user-profile-fields.view-display-id-basic_info dd {
+    width: 65%;
+    float: left;
 }
 
 
 /* filters */
 
-.views-exposed-form .form-item-field-user-lname-value {
-    display: block;
-    float: left; /* LTR */
-    margin: 0 5px 5px 0; /* LTR */
-}
-.views-exposed-form .form-item-field-user-lname-value label {
-    background: #c3c3c3;
-    display: block;
-    float: left; /* LTR */
-    color: #fff;
-    font-weight: bold;
-    min-width: 20px;
-    min-height: 20px;
-    line-height: 20px;
-    text-align: center;
-    cursor: pointer;
-}
-.views-exposed-form #edit-field-user-lname-value-all + .option {
-    min-width: 45px;
-}
-.views-exposed-form .form-item-field-user-lname-value label:hover,
-.form-radio:checked + .option {
-    background: #f4f4f4 !important;
-    color: #666 !important;
-}
-.views-exposed-form #edit-field-user-lname-value .form-radio {
+#edit-between-date-filter-wrapper .views-widget { /* status filter */
     display: none;
 }
-.views-exposed-form .views-exposed-widget {
-   clear: both;
+#edit-field-dialogue-topic-tid {
+    background: #fff;
+    border: 1px solid #D3D3D3;
+    box-shadow: 0 0 2px 2px #ECECEC inset;
+    color: #666;
+    height: 24rem;
+    margin-bottom: 0.8rem;
+    overflow: auto;
+    width: 89%;
+    float: none;
+    padding: 0;
+}
+#edit-field-dialogue-topic-tid label {
+    cursor: pointer;
+    display: block;
+    line-height: 1.6em;
+    padding: 3px 7px;
+}
+#edit-field-dialogue-topic-tid label:hover,
+#edit-field-dialogue-topic-tid input[type="radio"]:checked + label {
+    background: none repeat scroll 0 0 #F4F4F4;
+}
+#edit-field-dialogue-topic-tid input[type="radio"] {
+    display: none;
+}
+
+#edit-field-user-first-letter-lname-value-wrapper .views-widget {
+    width: 89%;
+}
+/* letter filter with checkboxes */
+#edit-field-user-first-letter-lname-value-wrapper .form-checkboxes input {
+    position: absolute;
+    left: -5000em;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-checkboxes label {
+    float: left;
+    min-width: 10px;
+    line-height: 20px;
+    line-height: 2.0rem;
+    text-align: center;
+    margin: 0 4px 4px 0;
+    padding: 0 5px;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-checkboxes label,
+#edit-field-user-first-letter-lname-value-wrapper .form-checkboxes input[type="checkbox"]:checked + label:hover {
+    background: #ccc;
+    color: #fff;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-checkboxes label:hover,
+#edit-field-user-first-letter-lname-value-wrapper .form-checkboxes input[type="checkbox"]:checked + label {
+    background: #f4f4f4;
+    color: #333;
+}
+
+
+/* letter filter with radios */
+#edit-field-user-first-letter-lname-value-wrapper .form-radios input {
+    position: absolute;
+    left: -5000em;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-radios label {
+    float: left;
+    min-width: 10px;
+    line-height: 20px;
+    line-height: 2.0rem;
+    text-align: center;
+    margin: 0 4px 4px 0;
+    padding: 0 5px;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-radios label,
+#edit-field-user-first-letter-lname-value-wrapper .form-radios input[type="radio"]:checked + label:hover {
+    background: #ccc;
+    color: #fff;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-radios label:hover,
+#edit-field-user-first-letter-lname-value-wrapper .form-radios input[type="radio"]:checked + label {
+    background: #f4f4f4;
+    color: #333;
+}
+#edit-field-user-first-letter-lname-value-wrapper .form-item {
+    float: left;
+    padding: 0;
+}
+
+/* calendar */
+
+.view-display-id-profile_block .view-footer {
+    margin-top: -1.3rem;
 }

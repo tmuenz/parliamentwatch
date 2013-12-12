@@ -383,7 +383,8 @@ function pw_api_profiles($parliament_filter, $parliament_argument, $filter=NULL,
   $user_fname_alias = $query->leftJoin('field_revision_field_user_fname', 'frfuf', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.language='und'"); // choose only one language, otherwise this user will be displayed more than once
   $user_lname_alias = $query->leftJoin('field_revision_field_user_lname', 'frful', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.language='und'"); // dito
   $user_party_alias = $query->leftJoin('field_revision_field_user_party', 'frfup', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.delta=0"); // we assume that a user is only in one party
-  $user_constituency_alias = $query->leftJoin('field_revision_field_user_constituency', 'frfuc', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.delta=0"); // we assume that a user is in only one constituency
+  $user_constituency_alias = $query->leftJoin('field_revision_field_user_constituency', 'frfuc', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user'"); // we assume that a user is in only one constituency
+  // removed  AND %alias.delta=0 from field_revision_field_user_constituency query part
   $user_parliament_alias = $query->leftJoin('field_revision_field_user_parliament', 'frfupm', "%alias.revision_id = ur.vid AND %alias.entity_type = 'user' AND %alias.delta=0"); // we assume that a user is in only one parliament
   
   $term_party_alias = $query->join('taxonomy_term_data', 'p', "%alias.tid = $user_party_alias.field_user_party_tid");
@@ -431,7 +432,7 @@ function pw_api_profiles($parliament_filter, $parliament_argument, $filter=NULL,
       }
       break;
   }
-
+  
   $profiles = array();
   
   foreach ($query->execute() as $row) {

@@ -1,0 +1,136 @@
+diff --git a/modules/comment.eval.inc b/modules/comment.eval.inc
+new file mode 100644
+index 0000000..468cad1
+--- /dev/null
++++ b/modules/comment.eval.inc
+@@ -0,0 +1,21 @@
++<?php
++
++/**
++* @file
++* Contains rules integration for the comment module needed during evaluation.
++*
++* @addtogroup rules
++* @{
++*/
++
++/**
++ * Condition: Check if the comment is published
++ */
++
++function rules_condition_comment_is_published($comment) {
++  return $comment->status == 1;
++}
++
++/**
++ * @}
++ */
+diff --git a/modules/comment.rules.inc b/modules/comment.rules.inc
+index 770be7e..b7556a9 100644
+--- a/modules/comment.rules.inc
++++ b/modules/comment.rules.inc
+@@ -8,6 +8,13 @@
+  */
+ 
+ /**
++  * Implements hook_rules_file_info() on behalf of the comment module.
++  */
++function rules_comment_file_info() {
++  return array('modules/comment.eval');
++}
++
++/**
+  * Implementation of hook_rules_event_info().
+  */
+ function rules_comment_event_info() {
+@@ -51,7 +58,58 @@ function rules_comment_event_info() {
+         'comment' => array('type' => 'comment', 'label' => t('deleted comment')),
+       ),
+     ),
++    'comment_approve' => $defaults + array(
++      'label' => t('After approving a new comment'),
++      'variables' => array(
++        'comment' => array('type' => 'comment', 'label' => t('approve comment')),
++      ),
++    ),
++  );
++}
++
++/**
++ * Implements hook_rules_condition_info() on behalf of the comment module.
++ */
++function rules_comment_condition_info() {
++  $defaults = array(
++    'parameter' => array(
++      'node' => array('type' => 'comment', 'label' => t('Comment')),
++    ),
++    'group' => t('Comment'),
++    'access callback' => 'rules_comment_integration_access',
++  );
++  $items['comment_is_published'] = $defaults + array(
++    'label' => t('Comment is published'),
++    'base' => 'rules_condition_comment_is_published',
++  );
++  return $items;
++}
++
++/**
++ * Implements hook_rules_action_info() on behalf of the comment module.
++ */
++function rules_comment_action_info() {
++  $defaults = array(
++    'parameter' => array(
++      'node' => array('type' => 'comment', 'label' => t('Comment'), 'save' => TRUE),
++    ),
++    'group' => t('Comment'),
++    'access callback' => 'rules_comment_admin_access',
++  );
++  // Add support for hand-picked core actions.
++  $core_actions = comment_action_info();
++  $actions = array(
++    'comment_publish_action',
++    'comment_unpublish_action',
+   );
++  foreach ($actions as $base) {
++    $action_name = str_replace('_action', '', $base);
++    $items[$action_name] = $defaults + array(
++      'label' => $core_actions[$base]['label'],
++      'base' => $base,
++    );
++  }
++  return $items;
+ }
+ 
+ /**
+@@ -79,5 +137,12 @@ class RulesCommentEventHandler extends RulesEventHandlerEntityBundle {
+ }
+ 
+ /**
++ * Comment integration admin access callback.
++ */
++function rules_comment_admin_access() {
++  return user_access('administer comments');
++}
++
++/**
+  * @}
+  */
+diff --git a/modules/events.inc b/modules/events.inc
+index 4ac9760..8fd4701 100644
+--- a/modules/events.inc
++++ b/modules/events.inc
+@@ -201,5 +201,12 @@ function rules_get_entity_view_modes($name, $var_info) {
+ }
+ 
+ /**
+- * @}
++ * Implements of hook_comment_publish().
+  */
++function rules_comment_publish($comment) {
++  rules_invoke_event('comment_approve', $comment);
++}
++
++/**
++ * @}
++ */
+\ No newline at end of file

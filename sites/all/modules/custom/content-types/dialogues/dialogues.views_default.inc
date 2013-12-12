@@ -12,10 +12,10 @@ function dialogues_views_default_views() {
 
   $view = new view();
   $view->name = 'answers';
-  $view->description = '';
+  $view->description = 'Displays a list of recent answers';
   $view->tag = 'default';
   $view->base_table = 'comment';
-  $view->human_name = 'Answers';
+  $view->human_name = 'PW Answers';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -25,12 +25,15 @@ function dialogues_views_default_views() {
   $handler->display->display_options['title'] = 'Answers';
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'weiterlesen';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Zurücksetzen';
   $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortieren nach';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Aufsteigend';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Absteigend';
   $handler->display->display_options['pager']['type'] = 'load_more';
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -56,14 +59,34 @@ function dialogues_views_default_views() {
   $handler->display->display_options['relationships']['field_dialogue_recipient_target_id']['table'] = 'field_data_field_dialogue_recipient';
   $handler->display->display_options['relationships']['field_dialogue_recipient_target_id']['field'] = 'field_dialogue_recipient_target_id';
   $handler->display->display_options['relationships']['field_dialogue_recipient_target_id']['relationship'] = 'nid';
-  /* Feld: | inner start */
-  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
-  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_2']['ui_name'] = '| inner start';
-  $handler->display->display_options['fields']['nothing_2']['label'] = '';
-  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '<div class="content-inner">';
-  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  /* Relationship: File Usage: Datei */
+  $handler->display->display_options['relationships']['user_to_file']['id'] = 'user_to_file';
+  $handler->display->display_options['relationships']['user_to_file']['table'] = 'file_usage';
+  $handler->display->display_options['relationships']['user_to_file']['field'] = 'user_to_file';
+  $handler->display->display_options['relationships']['user_to_file']['relationship'] = 'field_dialogue_recipient_target_id';
+  /* Feld: Global: Fieldset */
+  $handler->display->display_options['fields']['fieldset']['id'] = 'fieldset';
+  $handler->display->display_options['fields']['fieldset']['table'] = 'views';
+  $handler->display->display_options['fields']['fieldset']['field'] = 'fieldset';
+  $handler->display->display_options['fields']['fieldset']['label'] = 'Fieldset Content Inner';
+  $handler->display->display_options['fields']['fieldset']['children'] = array(
+    0 => 'sharethis',
+    1 => 'fieldset_1',
+    2 => 'nothing',
+    3 => 'field_user_fname',
+    4 => 'field_user_lname',
+    5 => 'field_user_party',
+    6 => 'created',
+    7 => 'nothing_1',
+    8 => 'field_user_questions_get',
+    9 => 'field_user_answers_give',
+    10 => 'uid',
+    11 => 'nothing_3',
+    12 => 'comment_body',
+    13 => 'nid',
+  );
+  $handler->display->display_options['fields']['fieldset']['fieldset']['type'] = 'div';
+  $handler->display->display_options['fields']['fieldset']['fieldset']['classes'] = 'content-inner';
   /* Feld: Inhalt: ShareThis Link */
   $handler->display->display_options['fields']['sharethis']['id'] = 'sharethis';
   $handler->display->display_options['fields']['sharethis']['table'] = 'node';
@@ -72,6 +95,18 @@ function dialogues_views_default_views() {
   $handler->display->display_options['fields']['sharethis']['label'] = '';
   $handler->display->display_options['fields']['sharethis']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['sharethis']['element_default_classes'] = FALSE;
+  /* Feld: Global: Fieldset */
+  $handler->display->display_options['fields']['fieldset_1']['id'] = 'fieldset_1';
+  $handler->display->display_options['fields']['fieldset_1']['table'] = 'views';
+  $handler->display->display_options['fields']['fieldset_1']['field'] = 'fieldset';
+  $handler->display->display_options['fields']['fieldset_1']['label'] = 'Profile picture';
+  $handler->display->display_options['fields']['fieldset_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['fieldset_1']['children'] = array(
+    0 => 'field_user_picture',
+    1 => 'field_image_copyright',
+  );
+  $handler->display->display_options['fields']['fieldset_1']['fieldset']['type'] = 'div';
+  $handler->display->display_options['fields']['fieldset_1']['fieldset']['classes'] = 'file-image float-left push-bottom-xs';
   /* Feld: Benutzer: Profile picture */
   $handler->display->display_options['fields']['field_user_picture']['id'] = 'field_user_picture';
   $handler->display->display_options['fields']['field_user_picture']['table'] = 'field_data_field_user_picture';
@@ -79,14 +114,22 @@ function dialogues_views_default_views() {
   $handler->display->display_options['fields']['field_user_picture']['relationship'] = 'field_dialogue_recipient_target_id';
   $handler->display->display_options['fields']['field_user_picture']['label'] = '';
   $handler->display->display_options['fields']['field_user_picture']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_user_picture']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_user_picture']['element_wrapper_class'] = 'file-image float-left';
   $handler->display->display_options['fields']['field_user_picture']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_user_picture']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_user_picture']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_user_picture']['settings'] = array(
-    'file_view_mode' => 'pw_file_portrait_s',
+    'image_style' => 'pw_portrait_s',
+    'image_link' => 'content',
   );
+  /* Feld: Datei: copyright */
+  $handler->display->display_options['fields']['field_image_copyright']['id'] = 'field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['table'] = 'field_data_field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['field'] = 'field_image_copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['relationship'] = 'user_to_file';
+  $handler->display->display_options['fields']['field_image_copyright']['label'] = '';
+  $handler->display->display_options['fields']['field_image_copyright']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image_copyright']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_image_copyright']['element_wrapper_class'] = 'copyright';
+  $handler->display->display_options['fields']['field_image_copyright']['element_default_classes'] = FALSE;
   /* Feld: | header start */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -206,7 +249,8 @@ function dialogues_views_default_views() {
   $handler->display->display_options['fields']['comment_body']['alter']['max_length'] = '255';
   $handler->display->display_options['fields']['comment_body']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['comment_body']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['comment_body']['element_wrapper_type'] = 'p';
+  $handler->display->display_options['fields']['comment_body']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['comment_body']['element_wrapper_class'] = 'clear push-bottom-s';
   $handler->display->display_options['fields']['comment_body']['element_default_classes'] = FALSE;
   /* Feld: Kommentar: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -224,14 +268,6 @@ function dialogues_views_default_views() {
   $handler->display->display_options['fields']['nid']['element_wrapper_class'] = 'bg-white';
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['nid']['separator'] = '';
-  /* Feld: | inner end */
-  $handler->display->display_options['fields']['nothing_4']['id'] = 'nothing_4';
-  $handler->display->display_options['fields']['nothing_4']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing_4']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing_4']['ui_name'] = '| inner end';
-  $handler->display->display_options['fields']['nothing_4']['label'] = '';
-  $handler->display->display_options['fields']['nothing_4']['alter']['text'] = '</div>';
-  $handler->display->display_options['fields']['nothing_4']['element_label_colon'] = FALSE;
   /* Sort criterion: Kommentar: Datum */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'comment';

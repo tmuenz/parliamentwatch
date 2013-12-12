@@ -13,7 +13,7 @@ function pw_gdata_importer_feeds_importer_default() {
   $feeds_importer = new stdClass();
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'gdata_constituency_importer_';
+  $feeds_importer->id = 'gdata_constituency_importer';
   $feeds_importer->config = array(
     'name' => 'GData Constituency Importer',
     'description' => 'Imports Constituencies from GData Spreadsheet',
@@ -70,7 +70,7 @@ function pw_gdata_importer_feeds_importer_default() {
           1 => array(
             'source' => 'xpathparser:1',
             'target' => 'name',
-            'unique' => FALSE,
+            'unique' => 1,
           ),
           2 => array(
             'source' => 'xpathparser:2',
@@ -100,7 +100,7 @@ function pw_gdata_importer_feeds_importer_default() {
     'import_on_create' => 1,
     'process_in_background' => 0,
   );
-  $export['gdata_constituency_importer_'] = $feeds_importer;
+  $export['gdata_constituency_importer'] = $feeds_importer;
 
   $feeds_importer = new stdClass();
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
@@ -137,6 +137,11 @@ function pw_gdata_importer_feeds_importer_default() {
           'xpathparser:13' => 'twitterurl',
           'xpathparser:14' => 'externalurl',
           'xpathparser:15' => 'picturecopyright',
+          'xpathparser:18' => 'roles',
+          'xpathparser:19' => 'aboutme',
+          'xpathparser:20' => 'politicalgoals',
+          'xpathparser:21' => 'validfrom',
+          'xpathparser:22' => 'validtill',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -155,6 +160,11 @@ function pw_gdata_importer_feeds_importer_default() {
           'xpathparser:13' => 0,
           'xpathparser:14' => 0,
           'xpathparser:15' => 0,
+          'xpathparser:18' => 0,
+          'xpathparser:19' => 0,
+          'xpathparser:20' => 0,
+          'xpathparser:21' => 0,
+          'xpathparser:22' => 0,
         ),
         'context' => '//row',
         'exp' => array(
@@ -177,6 +187,11 @@ function pw_gdata_importer_feeds_importer_default() {
             'xpathparser:13' => 0,
             'xpathparser:14' => 0,
             'xpathparser:15' => 0,
+            'xpathparser:18' => 0,
+            'xpathparser:19' => 0,
+            'xpathparser:20' => 0,
+            'xpathparser:21' => 0,
+            'xpathparser:22' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -186,12 +201,12 @@ function pw_gdata_importer_feeds_importer_default() {
       'plugin_key' => 'FeedsUserProcessor',
       'config' => array(
         'roles' => array(
-          181527986 => '181527986',
-          185431326 => '185431326',
           3 => 0,
           51622513 => 0,
+          181527986 => 0,
           140336230 => 0,
-          237793809 => 0,
+          185431326 => 0,
+          178386088 => 0,
         ),
         'status' => '1',
         'defuse_mail' => 0,
@@ -276,15 +291,40 @@ function pw_gdata_importer_feeds_importer_default() {
             'target' => 'field_user_picture_copyright',
             'unique' => FALSE,
           ),
+          16 => array(
+            'source' => 'xpathparser:18',
+            'target' => 'roles',
+            'unique' => FALSE,
+          ),
+          17 => array(
+            'source' => 'xpathparser:19',
+            'target' => 'field_user_about',
+            'unique' => FALSE,
+          ),
+          18 => array(
+            'source' => 'xpathparser:20',
+            'target' => 'field_user_political_goals',
+            'unique' => FALSE,
+          ),
+          19 => array(
+            'source' => 'xpathparser:21',
+            'target' => 'field_user_valid:start',
+            'unique' => FALSE,
+          ),
+          20 => array(
+            'source' => 'xpathparser:22',
+            'target' => 'field_user_valid:end',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => 1,
-        'input_format' => 'plain_text',
+        'input_format' => 'managed_content',
         'skip_hash_check' => 0,
       ),
     ),
     'content_type' => '',
     'update' => 0,
-    'import_period' => '0',
+    'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 0,

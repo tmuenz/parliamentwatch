@@ -1,0 +1,10 @@
+name = PW Profile Extender
+description = This module adds additional functionality to the user profiles and user overviews
+package = Parliamentwatch
+core = 7.x
+files[] = pw_profile_extender.module
+
+
+dependencies[] = views
+dependencies[] = better_exposed_filters
+

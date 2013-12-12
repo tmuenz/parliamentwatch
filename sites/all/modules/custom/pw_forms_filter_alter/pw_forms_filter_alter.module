@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file pw_forms_filter_alter.module
+ * TODO: Enter file description here.
+ */
+
+/**
+ * Implements hook_form_alter()..
+ */
+function pw_forms_filter_alter_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'views_exposed_form' && $form_state['view']->name == 'profile_list_rev' && $form_state['view']->current_display == 'grid') {
+//    dsm($form['field_user_party_tid']);
+    // prepare query
+    $current_uri = check_plain(request_uri());
+    $current_uri = rawurldecode($current_uri);
+    $a_url = explode("/", $current_uri);
+    if (!array_key_exists(3, $a_url))
+      return;
+    $role_name = $a_url[3] == 'candidates' ? 'Candidate' : 'Deputy';
+    $parliament_name = $a_url[2];
+    $a_parameter = array(':role_name' => $role_name, ':parliament_name' => $parliament_name);
+
+    // query database
+    $sql = "SELECT output_tid as tid, output_name as name FROM {user_filter_cache} 
+          WHERE input_output_type='party' 
+          AND input_role_name=:role_name 
+          AND input_parliament_name=:parliament_name";
+    $result = db_query($sql, $a_parameter);
+    $terms = $result->fetchAll();
+
+    $options = array();//'All' => '- Any -');
+    foreach ($terms as $term) {
+      $options[$term->tid] = $term->name;
+    }
+    $form['field_user_party_tid']['#options'] = $options;
+//    dsm($form['field_user_party_tid']);
+  }
+}

@@ -87,38 +87,5 @@ function pw_blog_context_default_contexts() {
   t('blog');
   $export['blog'] = $context;
 
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'frontpage_blog';
-  $context->description = 'shows last entries of the blog in the sidebar on the frontpage';
-  $context->tag = 'blog';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        '<front>' => '<front>',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'views-blog-block_1' => array(
-          'module' => 'views',
-          'delta' => 'blog-block_1',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('blog');
-  t('shows last entries of the blog in the sidebar on the frontpage');
-  $export['frontpage_blog'] = $context;
-
   return $export;
 }

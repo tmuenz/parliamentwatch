@@ -49,6 +49,7 @@ function pw_committees_ds_custom_fields_info() {
     'node' => 'node',
     'taxonomy_term' => 'taxonomy_term',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'default' => array(),
     'settings' => array(
@@ -75,6 +76,7 @@ function pw_committees_ds_custom_fields_info() {
     'node' => 'node',
     'taxonomy_term' => 'taxonomy_term',
   );
+  $ds_field->ui_limit = '';
   $ds_field->properties = array(
     'default' => array(),
     'settings' => array(

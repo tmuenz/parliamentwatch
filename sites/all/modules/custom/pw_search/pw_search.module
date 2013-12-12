@@ -121,6 +121,7 @@ function pw_search_apachesolr_query_alter(DrupalSolrQueryInterface $query) {
   $query->addParam("qf", "content"); // defined in the index generation, see pw_search_apachesolr_index_document_build_user()
   $query->addParam("qf", "taxonomy_names"); // handles party, constituency, and parliament automatically
   $query->addParam("qf", "sm_areacodes");
+  
 }
 
 /**
@@ -170,8 +171,9 @@ function pw_search_apachesolr_index_document_build_node(ApacheSolrDocument $docu
   $document->setField("content", implode(" ", $contentArr));
   
   // Add Parliament and Party of the recipient to make them facetable:
-  $document->setField('im_field_user_party', $entity->field_dialogue_recipient["und"][0]["entity"]->field_user_party["und"][0]["tid"]);
-  $document->setField('im_field_user_parliament', $entity->field_dialogue_recipient["und"][0]["entity"]->field_user_parliament["und"][0]["tid"]);
+  $receivingUser = user_load($entity->field_dialogue_recipient["und"][0]["target_id"]);
+  $document->setField('im_field_user_party', $receivingUser->field_user_party["und"][0]["tid"]);
+  $document->setField('im_field_user_parliament', $receivingUser->field_user_parliament["und"][0]["tid"]);
 }
 
 /**
@@ -214,4 +216,7 @@ function pw_search_apachesolr_index_document_build_user(ApacheSolrDocument $docu
   
   $document->setField("content", implode(" ", $contentArr));
   $document->setField("spell", $contentArr);
+  
+  // remove the birthday field, which has been added automatically to each user:
+  unset($document->dm_field_user_birthday);
 }

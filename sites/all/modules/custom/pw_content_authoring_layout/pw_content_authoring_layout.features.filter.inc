@@ -75,11 +75,6 @@ function pw_content_authoring_layout_filter_default_formats() {
         'status' => '1',
         'settings' => array(),
       ),
-      'ds_code' => array(
-        'weight' => '0',
-        'status' => '1',
-        'settings' => array(),
-      ),
       'filter_url' => array(
         'weight' => '0',
         'status' => '1',

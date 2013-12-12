@@ -51,5 +51,47 @@ function pw_committees_strongarm() {
   );
   $export['field_bundle_settings_taxonomy_term__committee'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_committee';
+  $strongarm->value = '';
+  $export['page_title_vocab_committee'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_committee_showfield';
+  $strongarm->value = 0;
+  $export['page_title_vocab_committee_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_committee_types';
+  $strongarm->value = '';
+  $export['page_title_vocab_committee_types'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_committee_types_showfield';
+  $strongarm->value = 0;
+  $export['page_title_vocab_committee_types_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_committee_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_committee_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_taxonomy_term_committee_types_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_committee_types_pattern'] = $strongarm;
+
   return $export;
 }

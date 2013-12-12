@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Provides theming functions to display exposed forms using different
+ * interfaces.
+ */
+
+/**
+ * Themes a the comparison operator "Abgeordneten Status" in the exposed user filter.
+ *
+ * @param array $vars
+ *   An array of arrays, the 'element' item holds the properties of the element.
+ *
+ * @return string
+ *   HTML representing the form element.
+ */
+function theme_select_with_description($vars) {
+  $element = $vars['element'];
+  // reset the #theme information. It is currently set to this theme, so when
+  // we call drupal_render on this element once more, it will re-call this function,
+  // leading into a loop. 
+  $element['#theme'] = 'select';
+
+  $description = '<div class="ic-info"><div class="info-title"></div><div class="info-content element-hidden">'.t("Information Abgeordneten Status").'</div></div>';
+
+  return $description.drupal_render($element);
+}

@@ -13,14 +13,14 @@ function profiles_user_default_roles() {
   // Exported role: Candidate.
   $roles['Candidate'] = array(
     'name' => 'Candidate',
-    'weight' => '5',
+    'weight' => '6',
     'machine_name' => 'candidate',
   );
 
   // Exported role: Deputy.
   $roles['Deputy'] = array(
     'name' => 'Deputy',
-    'weight' => '6',
+    'weight' => '5',
     'machine_name' => 'deputy',
   );
 
@@ -28,7 +28,7 @@ function profiles_user_default_roles() {
   $roles['Premium User'] = array(
     'name' => 'Premium User',
     'weight' => '7',
-    'machine_name' => 'premium_user',
+    'machine_name' => 'user_premium',
   );
 
   return $roles;

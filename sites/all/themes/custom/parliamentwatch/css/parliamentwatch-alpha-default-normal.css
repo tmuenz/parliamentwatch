@@ -1,12 +1,58 @@
 /* This file will hold styles that are loaded using the same media query as the normal grid. */
+@import url("mainmenu-default-normal.css");
 
-#views_slideshow_cycle_main_slider-block,
-.views-slideshow-controls-top {
-    width: 610px;
+html {
+    font-size: 10px;
 }
-.views-slideshow-controls-bottom {
+#section-header {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+#zone-branding .logo-img {
+    display: inline-block;
+    margin: 1px 7px 11px 0;
+}
+#region-user-second {
+    position: absolute;
+    z-index: 142;
+    top: 5px;
+    right: 14px;
+}
+#region-header-first {
+    display: block;
+    min-height: 20rem;
+    min-height: 20px;
+}
+#region-sidebar-second {
+    float: left;
+}
+
+
+.view-slider #views_slideshow_cycle_main_slider-block,
+.view-slider .views-slideshow-controls-top {
+    width: 620px;
+}
+.view-slider .views-slideshow-controls-bottom {
     width: 300px;
 }
-#block-views-slider-block .views-slideshow-controls-top {
-    width: 610px !important;
+.view-slider .views-slideshow-controls-top {
+    width: 620px !important;
+}
+
+
+/* /////////////////////////// Announcement ///////////////// */
+
+.announcement.slideshow .background-image {
+    display: block;
+    width: 620px;
+    height: 220px;
+    position: absolute;
+    left: 0;
+    top: -41px;
+    top: -4.1rem;
+    z-index: -1;
+    background: url(../images/bg_announcement.jpg);
+}
+.announcement.slideshow .views-slideshow-cycle-main-frame-row-item {
+    width: 560px;
 }

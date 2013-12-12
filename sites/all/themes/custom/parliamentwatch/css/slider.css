@@ -9,153 +9,151 @@
     margin-left: 177px;
     margin-top: -5px;
 }
-#views_slideshow_cycle_main_slider-block {
+.view-slider #views_slideshow_cycle_main_slider-block {
     display: none;
 }
-#views_slideshow_cycle_main_slider-block h3 {
+.view-slider #views_slideshow_cycle_main_slider-block h3 {
     font-size: 18px;
+    font-size: 1.8rem;
     margin-bottom: 1px;
     color: #f63;
 }
-#region-content {
-    top: -168px;
-    margin-bottom: -168px;
-    min-height: 170px;
-}
-#zone-preface-wrapper {
-    position: relative;
-    top: -168px;
-}
-#views_slideshow_cycle_div_slider-block_0 form { /* newsletter box with same block in content */
+.view-slider #views_slideshow_cycle_div_slider-block_0 form { /* newsletter box with same block in content */
     margin-bottom: 9px;
 }
-#views_slideshow_cycle_main_slider-block input.form-email {
+.view-slider #views_slideshow_cycle_main_slider-block input.form-email {
     float: left;
     margin-right: 7px;
 }
-#block-views-slider-block .views-slideshow-cycle-main-frame-row-item {
+.view-slider .views-slideshow-cycle-main-frame-row-item {
     margin: 14px 90px 20px 0;
     padding: 12px 20px;
-    background: url(../images/bg_fff50.png);
+    background: url(/sites/all/themes/custom/parliamentwatch/images/bg_fff50.png);
     font-size: 11px;
-    line-height: 16px;
+    font-size: 1.1rem;
+    line-height: 1.6em;
 }
-#block-views-slider-block {
+.view-slider {
+    height: 168px !important;
+    position: relative;
+}
+.view-slider #views_slideshow_cycle_teaser_section_slider-block,
+.view-slider #views_slideshow_cycle_main_slider-block,
+.view-slider .views-slideshow-cycle-main-frame-row {
     height: 168px !important;
 }
-#views_slideshow_cycle_teaser_section_slider-block,
-#views_slideshow_cycle_main_slider-block,
-.views-slideshow-cycle-main-frame-row {
-    height: 168px !important;
-}
-#region-sidebar-second {
-    padding-top: 20px;
-}
-.views-slideshow-cycle-main-frame-row {
+.view-slider .views-slideshow-cycle-main-frame-row {
     width: 100% !important;
 }
-.views-content-field-slider-url a {
+.view-slider .views-content-field-slider-url a {
     font-size: 18px;
+    font-size: 1.8rem;
     color: #666;
     font-family: 'Times New Roman', Georgia, serif;
     line-height: 1.1em;
     font-weight: normal;
 }
-.active .views-content-field-slider-url a {
+.view-slider .active .views-content-field-slider-url a {
     color: #999;
 }
-.views-field-field-slider-teaserbody {
+.view-slider .views-field-field-slider-teaserbody {
     font-size: 11px;
-    line-height: 16px;
+    font-size: 1.1rem;
+    line-height: 1.6em;
     color: #999;
 }
-.active .views-field-field-slider-teaserbody {
+.view-slider .active .views-field-field-slider-teaserbody {
     color: #ccc;
 }
 
-#widget_pager_bottom_slider-block .active {
+.view-slider #widget_pager_bottom_slider-block .active {
     left: -10px;
 }
 
-.views-field-field-slider-teaserbody p {
-    line-height: 11px;
-    margin-bottom: 13px;
+.view-slider .views-field-field-slider-teaserbody p {
+    line-height: 1.1em;
+    margin-bottom: 1.3rem;
 }
-#views_slideshow_cycle_main_slider-block {
+.view-slider #views_slideshow_cycle_main_slider-block,
+.ds-right-1 .view-slider #views_slideshow_cycle_main_slider-block {
     position: absolute;
-    left: 0;
+    right: 321px;
     top: 0;
     height: 168px !important;
+    width: 620px;
 }
-.views-slideshow-controls-text-previous a {
+.view-slider .views-slideshow-controls-text-previous a {
     width: 26px;
     height: 26px;
-    background: url(../images/sprite.png) -960px -3615px no-repeat;
-    text-indent: -5000em;
+    background: url(/sites/all/themes/custom/parliamentwatch/images/sprite.png) -960px -3615px no-repeat;
+    text-indent: -5000rem;
     display: block;
     position: absolute;
     left: 6px;
     bottom: 6px;
 }
-.views-slideshow-controls-text-next a {
+.view-slider .views-slideshow-controls-text-next a {
     width: 26px;
     height: 26px;
-    background: url(../images/sprite.png) right -3774px no-repeat;
-    text-indent: -5000em;
+    background: url(/sites/all/themes/custom/parliamentwatch/images/sprite.png) right -3774px no-repeat;
+    text-indent: -5000rem;
     display: block;
     position: absolute;
     right: 6px;
     bottom: 6px;
 }
-#block-views-slider-block .close {
+.view-slider .close {
     position: absolute;
     right: 6px;
     top: 6px;
     width: 16px;
     height: 16px;
-    background: url(../images/sprite.png) -720px -3864px no-repeat;
+    background: url(/sites/all/themes/custom/parliamentwatch/images/sprite.png) -720px -3864px no-repeat;
     cursor: pointer;
-    text-indent: -5000em;
+    text-indent: -5000rem;
     display: block;
 }
-.views-slideshow-controls-top,
-#views_slideshow_controls_text_pause_slider-block {
+.view-slider .views-slideshow-controls-top,
+.view-slider #views_slideshow_controls_text_pause_slider-block {
     display: none;
+    position: relative;
 }
-#block-views-slider-block .views-slideshow-controls-top {
-    position: absolute;
-    z-index: 13;
+.view-slider .views-slideshow-controls-top {
     bottom: 0;
+    position: absolute;
+    right: 321px;
+    z-index: 13;
 }
-.views-slideshow-controls-bottom {
+.view-slider .views-slideshow-controls-bottom {
     position: absolute;
     top: 0;
     right: 0;
 }
-#block-views-slider-block .views-slideshow-pager-field-item {
+.view-slider .views-slideshow-pager-field-item {
     position: relative;
     padding-right: 38px;
 }
-#block-views-slider-block .item {
+.view-slider .item {
     position: absolute;
     right: 0;
     top: -4px;
     width: 31px;
     height: 31px;
-    background: url(../images/sprite.png) no-repeat;
+    background: url(/sites/all/themes/custom/parliamentwatch/images/sprite.png) no-repeat;
 }
-.js .views-slideshow-pager-field-item {
+.js .view-slider .views-slideshow-pager-field-item {
     cursor: pointer;   
 }
-#block-views-slider-block  a.form-submit {
+.view-slider  a.form-submit {
     font-size: 15px;
+    font-size: 1.5rem;
 }
 
-#block-views-slider-block .service-links {
+.view-slider .service-links {
     width: 456px;
     height: 20px;
 }
-#block-views-slider-block .service-links li {
+.view-slider .service-links li {
     list-style: none;
     margin-left: 12px;
     width: 20px;
@@ -165,20 +163,14 @@
 
 /* sharethis */
 
-#block-views-slider-block .stButton .chicklets {
+.view-slider .stButton .chicklets {
     padding-left: 20px !important;
     width: 102px;
     margin: 4px 0;
 }
-#block-views-slider-block .stButton .sharethis {
-	background: url("../images/sprite.png") no-repeat scroll -481px -2px transparent !important;
+.view-slider .stButton .sharethis {
+	background: url("/sites/all/themes/custom/parliamentwatch/images/sprite.png") no-repeat scroll -481px -2px transparent !important;
 }
-#block-views-slider-block .icon-share {
+.view-slider .icon-share {
     margin-top: 2px;
 }
-/*
-#views_slideshow_cycle_main_slider-block input.email {
-    float: left;
-    margin-right: 4px;
-}
-*/

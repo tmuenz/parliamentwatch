@@ -76,7 +76,7 @@ function delete_all_drush_delete() {
       }
     }
     else {
-      drush_print('Deleted ' . _delete_all_normal(FALSE, $types) . ' nodes');
+      drush_print('Deleted ' . _delete_all_normal(FALSE, $types, FALSE) . ' nodes');
     }
   }
   else {

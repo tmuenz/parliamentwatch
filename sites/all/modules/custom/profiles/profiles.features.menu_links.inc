@@ -17,9 +17,7 @@ function profiles_menu_default_menu_links() {
     'router_path' => 'node/add/calendar-entry',
     'link_title' => '+ Add Calendar Entry',
     'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
+      'attributes' => array(),
     ),
     'module' => 'menu',
     'hidden' => '0',

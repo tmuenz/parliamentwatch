@@ -2168,6 +2168,12 @@ function _webform_client_form_add_component($node, $component, $component_value,
       // Ensure the component is added as a property.
       $element['#webform_component'] = $component;
 
+      // The 'private' option is in most components, but it's not a real
+      // property. Add it for Form Builder compatibility.
+      if (webform_component_feature($component['type'], 'private')) {
+        $element['#webform_private'] = $component['extra']['private'];
+      }
+
       // Allow modules to modify a webform component that is going to be render in a form.
       drupal_alter('webform_component_render', $element, $component);
 
@@ -2321,6 +2327,11 @@ function _webform_client_form_validate($elements, &$form_state, $first_run = TRU
  */
 function webform_client_form_pages($form, &$form_state) {
   $node = node_load($form_state['values']['details']['nid']);
+
+  // Multistep forms may not have any components on the first page.
+  if (!isset($form_state['values']['submitted'])) {
+    $form_state['values']['submitted'] = array();
+  }
 
   // Move special settings to storage.
   if (isset($form_state['webform']['component_tree'])) {
@@ -2512,7 +2523,7 @@ function webform_client_form_submit($form, &$form_state) {
   }
 
   // Strip out empty tags added by WYSIWYG editors if needed.
-  $confirmation = strlen(trim(strip_tags($node->webform['confirmation']))) ? $node->webform['confirmation'] : '';
+  $confirmation = _webform_filter_values($confirmation, $node, $submission, NULL, FALSE, TRUE);
 
   // Clean up the redirect URL and filter it for webform tokens.
   $redirect_url = trim($node->webform['redirect_url']);
@@ -2624,6 +2635,10 @@ function _webform_confirmation($node) {
   drupal_set_title($node->title);
   webform_set_breadcrumb($node);
   $sid = isset($_GET['sid']) ? $_GET['sid'] : NULL;
+  if (isset($sid)) {
+      $submission = webform_menu_submission_load($sid, $node->nid);
+      $node->webform['confirmation'] = _webform_filter_values($node->webform['confirmation'], $node, $submission, NULL, FALSE, TRUE);
+  }
   return theme(array('webform_confirmation_' . $node->nid, 'webform_confirmation'), array('node' => $node, 'sid' => $sid));
 }
 
@@ -2914,18 +2929,25 @@ function _webform_filter_values($string, $node = NULL, $submission = NULL, $emai
   // Token module replacements
   if (module_exists('token')) {
       $reptypes = array('global' => NULL, 'user' => $user);
-      if (arg(0) == 'node' && is_numeric(arg(1))) {
-          $reptypes += array('node' => node_load(arg(1)));
+      if (isset($node) && isset($node->nid) && is_numeric($node->nid)) {
+        $nid = $node->nid;
+      }
+      else if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $nid = arg(1);
       }
 
-      $string = token_replace($string, $reptypes);
+      if ($nid) {
+          $reptypes += array('node' => node_load($nid));
+      }
+
+      $string = token_replace($string, $reptypes, array('clear' => TRUE));
   }
 
   // Setup default token replacements.
   if (!isset($replacements)) {
     $replacements['unsafe'] = array();
     $replacements['safe']['%site'] = variable_get('site_name', 'drupal');
-    $replacements['safe']['%date'] = format_date(REQUEST_TIME, 'large');
+    $replacements['safe']['%date'] = format_date(REQUEST_TIME, 'long');
   }
 
   // Node replacements.
@@ -3396,6 +3418,7 @@ function webform_format_email_subject($subject, $node = NULL, $submission = NULL
       if (function_exists($display_function)) {
         $display = $display_function($component, $value, 'text');
         $display['#theme_wrappers'] = array();
+        $display['#webform_component'] = $component;
         $subject = str_replace("\n", ' ', drupal_render($display));
       }
       else {
@@ -3592,7 +3615,12 @@ function webform_set_breadcrumb($node, $submission = NULL) {
     $webform_breadcrumb[] = l($node->title, 'node/' . $node->nid);
     if (isset($submission)) {
       $last_link = array_shift($breadcrumb);
-      $webform_breadcrumb[] = l(t('Submissions'), 'node/' . $node->nid . '/submissions');
+      if (webform_results_access($node)) {
+        $webform_breadcrumb[] = l(t('Webform results'), 'node/' . $node->nid . '/webform-results');
+      }
+      elseif (user_access('access own webform results', $account)) {
+        $webform_breadcrumb[] = l(t('Submissions'), 'node/' . $node->nid . '/submissions');
+      }
       if (isset($last_link)) {
         $webform_breadcrumb[] = $last_link;
       }
@@ -3715,8 +3743,10 @@ function webform_date_format($size = 'medium') {
  * Return a date in the desired format taking into consideration user timezones.
  */
 function webform_strtodate($format, $string, $timezone_name = NULL) {
+  global $user;
+
   // Adjust the time based on the user or site timezone.
-  if (variable_get('configurable_timezones', 1) && $timezone_name == 'user') {
+  if (variable_get('configurable_timezones', 1) && $timezone_name == 'user' && $user->uid) {
     $timezone_name = isset($GLOBALS['user']->timezone) ? $GLOBALS['user']->timezone : 'UTC';
   }
   // If the timezone is still empty or not set, use the site timezone.

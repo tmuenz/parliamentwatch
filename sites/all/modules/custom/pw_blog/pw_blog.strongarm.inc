@@ -13,6 +13,13 @@ function pw_blog_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_blogpost';
+  $strongarm->value = 'edit-comment';
+  $export['additional_settings__active_tab_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_blogpost';
   $strongarm->value = '2';
   $export['comment_anonymous_blogpost'] = $strongarm;
@@ -62,333 +69,44 @@ function pw_blog_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_any_force';
-  $strongarm->value = 0;
-  $export['custom_search_blocks_1_any_force'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_any_restricts';
-  $strongarm->value = 0;
-  $export['custom_search_blocks_1_any_restricts'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_negative_display';
-  $strongarm->value = 0;
-  $export['custom_search_blocks_1_criteria_negative_display'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_negative_label';
-  $strongarm->value = 'Containing none of the words';
-  $export['custom_search_blocks_1_criteria_negative_label'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_negative_region';
-  $strongarm->value = 'block';
-  $export['custom_search_blocks_1_criteria_negative_region'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_negative_weight';
-  $strongarm->value = '8';
-  $export['custom_search_blocks_1_criteria_negative_weight'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_or_display';
-  $strongarm->value = 0;
-  $export['custom_search_blocks_1_criteria_or_display'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_or_label';
-  $strongarm->value = 'Containing any of the words';
-  $export['custom_search_blocks_1_criteria_or_label'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_or_region';
-  $strongarm->value = 'block';
-  $export['custom_search_blocks_1_criteria_or_region'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_or_weight';
-  $strongarm->value = '6';
-  $export['custom_search_blocks_1_criteria_or_weight'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_phrase_display';
-  $strongarm->value = 0;
-  $export['custom_search_blocks_1_criteria_phrase_display'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_phrase_label';
-  $strongarm->value = 'Containing the phrase';
-  $export['custom_search_blocks_1_criteria_phrase_label'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_phrase_region';
-  $strongarm->value = 'block';
-  $export['custom_search_blocks_1_criteria_phrase_region'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_criteria_phrase_weight';
-  $strongarm->value = '7';
-  $export['custom_search_blocks_1_criteria_phrase_weight'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_custom_paths_region';
-  $strongarm->value = 'block';
-  $export['custom_search_blocks_1_custom_paths_region'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_custom_paths_weight';
-  $strongarm->value = '9';
-  $export['custom_search_blocks_1_custom_paths_weight'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_image_path';
-  $strongarm->value = 'public://custom_search/ic_search.png';
-  $export['custom_search_blocks_1_image_path'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_label';
-  $strongarm->value = 'Search this site';
-  $export['custom_search_blocks_1_label'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_label_visibility';
-  $strongarm->value = 0;
-  $export['custom_search_blocks_1_label_visibility'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_max_length';
-  $strongarm->value = '128';
-  $export['custom_search_blocks_1_max_length'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_node_types';
-  $strongarm->value = array(
-    'article' => 0,
-    'page' => 0,
-    'blogpost' => 0,
-    'dialogue' => 0,
-    'migrate_extras_media_example' => 0,
-    'migrate_example_pathauto' => 0,
-    'pw_poll' => 0,
-    'press_release' => 0,
-    'press_article' => 0,
-    'slider_item' => 0,
-    'trustee' => 0,
-    'webform' => 0,
-  );
-  $export['custom_search_blocks_1_node_types'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_node_types_excluded';
-  $strongarm->value = array(
-    'article' => 'article',
-    'page' => 'page',
-    'dialogue' => 'dialogue',
-    'migrate_extras_media_example' => 'migrate_extras_media_example',
-    'migrate_example_pathauto' => 'migrate_example_pathauto',
-    'pw_poll' => 'pw_poll',
-    'press_release' => 'press_release',
-    'press_article' => 'press_article',
-    'slider_item' => 'slider_item',
-    'trustee' => 'trustee',
-    'webform' => 'webform',
-    'blogpost' => 0,
-  );
-  $export['custom_search_blocks_1_node_types_excluded'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_order';
-  $strongarm->value = array(
-    'search_box' => array(
-      'sort' => '-1',
-      'region' => 'block',
-    ),
-    'criteria_or' => array(
-      'sort' => '6',
-      'region' => 'block',
-    ),
-    'criteria_phrase' => array(
-      'sort' => '7',
-      'region' => 'block',
-    ),
-    'criteria_negative' => array(
-      'sort' => '8',
-      'region' => 'block',
-    ),
-    'custom_paths' => array(
-      'sort' => '9',
-      'region' => 'block',
-    ),
-    'submit_button' => array(
-      'sort' => '10',
-      'region' => 'block',
-    ),
-    'content_types' => array(
-      'sort' => '0',
-      'region' => 'block',
-    ),
-  );
-  $export['custom_search_blocks_1_order'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_other';
-  $strongarm->value = array(
-    'ds_search' => 'ds_search',
-    'user' => 0,
-  );
-  $export['custom_search_blocks_1_other'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_paths';
-  $strongarm->value = '';
-  $export['custom_search_blocks_1_paths'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_paths_selector';
-  $strongarm->value = 'select';
-  $export['custom_search_blocks_1_paths_selector'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_paths_selector_label';
-  $strongarm->value = 'Customize your search';
-  $export['custom_search_blocks_1_paths_selector_label'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_paths_selector_label_visibility';
+  $strongarm->name = 'custom_breadcrumbs_show_form_table_blogpost';
   $strongarm->value = 1;
-  $export['custom_search_blocks_1_paths_selector_label_visibility'] = $strongarm;
+  $export['custom_breadcrumbs_show_form_table_blogpost'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_search_box_region';
-  $strongarm->value = 'block';
-  $export['custom_search_blocks_1_search_box_region'] = $strongarm;
+  $strongarm->name = 'diff_enable_revisions_page_node_blogpost';
+  $strongarm->value = 1;
+  $export['diff_enable_revisions_page_node_blogpost'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_search_box_weight';
-  $strongarm->value = '-1';
-  $export['custom_search_blocks_1_search_box_weight'] = $strongarm;
+  $strongarm->name = 'diff_show_preview_changes_node_blogpost';
+  $strongarm->value = 1;
+  $export['diff_show_preview_changes_node_blogpost'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_size';
-  $strongarm->value = '15';
-  $export['custom_search_blocks_1_size'] = $strongarm;
+  $strongarm->name = 'diff_view_mode_preview_node_blogpost';
+  $strongarm->value = 'full';
+  $export['diff_view_mode_preview_node_blogpost'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_submit_button_region';
-  $strongarm->value = 'block';
-  $export['custom_search_blocks_1_submit_button_region'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_submit_button_weight';
-  $strongarm->value = '10';
-  $export['custom_search_blocks_1_submit_button_weight'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_submit_text';
-  $strongarm->value = 'Search';
-  $export['custom_search_blocks_1_submit_text'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_text';
-  $strongarm->value = 'Blog durchsuchen';
-  $export['custom_search_blocks_1_text'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_type_selector';
-  $strongarm->value = 'select';
-  $export['custom_search_blocks_1_type_selector'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_type_selector_all';
-  $strongarm->value = '-Any-';
-  $export['custom_search_blocks_1_type_selector_all'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_type_selector_label';
-  $strongarm->value = 'Search for';
-  $export['custom_search_blocks_1_type_selector_label'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'custom_search_blocks_1_type_selector_label_visibility';
+  $strongarm->name = 'entity_translation_comment_filter_blogpost';
   $strongarm->value = 0;
-  $export['custom_search_blocks_1_type_selector_label_visibility'] = $strongarm;
+  $export['entity_translation_comment_filter_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_node_metadata_blogpost';
+  $strongarm->value = '0';
+  $export['entity_translation_node_metadata_blogpost'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -504,6 +222,55 @@ function pw_blog_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_blogpost';
+  $strongarm->value = '';
+  $export['page_title_type_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_type_blogpost_showfield';
+  $strongarm->value = 0;
+  $export['page_title_type_blogpost_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_blogcategories';
+  $strongarm->value = '';
+  $export['page_title_vocab_blogcategories'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_blogcategories_showfield';
+  $strongarm->value = 0;
+  $export['page_title_vocab_blogcategories_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_blogtags';
+  $strongarm->value = '';
+  $export['page_title_vocab_blogtags'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_title_vocab_blogtags_showfield';
+  $strongarm->value = 0;
+  $export['page_title_vocab_blogtags_showfield'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_blog_pattern';
+  $strongarm->value = 'blogs/[user:name]';
+  $export['pathauto_blog_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_blogpost_pattern';
   $strongarm->value = 'blog/[node:created:custom:Y-m-d]/[node:title]';
   $export['pathauto_node_blogpost_pattern'] = $strongarm;
@@ -511,30 +278,142 @@ function pw_blog_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tagadelic_block_tags_13';
-  $strongarm->value = '12';
-  $export['tagadelic_block_tags_13'] = $strongarm;
+  $strongarm->name = 'pathauto_node_blogpost_und_pattern';
+  $strongarm->value = '';
+  $export['pathauto_node_blogpost_und_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tagadelic_levels';
-  $strongarm->value = '6';
-  $export['tagadelic_levels'] = $strongarm;
+  $strongarm->name = 'pathauto_taxonomy_term_blogcategories_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_blogcategories_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tagadelic_page_amount';
-  $strongarm->value = '60';
-  $export['tagadelic_page_amount'] = $strongarm;
+  $strongarm->name = 'pathauto_taxonomy_term_blogtags_pattern';
+  $strongarm->value = '';
+  $export['pathauto_taxonomy_term_blogtags_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tagadelic_sort_order';
-  $strongarm->value = 'random,none';
-  $export['tagadelic_sort_order'] = $strongarm;
+  $strongarm->name = 'print_display_blogpost';
+  $strongarm->value = 1;
+  $export['print_display_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_display_comment_blogpost';
+  $strongarm->value = 0;
+  $export['print_display_comment_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_display_urllist_blogpost';
+  $strongarm->value = 1;
+  $export['print_display_urllist_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_display_blogpost';
+  $strongarm->value = '0';
+  $export['siblingmenutree_display_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_enable_blogpost';
+  $strongarm->value = 0;
+  $export['siblingmenutree_enable_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_title_blogpost';
+  $strongarm->value = '';
+  $export['siblingmenutree_title_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'siblingmenutree_weight_blogpost';
+  $strongarm->value = '0';
+  $export['siblingmenutree_weight_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_display_blogpost';
+  $strongarm->value = '0';
+  $export['submenutree_display_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_enable_blogpost';
+  $strongarm->value = 0;
+  $export['submenutree_enable_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_node_type_blogpost';
+  $strongarm->value = '0';
+  $export['submenutree_node_type_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_title_blogpost';
+  $strongarm->value = '';
+  $export['submenutree_title_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'submenutree_weight_blogpost';
+  $strongarm->value = '0';
+  $export['submenutree_weight_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'sync_translations_blogpost';
+  $strongarm->value = '0';
+  $export['sync_translations_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_default_blogpost';
+  $strongarm->value = '0';
+  $export['weight_default_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_enabled_blogpost';
+  $strongarm->value = '0';
+  $export['weight_enabled_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_menu_blogpost';
+  $strongarm->value = '0';
+  $export['weight_menu_blogpost'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'weight_range_blogpost';
+  $strongarm->value = '20';
+  $export['weight_range_blogpost'] = $strongarm;
 
   return $export;
 }

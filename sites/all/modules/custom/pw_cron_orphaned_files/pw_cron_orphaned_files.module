@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file pw_cron_orphaned_files.module
+ * Deletes orphaned files found in file_managed table
+ */
+
+/**
+ * Implements hook_cron()..
+ */
+function pw_cron_orphaned_files_cron() {
+  //db_query to find all files not attached to a node:
+  $older_than_days = 3;
+  $result = db_query("SELECT fid FROM file_managed WHERE file_managed.timestamp<UNIX_TIMESTAMP(NOW())-:older_than_days*86400 AND NOT EXISTS (SELECT * FROM file_usage WHERE file_managed.fid = file_usage.fid)", array('older_than_days' => $older_than_days));
+  //Delete file & database entry
+  $count_delete = 0;
+  while ($record = $result->fetchObject()) {
+    $file = file_load($record->fid);
+    if ($file != NULL) {
+      if(file_delete($file)){
+        $count_delete++;
+      }
+    } 
+  }
+  if($count_delete > 0){
+    drupal_set_message("$count_delete orphaned files deleted");
+  }
+}

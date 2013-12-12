@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file pw_cron_first_letter.module
+ * Module which writes first letter of surname of each politician in a separate field.
+ */
+
+
+/**
+ * Implements hook_cron()..
+ */
+function pw_cron_first_letter_cron() {
+    // query all user which have no or wrong first letter stored
+    $users = db_query('SELECT fname.entity_id AS uid
+                        FROM {field_data_field_user_lname} AS fname
+                        LEFT OUTER JOIN {field_data_field_user_first_letter_lname} AS fletter ON fname.entity_type = fletter.entity_type AND fname.entity_id = fletter.entity_id 
+                        WHERE fletter.field_user_first_letter_lname_value IS NULL OR SUBSTRING(fname.field_user_lname_value, 1, 1) != fletter.field_user_first_letter_lname_value')->fetchCol();
+                        
+  foreach ($users as $uid) {
+      #drupal_set_message($uid);
+      $account = user_load($uid);
+      $last_name = $account->field_user_lname[LANGUAGE_NONE][0]['value'];
+      $last_name = trim($last_name);
+      if(strlen($last_name) > 0){
+        $first_letter = mb_substr($last_name, 0, 1);
+        $first_letter = mb_strtoupper($first_letter);
+        $edit = array();
+        $edit['revision'] = 0;
+        $edit['field_user_first_letter_lname'][LANGUAGE_NONE][0]['value'] = $first_letter;
+        user_save($account, $edit);
+      }
+  }
+                        
+}
