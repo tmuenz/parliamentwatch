@@ -1,0 +1,17 @@
+ENABLE MODULE
+drush en -y pw_petitions --uri=abgeordnetenwatch.de
+
+IMPORT WEBFORM
+drush ne-import --file=sites/all/modules/custom/pw_petitions/node-export-petition-webform.drupal --uri=abgeordnetenwatch.de
+
+SET WEBFORM ID FOR COMPACT FORMS
+/admin/config/user-interface/compact_forms
+
+SET DS FIELD
+/admin/structure/ds/fields/manage_block/pw_petition_form -> Block "Petition Form"
+
+STAY ON PAGE
+/admin/structure/block/manage/webform/client-block-WEBFORMID/configure
+
+SET WEBFORM ID IN MODULE
+pw_petitions.module -> webform_client_form_WEBFORMID

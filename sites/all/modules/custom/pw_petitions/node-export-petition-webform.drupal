@@ -1,6 +1,6 @@
 array(
   (object) array(
-      'vid' => '10355',
+      'vid' => '10378',
       'uid' => '1',
       'title' => 'Petition unterschreiben',
       'log' => '',
@@ -10,15 +10,15 @@ array(
       'sticky' => '0',
       'vuuid' => 'b305206e-e883-4a63-85d8-606fa9c6d483',
       'ds_switch' => '',
-      'nid' => '10344',
+      'nid' => '10367',
       'type' => 'webform',
       'language' => 'de',
-      'created' => '1384806379',
-      'changed' => '1385457292',
+      'created' => '1386950655',
+      'changed' => '1386950655',
       'tnid' => '0',
       'translate' => '0',
       'uuid' => '7480b5f4-9c09-43e8-811b-468863974a17',
-      'revision_timestamp' => '1385457292',
+      'revision_timestamp' => '1386950655',
       'revision_uid' => '1',
       'body' => array(
         'de' => array(
@@ -100,19 +100,19 @@ array(
           'data' => array(
             'de' => array(
               'entity_type' => 'node',
-              'entity_id' => '10344',
+              'entity_id' => '10367',
               'language' => 'de',
               'source' => '',
               'uid' => '1',
               'status' => '1',
               'translate' => '0',
               'created' => '1385378982',
-              'changed' => '1385378982',
+              'changed' => '1386950655',
             ),
           ),
         ),
       'webform' => array(
-        'nid' => '10344',
+        'nid' => '10367',
         'confirmation' => "Vielen Dank für Ihre Zeichnung!\r\n",
         'confirmation_format' => 'managed_content',
         'redirect_url' => '<none>',
@@ -134,7 +134,7 @@ array(
         ),
         'emails' => array(
           1 => array(
-            'nid' => '10344',
+            'nid' => '10367',
             'eid' => '1',
             'email' => '2',
             'subject' => 'Vielen Dank für Ihre Zeichnung!',
@@ -150,7 +150,7 @@ array(
         ),
         'components' => array(
           3 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '3',
             'pid' => '0',
             'form_key' => 'prefix',
@@ -178,7 +178,7 @@ array(
             'page_num' => 1,
           ),
           1 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '1',
             'pid' => '0',
             'form_key' => 'first_name',
@@ -205,7 +205,7 @@ array(
             'page_num' => 1,
           ),
           4 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '4',
             'pid' => '0',
             'form_key' => 'last_name',
@@ -232,7 +232,7 @@ array(
             'page_num' => 1,
           ),
           2 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '2',
             'pid' => '0',
             'form_key' => 'e_mail',
@@ -256,7 +256,7 @@ array(
             'page_num' => 1,
           ),
           5 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '5',
             'pid' => '0',
             'form_key' => 'phone',
@@ -283,7 +283,7 @@ array(
             'page_num' => 1,
           ),
           6 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '6',
             'pid' => '0',
             'form_key' => 'street',
@@ -310,7 +310,7 @@ array(
             'page_num' => 1,
           ),
           7 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '7',
             'pid' => '0',
             'form_key' => 'zipcode',
@@ -337,7 +337,7 @@ array(
             'page_num' => 1,
           ),
           8 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '8',
             'pid' => '0',
             'form_key' => 'city',
@@ -364,7 +364,7 @@ array(
             'page_num' => 1,
           ),
           9 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '9',
             'pid' => '0',
             'form_key' => 'country',
@@ -392,7 +392,7 @@ array(
             'page_num' => 1,
           ),
           10 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '10',
             'pid' => '0',
             'form_key' => 'reason',
@@ -417,7 +417,7 @@ array(
             'page_num' => 1,
           ),
           11 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '11',
             'pid' => '0',
             'form_key' => 'make_subscription_public',
@@ -444,44 +444,16 @@ array(
             'weight' => '12',
             'page_num' => 1,
           ),
-          14 => array(
-            'nid' => 10344,
-            'cid' => '14',
-            'pid' => '0',
-            'form_key' => 'newsletter_subscription',
-            'name' => 'Newsletter',
-            'type' => 'select',
-            'value' => '',
-            'extra' => array(
-              'items' => 'yes|Ja, ich möchte den abgeordnetenwatch.de-Newsletter per E-Mail erhalten. Der Newsletter kann jederzeit wieder abbestellt werden.',
-              'multiple' => 1,
-              'title_display' => 'none',
-              'private' => 0,
-              'aslist' => 0,
-              'optrand' => 0,
-              'conditional_operator' => '=',
-              'other_option' => NULL,
-              'other_text' => 'Other...',
-              'description' => '',
-              'custom_keys' => FALSE,
-              'options_source' => '',
-              'conditional_component' => '',
-              'conditional_values' => '',
-            ),
-            'mandatory' => '0',
-            'weight' => '13',
-            'page_num' => 1,
-          ),
           12 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '12',
             'pid' => '0',
             'form_key' => 'keep_me_updated',
             'name' => 'Auf dem Laufenden halten',
             'type' => 'select',
-            'value' => '',
+            'value' => 'yes',
             'extra' => array(
-              'items' => 'yes|Bitte halten Sie mich auf dem Laufenden und informieren Sie mich per E-Mail, telefonisch oder per Post',
+              'items' => 'yes|Bitte halten Sie mich auf dem Laufenden und informieren sie mich per Newsletter, telefonisch oder per Post.',
               'multiple' => 1,
               'title_display' => 'none',
               'private' => 0,
@@ -501,7 +473,7 @@ array(
             'page_num' => 1,
           ),
           13 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '13',
             'pid' => '0',
             'form_key' => 'datenschutz',
@@ -520,7 +492,7 @@ array(
             'page_num' => 1,
           ),
           16 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '16',
             'pid' => '0',
             'form_key' => 'node_path',
@@ -539,7 +511,7 @@ array(
             'page_num' => 1,
           ),
           15 => array(
-            'nid' => 10344,
+            'nid' => 10367,
             'cid' => '15',
             'pid' => '0',
             'form_key' => 'status',
@@ -562,7 +534,7 @@ array(
       'signature' => '',
       'spaminess' => 0,
       'cid' => '0',
-      'last_comment_timestamp' => '1385042541',
+      'last_comment_timestamp' => '1386950655',
       'last_comment_name' => NULL,
       'last_comment_uid' => '1',
       'comment_count' => '0',
@@ -574,8 +546,8 @@ array(
       'data' => 'a:5:{s:16:"ckeditor_default";s:1:"t";s:20:"ckeditor_show_toggle";s:1:"t";s:14:"ckeditor_width";s:4:"100%";s:13:"ckeditor_lang";s:2:"en";s:18:"ckeditor_auto_lang";s:1:"t";}',
       'weight_weight' => FALSE,
       'path' => array(
-        'pid' => '79197',
-        'source' => 'node/10344',
+        'pid' => '79227',
+        'source' => 'node/10367',
         'alias' => 'petition-unterschreiben',
         'language' => 'de',
       ),

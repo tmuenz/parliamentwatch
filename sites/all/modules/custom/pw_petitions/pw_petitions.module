@@ -13,7 +13,7 @@ include_once 'pw_petitions.features.inc';
 function pw_petitions_form_alter(&$form, &$form_state, $form_id) {
 
   switch ($form_id) {
-    case 'webform_client_form_10344':
+    case 'webform_client_form_10367':
       $form['#validate'][] = 'pw_petitions_form_validate';
       $form['#submit'][] = 'pw_petitions_form_submit';
   }
@@ -75,7 +75,6 @@ function pw_petitions_form_validate($form_id, $form_values){
 function pw_petitions_form_submit(&$form, &$form_state){
   // count +1 to signings
   $node_path_value = $form_values['values']['submitted']['node_path'];
-  krumo($node_path_value);
   if($node = menu_get_object('node', 1, $node_path_value)){
     $node->field_petition_signings['und'][0]['value']++;
 	node_save($node);
