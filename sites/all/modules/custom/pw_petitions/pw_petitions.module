@@ -7,6 +7,26 @@
 include_once 'pw_petitions.features.inc';
 
 /**
+ * Implements hook_menu().
+ */
+function pw_petitions_menu() {
+  $items = array();
+  
+  $items['thanks-for-your-signing'] = array(
+    'title' => 'Thanks for your signing!',
+    'access arguments' => array('access content'),
+    'page callback' => 'redirect_to_petition',
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+  return $items;
+}
+
+function redirect_to_petition(){
+	drupal_set_message("Vielen Dank, dass Sie die Petition unterzeichnet haben.");
+	drupal_goto('petitions');
+}
+
+/**
  * add additional handlers for petition webform
  *  
  */
