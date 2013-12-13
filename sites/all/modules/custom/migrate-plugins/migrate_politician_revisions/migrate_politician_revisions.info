@@ -1,0 +1,13 @@
+name = "Migrate Politician Revisions"
+description = "Migrate Politician Revisions"
+package = "Development"
+
+dependencies[] = migrate
+dependencies[] = migrate_politician
+
+files[] = migrate_politician_revisions.module
+files[] = migrate_politician_revisions.inc
+
+version = "7.x-1.0-20131213"
+core = "7.x"
+project = "migrate_politician_revisions"

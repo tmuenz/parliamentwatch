@@ -203,8 +203,14 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
 
     if (isset($account->uid) && !(isset($account->is_new) && $account->is_new)) {
       $updating = TRUE;
+      // @DEBUG REMOVE
+      watchdog("PW_TEST", t("UPDATING ACCOUNT UID " . $account->uid),
+                    $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
     }
     else {
+      // @DEBUG REMOVE
+      watchdog("PW_TEST", t("CREATING NEW ACCOUNT"),
+                    $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
       $updating = FALSE;
     }
 

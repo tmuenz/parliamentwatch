@@ -1,14 +1,17 @@
 <?php
 
-abstract class BasicMigratePolitician extends Migration {
+abstract class BasicMigratePoliticianRevision extends Migration {
   public function __construct() {
     parent::__construct();
   }
 }
 
-class PoliticianMigration extends BasicMigratePolitician {
+class PoliticianRevisionMigration extends BasicMigratePoliticianRevision {
   public function __construct() {
     parent::__construct();
+
+    // Setting up dependencies, migrate Politician profiles first
+    $this->dependencies = array('Politician');
 
     // Connect to legacy database and select oldest profile
     // of each politican (oldest=1)
@@ -25,7 +28,7 @@ class PoliticianMigration extends BasicMigratePolitician {
                               'political_roles', 'links'));
     $query->fields('p', array('parliament', 'valid_from'));
     // @TODO confirm working
-    $query->condition('u.oldest', 1, '='); // Profiles
+    $query->condition('u.oldest', 0, '='); // Revisions
     switch(variable_get('site_name')){
       case 'abgeordnetenwatch.de':
         $query->condition('p.project_cmd', array(0, 2000), 'BETWEEN');
@@ -55,19 +58,21 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->destination = new MigrateDestinationUser();
     $this->map = new MigrateSQLMap($this->machineName,
       array('uid' => array('type' => 'int',
-                          'not null' => TRUE,
-                          'alias' => 'u')),
-            MigrateDestinationUser::getKeySchema());
+                           'not null' => TRUE,
+                           'alias' => 'u')),
+                          MigrateDestinationUser::getKeySchema());
+
+    // Update existing profiles
+    //$this->systemOfRecord = Migration::DESTINATION;
+    $this->addFieldMapping('uid', 'uid');
+    //  ->sourceMigration('Politician');
+    $this->addFieldMapping('is_new')
+      ->defaultValue(FALSE);
+    $this->addFieldMapping('revision')
+      ->defaultValue(TRUE);
 
     // Map old to new data fields
-    //if (true) { // 1
-    $this->addFieldMapping('is_new')->defaultValue(TRUE);
-    $this->addFieldMapping('revision')->defaultValue(FALSE);
-      $this->addFieldMapping('name', 'username')->dedupe('users', 'name');
-    //} else { // 0
-    //  $this->addFieldMapping('is_new', FALSE);
-    //  $this->addFieldMapping('uid', 'username');
-    //}
+    $this->addFieldMapping('name', 'username'); //->dedupe('users', 'name');
     $this->addFieldMapping('created', 'valid_from');
     $this->addFieldMapping('status')->defaultValue(1);
     $this->addFieldMapping('field_user_title', 'title');
@@ -103,6 +108,13 @@ class PoliticianMigration extends BasicMigratePolitician {
   }
 
   public function prepareRow($current_row) {
+    $current_row->uid = user_load_by_name($current_row->username)->uid;
+
+    // @DEBUG REMOVE
+    watchdog("PW_TEST", t("DEBUG USER " . $current_row->uid . ' ' . user_load_by_name($current_row->username)->uid . ' ' . $current_row->username),
+                  $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
+
+
     if($current_row->birthday < 1) {
       $current_row->birthday = NULL;
     }
