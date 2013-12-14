@@ -1,64 +1,89 @@
-Bundestag {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestag-360-0.html"}
--Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-337-0.html"}
--Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-991-0.html"}
--Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-123-0.html"}
--Wahlrecht {"url":"bundestag\/wahlrecht"}
--Grußwort {"url":"bundestag\/grusswort"}
-Landtage {"url":"http:\/\/www.abgeordnetenwatch.de\/landtage-210-0.html"}
--Ba-Wü {"url":"http:\/\/www.abgeordnetenwatch.de\/baden_wuerttemberg-913-0.html"}
+Wahlen {"url":"http:\/\/www.abgeordnetenwatch.de\/wahlen-733-0.html","hidden":true}
+Parlamente {"url":"http:\/\/www.abgeordnetenwatch.de\/parlamente-210-0.html","expanded":true}
+-Bundestag {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestag-360-0.html","expanded":true}
+--Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-337-0.html"}
+--Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-991-0.html"}
+--Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-123-0.html"}
+--Wahlrecht {"url":"bundestag\/wahlrecht"}
+--Petitionen {"url":"petitions","expanded":true}
+--Grußwort {"url":"bundestag\/grusswort"}
+-EU {"url":"http:\/\/www.abgeordnetenwatch.de\/eu-336-0.html","expanded":true}
+--Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-669-0.html"}
+--Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-105-0.html"}
+--Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-107-0.html"}
+--Wahlrecht {"url":"eu\/wahlrecht"}
+--Gesetzgebende Verfahren {"url":"eu\/gesetzgebende-verfahren"}
+-Baden-Würtemberg {"url":"http:\/\/www.abgeordnetenwatch.de\/baden_wuerttemberg-913-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-182-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-149-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-215-0.html"}
--Bayern {"url":"http:\/\/www.abgeordnetenwatch.de\/bayern-542-0.html"}
---Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-514-0.html"}
+-Bayern {"url":"http:\/\/www.abgeordnetenwatch.de\/bayern-542-0.html","expanded":true}
+--Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-514-0.html","expanded":true}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-511-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-509-0.html"}
--Berlin {"url":"http:\/\/www.abgeordnetenwatch.de\/berlin-319-0.html"}
+-Berlin {"url":"http:\/\/www.abgeordnetenwatch.de\/berlin-319-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-543-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-362-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-274-0.html"}
--Hamburg {"url":"http:\/\/www.abgeordnetenwatch.de\/hamburg-320-0.html"}
+-Hamburg {"url":"http:\/\/www.abgeordnetenwatch.de\/hamburg-320-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-892-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-213-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-553-0.html"}
--Hessen {"url":"http:\/\/www.abgeordnetenwatch.de\/hessen-539-0.html"}
+-Hessen {"url":"http:\/\/www.abgeordnetenwatch.de\/hessen-539-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-490-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-485-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-483-0.html"}
--Niedersachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/niedersachsen-1157-0.html"}
+-Niedersachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/niedersachsen-1157-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-1321-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-1251-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-1124-0.html"}
--NRW {"url":"http:\/\/www.abgeordnetenwatch.de\/nrw-967-0.html"}
+-Nordrhein-Westfalen {"url":"http:\/\/www.abgeordnetenwatch.de\/nrw-967-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-924-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-251-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-624-0.html"}
--Sachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/sachsen-146-0.html"}
+-Sachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/sachsen-146-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-764-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-984-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-477-0.html"}
--Schl.-Holstein {"url":"http:\/\/www.abgeordnetenwatch.de\/schleswig_holstein-852-0.html"}
+-Schleswig-Holstein {"url":"http:\/\/www.abgeordnetenwatch.de\/schleswig_holstein-852-0.html","expanded":true}
 --Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-977-0.html"}
 --Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-662-0.html"}
 --Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-808-0.html"}
-Kommunen {"url":"http:\/\/www.abgeordnetenwatch.de\/kommunen-933-0.html"}
+Kommunen {"url":"http:\/\/www.abgeordnetenwatch.de\/kommunen-933-0.html","expanded":true}
 -Alle Kommunen {"url":"http:\/\/www.abgeordnetenwatch.de\/alle_kommunen-909-0.html"}
-EU {"url":"http:\/\/www.abgeordnetenwatch.de\/eu-336-0.html"}
--Abgeordnete {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnete-669-0.html"}
--Abstimmungen {"url":"http:\/\/www.abgeordnetenwatch.de\/abstimmungen-105-0.html"}
--Ausschüsse {"url":"http:\/\/www.abgeordnetenwatch.de\/ausschuesse-107-0.html"}
--Wahlrecht {"url":"eu\/wahlrecht"}
--Gesetzgebende Verfahren {"url":"eu\/gesetzgebende-verfahren"}
-Archiv {"url":"http:\/\/www.abgeordnetenwatch.de\/archiv-391-0.html"}
--2013 {"url":"http:\/\/www.abgeordnetenwatch.de\/2013-1315-0.html"}
+Presse {"url":"ueber-uns\/presse","expanded":true}
+-Pressespiegel {"url":"ueber-uns\/presse"}
+-Pressemitteilungen {"url":"ueber-uns\/presse\/pressemitteilungen"}
+--Press release (menu position rule) {"url":"menu-position\/5","description":"Sets access to all menu position links.","hidden":true}
+Blog {"url":"blog"}
+-Blog tagdelic (menu position rule) {"url":"menu-position\/4","description":"Sets access to all menu position links.","hidden":true}
+-Blogcategories (menu position rule) {"url":"menu-position\/6","description":"Sets access to all menu position links.","hidden":true}
+-Blogpost (menu position rule) {"url":"menu-position\/1","description":"Sets access to all menu position links.","hidden":true}
+-Blogtags (menu position rule) {"url":"menu-position\/2","description":"Sets access to all menu position links.","hidden":true}
+-Blogterms (menu position rule) {"url":"menu-position\/3","description":"Sets access to all menu position links.","hidden":true}
+Archiv {"url":"http:\/\/www.abgeordnetenwatch.de\/archiv-391-0.html","expanded":true}
+-2013 {"url":"http:\/\/www.abgeordnetenwatch.de\/2013-1315-0.html","expanded":true}
+--Bundestagswahl {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestagswahl-1481-0.html"}
+---Kandidierende {"url":"http:\/\/www.abgeordnetenwatch.de\/kandidierende-1161-0.html","hidden":true}
+---Wahlprogramme {"url":"wahlprogramme\/bundestag","hidden":true}
+---Wahlrecht {"url":"wahlen\/bundestagswahl\/wahlrecht","hidden":true}
+--Landtagswahl Bayern {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_bayern-1457-0.html"}
+---Grußwort {"url":"wahlen\/landtagswahl-bayern\/grusswort","hidden":true}
+---Kandidierende {"url":"http:\/\/www.abgeordnetenwatch.de\/kandidierende-1062-0.html","hidden":true}
+---Wahlprogramme {"url":"wahlprogramme\/bayern","hidden":true}
+---Wahlrecht {"url":"wahlen\/landtagswahl-bayern\/wahlrecht","hidden":true}
+--Landtagswahl Hessen {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_hessen-1389-0.html"}
+---Kandidierende {"url":"http:\/\/www.abgeordnetenwatch.de\/kandidierende-1232-0.html","hidden":true}
+---Wahlprogramme {"url":"wahlprogramme\/hessen","hidden":true}
+---Wahlrecht {"url":"wahlen\/landtagswahl-hessen\/wahlrecht","hidden":true}
 --Landtagswahl Niedersachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_niedersachsen-1210-0.html"}
 --OB Wahl Leipzig {"url":"http:\/\/www.abgeordnetenwatch.de\/ob_wahl_leipzig-1260-0.html"}
--2012 {"url":"http:\/\/www.abgeordnetenwatch.de\/2012-711-0.html"}
+-2012 {"url":"http:\/\/www.abgeordnetenwatch.de\/2012-711-0.html","expanded":true}
 --Nordrhein-Westfalen {"url":"http:\/\/www.abgeordnetenwatch.de\/nordrhein_westfalen-610-0.html"}
 --Schl.-Holstein {"url":"http:\/\/www.abgeordnetenwatch.de\/schleswig_holstein-750-0.html"}
 --Saarland {"url":"http:\/\/www.abgeordnetenwatch.de\/saarland-795-0.html"}
 --OB Wahl Mainz {"url":"http:\/\/www.abgeordnetenwatch.de\/ob_wahl_mainz-806-0.html"}
--2011 {"url":"http:\/\/www.abgeordnetenwatch.de\/2011-322-0.html"}
+-2011 {"url":"http:\/\/www.abgeordnetenwatch.de\/2011-322-0.html","expanded":true}
 --Berlin {"url":"http:\/\/www.abgeordnetenwatch.de\/berlin-200-0.html"}
 --Mecklenburg-Vorpommern {"url":"http:\/\/www.abgeordnetenwatch.de\/mecklenburg_vorpommern-993-0.html"}
 --Bremen {"url":"http:\/\/www.abgeordnetenwatch.de\/bremen-916-0.html"}
@@ -66,10 +91,10 @@ Archiv {"url":"http:\/\/www.abgeordnetenwatch.de\/archiv-391-0.html"}
 --Rheinland-Pfalz {"url":"http:\/\/www.abgeordnetenwatch.de\/rheinland_pfalz-639-0.html"}
 --Sachsen-Anhalt {"url":"http:\/\/www.abgeordnetenwatch.de\/sachsen_anhalt-821-0.html"}
 --Bürgerschaftswahl Hamburg {"url":"http:\/\/www.abgeordnetenwatch.de\/buergerschaftswahl_hamburg-708-0.html"}
--2010 {"url":"http:\/\/www.abgeordnetenwatch.de\/2010-179-0.html"}
+-2010 {"url":"http:\/\/www.abgeordnetenwatch.de\/2010-179-0.html","expanded":true}
 --Landtagswahl NRW {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_nrw-244-0.html"}
 --Bürgermeisterwahl Dortmund {"url":"http:\/\/www.abgeordnetenwatch.de\/buergermeisterwahl_dortmund-619-0.html"}
--2009 {"url":"http:\/\/www.abgeordnetenwatch.de\/2009-167-0.html"}
+-2009 {"url":"http:\/\/www.abgeordnetenwatch.de\/2009-167-0.html","expanded":true}
 --Landtagswahl Hessen {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_hessen-820-0.html"}
 --Europawahl {"url":"http:\/\/www.abgeordnetenwatch.de\/europawahl-129-0.html"}
 --Landtagswahl Saarland {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_saarland-648-0.html"}
@@ -79,22 +104,22 @@ Archiv {"url":"http:\/\/www.abgeordnetenwatch.de\/archiv-391-0.html"}
 --Bundestagswahl {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestagswahl-951-0.html"}
 --Landtagswahl Brandenburg {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_brandenburg-741-0.html"}
 --Landtagswahl Schleswig-Holstein {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_schleswig_holstein-400-0.html"}
--2008 {"url":"http:\/\/www.abgeordnetenwatch.de\/2008-155-0.html"}
+-2008 {"url":"http:\/\/www.abgeordnetenwatch.de\/2008-155-0.html","expanded":true}
 --Bürgerschaftswahl Hamburg {"url":"http:\/\/www.abgeordnetenwatch.de\/buergerschaftswahl_hamburg-823-0.html"}
 --Landtagswahl Hessen {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_hessen-905-0.html"}
 --Landtagswahl Niedersachsen {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_niedersachsen-395-0.html"}
 --Landtagswahl Bayern {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_bayern-398-0.html"}
--2007 {"url":"http:\/\/www.abgeordnetenwatch.de\/2007-128-0.html"}
+-2007 {"url":"http:\/\/www.abgeordnetenwatch.de\/2007-128-0.html","expanded":true}
 --Bürgerschaftswahl Bremen {"url":"http:\/\/www.abgeordnetenwatch.de\/buergerschaftswahl_bremen-435-0.html"}
--2006 {"url":"http:\/\/www.abgeordnetenwatch.de\/2006-125-0.html"}
+-2006 {"url":"http:\/\/www.abgeordnetenwatch.de\/2006-125-0.html","expanded":true}
 --Landtagswahl Baden-Württemberg {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_baden_wuerttemberg-527-0.html"}
 --Abgeordnetenhauswahl Berlin {"url":"http:\/\/www.abgeordnetenwatch.de\/abgeordnetenhauswahl_berlin-738-0.html"}
 --Landtagswahl Mecklenburg-Vorpommern {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_mecklenburg_vorpommern-367-0.html"}
 --Landtagswahl Rheinland-Pfalz {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_rheinland_pfalz-819-0.html"}
 --Landtagswahl Sachsen-Anhalt {"url":"http:\/\/www.abgeordnetenwatch.de\/landtagswahl_sachsen_anhalt-299-0.html"}
--2005 {"url":"http:\/\/www.abgeordnetenwatch.de\/2005-124-0.html"}
+-2005 {"url":"http:\/\/www.abgeordnetenwatch.de\/2005-124-0.html","expanded":true}
 --Bundestagswahl {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestagswahl-258-0.html"}
--Parlamente {"url":"http:\/\/www.abgeordnetenwatch.de\/parlamente-688-0.html"}
+-Parlamente {"url":"http:\/\/www.abgeordnetenwatch.de\/parlamente-688-0.html","expanded":true}
 --Niedersachsen 2008-2013 {"url":"http:\/\/www.abgeordnetenwatch.de\/niedersachsen_2008_2013-524-0.html"}
 --Schleswig-Holstein 2009-2012 {"url":"http:\/\/www.abgeordnetenwatch.de\/schleswig_holstein_2009_2012-528-0.html"}
 --Nordrhein-Westfalen 2010-2012 {"url":"http:\/\/www.abgeordnetenwatch.de\/nordrhein_westfalen_2010_2012-389-0.html"}
@@ -104,9 +129,9 @@ Archiv {"url":"http:\/\/www.abgeordnetenwatch.de\/archiv-391-0.html"}
 --Bundestag 2005-2009 {"url":"http:\/\/www.abgeordnetenwatch.de\/bundestag_2005_2009-132-0.html"}
 --EU-Parlament 2004-2009 {"url":"http:\/\/www.abgeordnetenwatch.de\/eu_parlament_2004_2009-332-0.html"}
 --Hamburg 2004-2008 {"url":"http:\/\/www.abgeordnetenwatch.de\/hamburg_2004_2008-917-0.html"}
-Wir über uns {"url":"ueber-uns"}
+Wir über uns {"url":"ueber-uns","expanded":true}
 -Jobs {"url":"ueber-uns\/jobs"}
--Mehr über uns {"url":"ueber-uns\/mehr"}
+-Mehr über uns {"url":"ueber-uns\/mehr","expanded":true}
 --Erfolge {"url":"ueber-uns\/mehr\/erfolge"}
 --Mitwirkende {"url":"ueber-uns\/mehr\/mitwirkende"}
 --Kuratorium {"url":"ueber-uns\/mehr\/kuratorium"}
@@ -117,22 +142,14 @@ Wir über uns {"url":"ueber-uns"}
 ---Finanzierung Parlamentwatch e.V. {"url":"ueber-uns\/mehr\/finanzierung\/parlamentwatch-eV","hidden":true}
 --Social Entrepreneur {"url":"ueber-uns\/mehr\/social-entrepreneur"}
 --International {"url":"ueber-uns\/mehr\/international"}
--Blog {"url":"blog"}
---Blog tagdelic (menu position rule) {"url":"menu-position\/4","description":"Sets access to all menu position links.","hidden":true}
---Blogcategories (menu position rule) {"url":"menu-position\/6","description":"Sets access to all menu position links.","hidden":true}
---Blogpost (menu position rule) {"url":"menu-position\/1","description":"Sets access to all menu position links.","hidden":true}
---Blogtags (menu position rule) {"url":"menu-position\/2","description":"Sets access to all menu position links.","hidden":true}
---Blogterms (menu position rule) {"url":"menu-position\/3","description":"Sets access to all menu position links.","hidden":true}
--Mitmachen {"url":"ueber-uns\/mitmachen"}
+-Mitmachen {"url":"ueber-uns\/mitmachen","expanded":true}
 --Parlamentsbeobachter {"url":"ueber-uns\/mitmachen\/parlamentsbeobachter"}
 --Infopaket bestellen {"url":"ueber-uns\/mitmachen\/infopaket-bestellen"}
 --Verlinken Sie uns {"url":"http:\/\/www.abgeordnetenwatch.de\/verlinken_sie_uns-162-0.html"}
 -FAQ {"url":"ueber-uns\/faq"}
 --abgeordnetenwatch in 3 Minuten {"url":"ueber-uns\/faq\/in-3-minuten","hidden":true}
--Presse {"url":"ueber-uns\/presse"}
---Pressespiegel {"url":"ueber-uns\/presse"}
---Pressemitteilungen {"url":"ueber-uns\/presse\/pressemitteilungen"}
----Press release (menu position rule) {"url":"menu-position\/5","description":"Sets access to all menu position links.","hidden":true}
+-Datenschutzerklärung {"url":"datenschutzerklaerung","hidden":true}
 -Login-Bereich {"url":"http:\/\/www.abgeordnetenwatch.de\/login_bereich-846-0.html"}
 -Impressum {"url":"ueber-uns\/impressum"}
 -Spenden {"url":"http:\/\/www.abgeordnetenwatch.de\/spenden-452-0.html"}
+-API {"url":"api"}
