@@ -15,8 +15,10 @@ function pw_petitions_default_fe_block_boxes() {
   $fe_block_boxes->format = 'managed_content';
   $fe_block_boxes->machine_name = 'petitions_description';
   $fe_block_boxes->body = '<p>
-	Consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus.<br />
-	Vestibulum volutpat pretium libero. Cras id dui. Aenean ut eros et nisl sagittis vestibulum. Nullam nulla eros, ultricies sit amet, nonummy id, imperdiet feugiat, pede.
+	Wenn wir Bürgerinnen und Bürger uns gemeinsam und lautstark zu Wort melden, wird das von unseren Abgeordneten gehört werden!
+</p>
+<p>
+	Mit Ihrer Unterschrift können Sie den Petitionen Gehör verschaffen und zu ihrem Erfolg beitragen. Sind Sie dabei?
 </p>
 ';
 

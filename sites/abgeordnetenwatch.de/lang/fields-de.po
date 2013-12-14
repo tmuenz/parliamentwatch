@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-11-24 17:16+0100\n"
-"PO-Revision-Date: 2013-11-24 17:16+0100\n"
+"POT-Creation-Date: 2013-12-14 18:05+0100\n"
+"PO-Revision-Date: 2013-12-14 18:05+0100\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -781,13 +781,18 @@ msgctxt "field_petition_signings:pw_petition:label"
 msgid "Signings"
 msgstr ""
 
+#: field:field_petition_progress:pw_petition:label
+msgctxt "field_petition_progress:pw_petition:label"
+msgid "Progress"
+msgstr ""
+
 #: field:comment_body:comment_node_blogpost:label
 msgctxt "comment_body:comment_node_blogpost:label"
 msgid "Comment"
 msgstr "Kommentar"
 
-#: field:field_petitions_required:pw_petition:label
-msgctxt "field_petitions_required:pw_petition:label"
+#: field:field_petition_required:pw_petition:label
+msgctxt "field_petition_required:pw_petition:label"
 msgid "Required signings"
 msgstr "Benötigte Unterschriften"
 
