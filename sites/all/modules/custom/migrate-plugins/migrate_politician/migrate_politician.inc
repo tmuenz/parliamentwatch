@@ -10,22 +10,27 @@ class PoliticianMigration extends BasicMigratePolitician {
   public function __construct() {
     parent::__construct();
 
-    // Connect to legacy database and select oldest profile
-    // of each politican (oldest=1)
+    // Setting up dependencies, migrate taxonomy terms first
+    $this->dependencies = array('ParliamentTerm');
+    //$this->dependencies = array('ConstituencyTerm');
+
+    // Connect to legacy database and select profiles
     $query = Database::getConnection('default', 'parlamentwatch')
       ->select('legacy_user_sample', 'u'); // To work with sample data only
       //->select('legacy_user', 'u'); // @TODO activate!
     $query->join('legacy_projects', 'p', 'u.cmd = p.cmd');
+    //$query->join('legacy_constituency', 'c', 'u.cmd = c.cmd');
     $query->fields('u', array('uid', 'uuid', 'username', 'title', 'nickname',
                               'first_name', 'last_name', 'first_lang', 'email',
                               'gender', 'birthday', 'residence', 'childs',
-                              'job', 'marriage', 'url_picture',
+                              'job', 'marriage', 'url_picture', 'profile_id',
                               'copyright_picture', 'twitter_account', 'party',
                               'txt_political_goals', 'txt_about_me',
-                              'political_roles', 'links'));
+                              'political_roles', 'links', 'oldest'));
     $query->fields('p', array('parliament', 'valid_from'));
     // @TODO confirm working
-    $query->condition('u.oldest', 1, '='); // Profiles
+    //$query->condition('u.oldest', 0, '='); // Revisions
+
     switch(variable_get('site_name')){
       case 'abgeordnetenwatch.de':
         $query->condition('p.project_cmd', array(0, 2000), 'BETWEEN');
@@ -49,25 +54,27 @@ class PoliticianMigration extends BasicMigratePolitician {
         $query->condition('p.project_cmd', 0);
         break;
     }
+    // @TODO order query by oldest DESC
+    $query->orderBy('u.last_name', 'ASC');
+    $query->orderBy('u.oldest', 'DESC');
+
+    watchdog("PW_TEST", t("FULL QUERY " . $query),
+             $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
 
     // Prepare mapping
     $this->source = new MigrateSourceSQL($query);
     $this->destination = new MigrateDestinationUser();
     $this->map = new MigrateSQLMap($this->machineName,
-      array('uid' => array('type' => 'int',
+      array('profile_id' => array('type' => 'int', // @TODO this maps profile_id
                           'not null' => TRUE,
                           'alias' => 'u')),
             MigrateDestinationUser::getKeySchema());
 
     // Map old to new data fields
-    //if (true) { // 1
-    $this->addFieldMapping('is_new')->defaultValue(TRUE);
-    $this->addFieldMapping('revision')->defaultValue(FALSE);
-      $this->addFieldMapping('name', 'username')->dedupe('users', 'name');
-    //} else { // 0
-    //  $this->addFieldMapping('is_new', FALSE);
-    //  $this->addFieldMapping('uid', 'username');
-    //}
+    $this->addFieldMapping('is_new', 'is_new');
+    $this->addFieldMapping('revision', 'revision');
+    $this->addFieldMapping('uid', 'uid'); // @TODO check unique
+    $this->addFieldMapping('name', 'username')->dedupe('users', 'name');
     $this->addFieldMapping('created', 'valid_from');
     $this->addFieldMapping('status')->defaultValue(1);
     $this->addFieldMapping('field_user_title', 'title');
@@ -75,142 +82,61 @@ class PoliticianMigration extends BasicMigratePolitician {
     $this->addFieldMapping('mail', 'email');
     $this->addFieldMapping('field_user_gender', 'gender');
     $this->addFieldMapping('field_user_birthday', 'birthday');
+    $this->addFieldMapping('field_user_fname', 'first_name');
+    $this->addFieldMapping('field_user_lname', 'last_name');
     $this->addFieldMapping('field_user_pseudonym', 'nickname');
-    // @TODO update for new profiles
-  //$this->addFieldMapping('field_user_?@TODO?', 'residence');
+    $this->addFieldMapping('field_user_residence', 'residence'); // @TODO check
     $this->addFieldMapping('field_user_childs', 'childs');
     $this->addFieldMapping('field_user_job_skills', 'job');
     $this->addFieldMapping('field_user_marriage_status', 'marriage');
     $this->addFieldMapping('role_names')->defaultValue('politician');
-    // @TODO update for new profiles
-  //$this->addFieldMapping('field_user_?@TODO?', 'twitter_account');
+    $this->addFieldMapping('field_user_twitter_account', 'twitter_account');
     $this->addFieldMapping('field_user_party', 'party')
       ->arguments(array('create_term' => TRUE));
-    // @TODO update for new profiles
-  //$this->addFieldMapping('field_user_?@TODO?', 'txt_political_goals');
-    // @TODO update for new profiles
-  //$this->addFieldMapping('field_user_?@TODO?', 'txt_about_me');
+    $this->addFieldMapping('field_user_parliament', 'parliament');
+    $this->addFieldMapping('field_user_political_goals', 'txt_political_goals');
+    $this->addFieldMapping('field_user_about', 'txt_about_me');
     $this->addFieldMapping('field_user_political_roles', 'political_roles')
       ->separator(';')->arguments(array('create_term' => TRUE));
     $this->addFieldMapping('field_user_picture', 'url_picture');
-    // @TODO update for new profiles
-  //$this->addFieldMapping('field_user_?@TODO?', 'copyright_picture');
+    $this->addFieldMapping('field_user_picture:alt', 'copyright_picture'); // @TODO check
     if(variable_get('site_name') != 'dailwatch.ie'){
       $this->addFieldMapping('field_user_more', 'links')->separator('|');
     }
-    // @TODO language?
-    $this->addFieldMapping('language')->defaultValue('en-gb');
+    $this->addFieldMapping('language', 'first_lang')->defaultValue('en-gb');
   }
 
-  public function prepareRow($current_row) {
-    if($current_row->birthday < 1) {
-      $current_row->birthday = NULL;
+  public function prepareRow($r) {
+    watchdog("PW_TEST", t("PREPARE ROW UID " . $r->uid),
+             $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
+    watchdog("PW_TEST", t("PREPARE ROW OLDEST " . $r->oldest),
+             $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
+
+    // Sets unknown birthday to NULL
+    if($r->birthday < 1) {
+      $r->birthday = NULL;
     }
-    if($current_row->valid_from < 1){
-      $current_row->valid_from = NULL;
+
+    // Sets unknown date to NULL
+    if($r->valid_from < 1){
+      $r->valid_from = NULL;
     }
-  }
 
-  public function complete($current_row){
-    $entity = user_load($current_row->uid);
+    // Checks wether to create a profile or revision
+    if($r->oldest == 1) {
+      watchdog("PW_TEST", t("PREPARE ROW OLDEST IF1 " . $r->oldest),
+               $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
 
-  /* //@TODO 2nd language deprecated, remove?
-    if($this->sourceValues->second_lang && $this->sourceValues
-        ->first_name_2nd_lang){
+      // New profile
+      $r->is_new = TRUE;
+      $r->revision = FALSE;
+    } else { // @TODO!important - this never gets called - why?
+      watchdog("PW_TEST", t("PREPARE ROW OLDEST ELSE " . $r->oldest),
+               $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
 
-      // This is the array structure for the field you are translating,
-      // in my case the name was "name_field" and the language target, English.
-      // $value is the translated string.
-
-      $translation = array(
-        'translate' => 0,
-        'status' => 1,
-         // here is the language you're translating to
-        'language' => $this->sourceValues->second_lang,
-        // here is the source language
-        'source' => $this->sourceValues->first_lang,
-      );
-
-      // get the translation handler in place
-      $handler = entity_translation_get_handler('user', $entity, TRUE);
-      // This is the array structure for the field you are translating,
-      // in my case the name was "name_field" and the language target, English.
-      // $value is the translated string.
-      $entity->field_user_first_letter_lname['und'][0]['value'] =
-        substr($this->sourceValues->last_name, '1','2');
-      $entity->field_user_fname[$this->sourceValues->first_lang][0]['value'] =
-        $this->sourceValues->first_name;
-      $entity->field_user_lname[$this->sourceValues->first_lang][0]['value'] =
-        $this->sourceValues->last_name;
-      $entity->field_user_fname[$this->sourceValues->second_lang][0]['value'] =
-        $this->sourceValues->first_name_2nd_lang;
-      $entity->field_user_lname[$this->sourceValues->second_lang][0]['value'] =
-        $this->sourceValues->last_name_2nd_lang;
-      $values = array(
-        'user_fname' => array (
-          $this->sourceValues->second_lang => array(
-            '0' => array(
-              'value' => $this->sourceValues->first_name_2nd_lang,
-             ),
-          ),
-          $this->sourceValues->first_lang => array(
-            '0' => array(
-              'value' => $this->sourceValues->first_name,
-             )
-           )
-         ),
-        'user_lname' => array (
-          $this->sourceValues->second_lang => array(
-            '0' => array(
-              'value' => $this->sourceValues->last_name_2nd_lang,
-             )
-           ),
-          $this->sourceValues->first_lang => array(
-            '0' => array(
-              'value' => $this->sourceValues->last_name,
-             )
-           )
-         ),
-
-      );
-      /*$values = array(
-        'field_user_fname' => array (
-          $this->sourceValues->first_lang => array(
-            '0' => array(
-              'value' => $this->sourceValues->first_name,
-             )
-           )
-         ),
-        'field_user_lname' => array (
-          $this->sourceValues->first_lang => array(
-            '0' => array(
-              'value' => $this->sourceValues->last_name,
-             )
-           )
-         ),
-      );* /
-      // Finally you set the translation and save the object.
-      $handler->setTranslation($translation, $values);
-      //print_r($entity);
-
-    } // if end
-  else{ */
-    $lang_obj = variable_get('language_default');
-    $entity->field_user_fname['und'][0]['value'] =
-      $this->sourceValues->first_name;
-    $entity->field_user_lname['und'][0]['value'] =
-      $this->sourceValues->last_name;
-    $entity->field_user_first_letter_lname['und'][0]['value'] =
-      substr($this->sourceValues->last_name, 0,1);
-  //$entity->field_user_fname['und'][0]['value'] =
-  //  $this->sourceValues->first_name;
-    $entity->field_user_fname[$lang_obj->language][0]['value'] =
-      $this->sourceValues->first_name;
-    $entity->field_user_lname[$lang_obj->language][0]['value'] =
-      $this->sourceValues->last_name;
-    $entity->revision = 0;
-  //} // else end
-    $entity->revision = 0;
-    user_save($entity);
+      // New revision
+      $r->is_new = FALSE;
+      $r->revision = TRUE;
+    }
   }
 }

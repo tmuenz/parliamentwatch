@@ -208,10 +208,10 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
                     $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
     }
     else {
+      $updating = FALSE;
       // @DEBUG REMOVE
       watchdog("PW_TEST", t("CREATING NEW ACCOUNT"),
                     $variables = NULL, WATCHDOG_DEBUG, $link = NULL);
-      $updating = FALSE;
     }
 
     // While user_save is happy to see a fid in $account->picture on insert,

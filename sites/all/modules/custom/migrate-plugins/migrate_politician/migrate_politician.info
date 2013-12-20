@@ -3,10 +3,12 @@ description = "Migrate Politician"
 package = "Development"
 
 dependencies[] = migrate
+dependencies[] = migrate_parliament
+dependencies[] = migrate_constituency
 
 files[] = migrate_politician.module
 files[] = migrate_politician.inc
 
-version = "7.x-1.0-20131213"
+version = "7.x-1.0-20131220"
 core = "7.x"
 project = "migrate_politician"
